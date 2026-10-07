@@ -1,0 +1,245 @@
+{
+  "summary": {
+    "webAnimations": 5,
+    "cssDeclarations": 5,
+    "scrollTargets": 0,
+    "cdpAnimations": 5,
+    "canvases": 0
+  },
+  "namedAnimations": [
+    "wave"
+  ],
+  "scrollTriggeredElements": 0,
+  "representativeAnimations": [
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "wave",
+      "targetSelector": "div.wave-bar",
+      "targetRect": {
+        "x": 884,
+        "y": 1121.921875,
+        "width": 4,
+        "height": 17.03125,
+        "top": 1121.921875,
+        "right": 888,
+        "bottom": 1138.953125,
+        "left": 884
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.5,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "28px",
+          "computedOffset": 0.5
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 0,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "wave",
+      "targetSelector": "div.wave-bar",
+      "targetRect": {
+        "x": 892,
+        "y": 1117.046875,
+        "width": 4,
+        "height": 26.78125,
+        "top": 1117.046875,
+        "right": 896,
+        "bottom": 1143.828125,
+        "left": 892
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.5,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "28px",
+          "computedOffset": 0.5
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 200,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "wave",
+      "targetSelector": "div.wave-bar",
+      "targetRect": {
+        "x": 900,
+        "y": 1117.0625,
+        "width": 4,
+        "height": 26.734375,
+        "top": 1117.0625,
+        "right": 904,
+        "bottom": 1143.796875,
+        "left": 900
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.5,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "28px",
+          "computedOffset": 0.5
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 400,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "wave",
+      "targetSelector": "div.wave-bar",
+      "targetRect": {
+        "x": 908,
+        "y": 1118.96875,
+        "width": 4,
+        "height": 22.921875,
+        "top": 1118.96875,
+        "right": 912,
+        "bottom": 1141.890625,
+        "left": 908
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.5,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "28px",
+          "computedOffset": 0.5
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 100,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    },
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "wave",
+      "targetSelector": "div.wave-bar",
+      "targetRect": {
+        "x": 916,
+        "y": 1119,
+        "width": 4,
+        "height": 22.859375,
+        "top": 1119,
+        "right": 920,
+        "bottom": 1141.859375,
+        "left": 916
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 0.5,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "28px",
+          "computedOffset": 0.5
+        },
+        {
+          "offset": 1,
+          "easing": "ease-in-out",
+          "composite": "auto",
+          "height": "6px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 500,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    }
+  ]
+}

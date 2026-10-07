@@ -1,0 +1,289 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Arial",
+      "fontSize": "82px",
+      "fontWeight": "950",
+      "lineHeight": "75.44px",
+      "letterSpacing": "-4px",
+      "color": "#F4FAFF",
+      "sampleText": "No spin.No hype.Just the signal."
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Arial",
+      "fontSize": "46px",
+      "fontWeight": "700",
+      "lineHeight": "normal",
+      "letterSpacing": "-2px",
+      "color": "#F4FAFF",
+      "sampleText": "Deep-Dive Episodes & Playbooks."
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Arial",
+      "fontSize": "36px",
+      "fontWeight": "900",
+      "lineHeight": "39.6px",
+      "letterSpacing": "1px",
+      "color": "transparent",
+      "sampleText": "Tech UnfilteredAGI"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Arial",
+      "fontSize": "28px",
+      "fontWeight": "700",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "The Architecture of AGI & NHIL Infrastructure"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Arial",
+      "fontSize": "22px",
+      "fontWeight": "400",
+      "lineHeight": "33px",
+      "letterSpacing": "normal",
+      "color": "#D7E5FF",
+      "sampleText": "Tech Unfiltered cuts through the noise with direct conversat"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Arial",
+      "fontSize": "18.72px",
+      "fontWeight": "700",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F4FAFF",
+      "sampleText": "24/7 Telephony Stream Monitor"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Arial",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F4FAFF",
+      "sampleText": "● Surge Active: 83 In Queue $6,917 / slot Base: $2,500 ➔ Sur"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Arial",
+      "fontSize": "14px",
+      "fontWeight": "800",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#A8B6D8",
+      "sampleText": "Episodes"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      4,
+      8,
+      10,
+      12,
+      13,
+      14,
+      16,
+      18,
+      19,
+      20,
+      22,
+      24,
+      28,
+      30,
+      34
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "16px",
+    "24px",
+    "30px",
+    "999px"
+  ],
+  "shadows": [
+    {
+      "value": "rgba(103, 247, 255, 0.35) 0px 0px 26px 0px",
+      "count": 14
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.45) 0px 30px 100px 0px",
+      "count": 12
+    },
+    {
+      "value": "rgba(103, 247, 255, 0.2) 0px 0px 35px 0px",
+      "count": 1
+    },
+    {
+      "value": "rgba(181, 55, 255, 0.15) 0px 0px 40px 0px",
+      "count": 1
+    },
+    {
+      "value": "rgba(103, 247, 255, 0.16) 0px 0px 28px 0px",
+      "count": 1
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Join the Signal List",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(90deg, rgb(103, 247, 255), rgb(0, 156, 255))",
+      "backdropFilter": "",
+      "color": "#02040A",
+      "padding": "14px 22px",
+      "borderRadius": "999px",
+      "border": "0px none rgb(2, 4, 10)",
+      "boxShadow": "rgba(103, 247, 255, 0.35) 0px 0px 26px 0px",
+      "fontSize": "16px",
+      "fontWeight": "900",
+      "height": "46px"
+    },
+    {
+      "label": "Call Hotline 24/7",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(90deg, rgb(212, 120, 255), rgb(181, 55, 255))",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "14px 22px",
+      "borderRadius": "999px",
+      "border": "0px none rgb(255, 255, 255)",
+      "boxShadow": "rgba(103, 247, 255, 0.35) 0px 0px 26px 0px",
+      "fontSize": "16px",
+      "fontWeight": "900",
+      "height": "46px"
+    },
+    {
+      "label": "📄 Download PDF Transcript",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "14px 22px",
+      "borderRadius": "999px",
+      "border": "1px solid rgba(103, 247, 255, 0.22)",
+      "boxShadow": "rgba(103, 247, 255, 0.35) 0px 0px 26px 0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "900",
+      "height": "52px"
+    },
+    {
+      "label": "Select Partner",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(90deg, rgb(255, 120, 144), rgb(255, 49, 92))",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "14px 22px",
+      "borderRadius": "999px",
+      "border": "0px none rgb(255, 255, 255)",
+      "boxShadow": "rgba(103, 247, 255, 0.35) 0px 0px 26px 0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "900",
+      "height": "43px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "#050B1E",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F4FAFF",
+      "padding": "34px",
+      "borderRadius": "30px",
+      "border": "1px solid rgba(103, 247, 255, 0.22)",
+      "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 100px 0px",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "431.188px"
+    },
+    {
+      "label": "card",
+      "background": "#020611",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F4FAFF",
+      "padding": "30px",
+      "borderRadius": "30px",
+      "border": "1px solid rgb(103, 247, 255)",
+      "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 100px 0px",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "268px"
+    },
+    {
+      "label": "card",
+      "background": "#050B1E",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F4FAFF",
+      "padding": "30px",
+      "borderRadius": "24px",
+      "border": "1px solid rgba(103, 247, 255, 0.22)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "395px"
+    },
+    {
+      "label": "card",
+      "background": "#050B1E",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F4FAFF",
+      "padding": "30px",
+      "borderRadius": "24px",
+      "border": "1px solid rgb(103, 247, 255)",
+      "boxShadow": "rgba(103, 247, 255, 0.2) 0px 0px 35px 0px",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "395px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "transparent",
+    "backgroundImage": "linear-gradient(rgba(5, 7, 19, 0.95), rgba(5, 7, 19, 0.72), rgba(0, 0, 0, 0))",
+    "backdropFilter": "blur(10px)",
+    "color": "#F4FAFF",
+    "padding": "14px 0px",
+    "borderRadius": "0px",
+    "border": "0px none rgb(244, 250, 255)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "62px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(rgba(103, 247, 255, 0.055) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90deg, rgba(103, 247, 255, 0.055) 1px, rgba(0, 0, 0, 0) 1px)",
+      "area": 11373900
+    },
+    {
+      "value": "radial-gradient(circle at 50% 7%, rgb(22, 42, 104) 0px, rgb(8, 17, 42) 42%, rgb(2, 4, 10) 100%)",
+      "area": 11373900
+    },
+    {
+      "value": "linear-gradient(135deg, rgba(181, 55, 255, 0.25), rgba(10, 16, 36, 0.9), rgba(103, 247, 255, 0.2))",
+      "area": 170400
+    }
+  ],
+  "glass": [
+    {
+      "backdropFilter": "blur(10px)",
+      "background": "linear-gradient(rgba(5, 7, 19, 0.95), rgba(5, 7, 19, 0.72), rgba(0, 0, 0, 0))",
+      "border": "0px none rgb(244, 250, 255)",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 70432
+    }
+  ]
+}

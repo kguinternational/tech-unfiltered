@@ -1,0 +1,101 @@
+services:
+  # The Control Tower: Headscale Mesh Network Server
+  headscale:
+    image: headscale/headscale:latest
+    container_name: agi_headscale
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./headscale/config:/etc/headscale/
+      - headscale_data:/var/lib/headscale
+    command: headscale serve
+    restart: unless-stopped
+
+  # The Network Router: Tailscale Sidecar
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: agi_tailscale
+    hostname: agi-network
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      - TS_AUTHKEY=
+      - TS_ROUTES=172.20.0.0/16
+      - TS_EXTRA_ARGS=--login-server=http://headscale:8080
+    volumes:
+      - tailscale_data:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+    depends_on:
+      - headscale
+
+  # The Brain: Local LLM Engine
+  ollama:
+    image: ollama/ollama:latest
+    container_name: agi_ollama
+    # Port 11434 is no longer exposed publicly, it's only accessible via Tailscale / Docker bridge
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    network_mode: service:tailscale
+
+  # The Memory: Vector Database
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: agi_chromadb
+    # Port 8000 is no longer exposed publicly
+    volumes:
+      - chroma_data:/chroma/chroma
+    restart: unless-stopped
+    network_mode: service:tailscale
+
+  # The API and Workers: Python 3.11 local executive service
+  agi-workers:
+    build: .
+    container_name: agi_workers
+    volumes:
+      - .:/app
+    environment:
+      - OLLAMA_BASE_URL=http://127.0.0.1:11434
+      - AGI_HOST=0.0.0.0
+      - AGI_PORT=8787
+      - CHROMA_API_BASE=http://localhost:8000
+    depends_on:
+      - ollama
+      - chromadb
+    command: ["python", "main.py"]
+    network_mode: service:tailscale
+
+  # The Metrics: Prometheus Server
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: agi_prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+    network_mode: service:tailscale
+
+  # The Dashboard: Grafana Server
+  grafana:
+    image: grafana/grafana:latest
+    container_name: agi_grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    network_mode: service:tailscale
+
+volumes:
+  headscale_data:
+  tailscale_data:
+  ollama_data:
+  chroma_data:
+  prometheus_data:
+  grafana_data:

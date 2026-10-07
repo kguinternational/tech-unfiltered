@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f8faff; /* grid bg color */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      
+      .grid-bg {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-size: 100px 100px;
+        background-image: 
+          linear-gradient(to right, rgba(0, 200, 255, 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 200, 255, 0.1) 1px, transparent 1px);
+        z-index: 1;
+      }
+
+      .glow-bg {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1200px; height: 1200px;
+        background: radial-gradient(circle, rgba(0,255,255,0.15) 0%, rgba(255,0,100,0.05) 50%, transparent 70%);
+        z-index: 2;
+        filter: blur(50px);
+      }
+
+      nav {
+        position: absolute;
+        top: 40px; left: 0; width: 100%;
+        display: flex; justify-content: center;
+        gap: 60px;
+        z-index: 10;
+        font-size: 42px;
+        font-weight: 700;
+        color: #1a233a;
+      }
+
+      .center-orb {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px; height: 800px;
+        background: #0b1120;
+        border-radius: 50%;
+        z-index: 10;
+        box-shadow: 0 0 100px rgba(0,255,255,0.4), inset 0 0 50px rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .border-dashed {
+        position: absolute;
+        top: 20px; left: 20px; right: 20px; bottom: 20px;
+        border: 4px dashed rgba(0,255,255,0.3);
+        border-radius: 50%;
+      }
+
+      .audio-bars {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .bar {
+        border-radius: 20px;
+      }
+      .bar.red {
+        background: #ff2a55;
+        box-shadow: 0 0 20px #ff2a55;
+        width: 24px;
+      }
+      .bar.cyan {
+        background: #00f0ff;
+        box-shadow: 0 0 20px #00f0ff;
+        width: 24px;
+      }
+      
+      .bar-1 { height: 250px; }
+      .bar-2 { height: 350px; }
+      .bar-3 { height: 350px; }
+      .bar-4 { height: 150px; }
+
+      .microphone {
+        width: 250px; height: 350px;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        margin: 0 40px;
+        position: relative;
+      }
+
+      .mic-capsule {
+        width: 140px; height: 200px;
+        background: linear-gradient(180deg, #33f0ff 0%, #00aaff 100%);
+        border-radius: 70px;
+        box-shadow: 0 0 40px rgba(0,255,255,0.6);
+        position: relative;
+        overflow: hidden;
+      }
+      .mic-bands {
+        position: absolute;
+        top: 40%; width: 100%; height: 20%;
+        border-top: 4px solid rgba(0,0,0,0.2);
+        border-bottom: 4px solid rgba(0,0,0,0.2);
+      }
+
+      .mic-stand {
+        width: 180px; height: 100px;
+        border: 12px solid #33f0ff;
+        border-top: none;
+        border-radius: 0 0 90px 90px;
+        box-shadow: 0 10px 20px rgba(0,255,255,0.4);
+        position: absolute;
+        bottom: 50px;
+      }
+      .mic-base {
+        width: 12px; height: 60px;
+        background: #33f0ff;
+        position: absolute;
+        bottom: -10px;
+      }
+      .mic-foot {
+        width: 120px; height: 12px;
+        background: #33f0ff;
+        position: absolute;
+        bottom: -10px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,255,255,0.6);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="8"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="grid-bg"></div>
+      <div class="glow-bg"></div>
+      
+      <nav>
+        <span id="nav-episodes">Episodes</span>
+        <span id="nav-labs">Labs</span>
+        <span id="nav-cmd">Command Center</span>
+      </nav>
+
+      <div class="center-orb" id="orb">
+        <div class="border-dashed" id="dashed"></div>
+        <div class="audio-bars">
+          <div class="bar red bar-1"></div>
+          <div class="bar cyan bar-2"></div>
+          
+          <div class="microphone" id="mic">
+            <div class="mic-capsule"><div class="mic-bands"></div></div>
+            <div class="mic-stand"></div>
+            <div class="mic-base"></div>
+            <div class="mic-foot"></div>
+          </div>
+
+          <div class="bar cyan bar-3"></div>
+          <div class="bar red bar-4"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      
+      // Orb pulsing
+      tl.to("#orb", { boxShadow: "0 0 150px rgba(0,255,255,0.8), inset 0 0 80px rgba(0,0,0,0.8)", duration: 2, yoyo: true, repeat: -1, ease: "sine.inOut" }, 0);
+      tl.to("#dashed", { rotation: 360, duration: 20, repeat: -1, ease: "linear" }, 0);
+      
+      // Audio bars bouncing (randomized lengths)
+      const bars = gsap.utils.toArray(".bar");
+      bars.forEach((bar, i) => {
+        tl.to(bar, {
+          height: () => Math.random() * 200 + 100 + "px",
+          duration: 0.3,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut"
+        }, i * 0.1);
+      });
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

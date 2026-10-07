@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Docker
+docker-compose.override.yml
+
+# Headscale / Tailscale Secrets
+agi-backend/headscale/config/*.key
+agi-backend/headscale/config/*.sqlite
+agi-backend/headscale/config/db.sqlite
+
+# Next.js
+tech-unfiltered/.next/
+tech-unfiltered/node_modules/
+tech-unfiltered/.env.local
+tech-unfiltered/.env.development.local
+tech-unfiltered/.env.test.local
+tech-unfiltered/.env.production.local
+
+# Mac
+.DS_Store
+
+# Data Volumes (Ensure we don't commit databases!)
+chroma_data/
+ollama_data/
+headscale_data/
+tailscale_data/
+prometheus_data/
+grafana_data/
+
+# External Repositories
+agi-backend/KGU_Ecosystem/
+
+# Agent Brain Link
+agent_brain/

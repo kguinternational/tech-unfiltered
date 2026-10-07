@@ -1,0 +1,152 @@
+[div] TECH UNFILTERED
+[div] Powered by KGU International
+[a] Episodes
+[a] Call Center
+[a] Monetize
+[div] The signal layer for tech
+[h1] No spin.
+[h1] No hype.
+[span] Just the signal.
+[p] Tech Unfiltered cuts through the noise with direct conversations, sharp analysis, and decision-grade insight for founders, investors, builders, and operators.
+[p] Powered by
+[strong] KGU International
+[a] Join the Signal List
+[a] Call Hotline 24/7
+[h2] Tech Unfiltered
+[h2] AGI
+[div] Powered by KGU International
+[div] 🔥 VIRAL 60-SEC PITCH HOTLINE • 24/7 LIVE AI ROAST
+[div] CALL +1 (800) TECH-UNFILTERED
+[p] Founders dial in 24/7 to pitch our AI Core. Top pitches get broadcasted; weak pitches get roasted live.
+[div] ● Surge Active:
+[div] In Queue
+[div] $7,000
+[span] / slot
+[div] Base: $2,500 ➔ Surge: +150%
+[h3] 24/7 Telephony Stream Monitor
+[span] 3 CHANNELS ACTIVE
+[div] Deepgram STT Live: "AI: Welcome to Tech Unfiltered. Pitch your startup in 60 seconds." -> Founder: "We built a 1,000 qubit topological quantum engine..."
+[h3] NHIL System Metrics
+[div] 24H CALLS
+[div] 142
+[div] BOOKED GUESTS
+[div] LANGUAGES
+[div] ACCURACY
+[div] 99.4%
+[h2] Deep-Dive Episodes & Playbooks.
+[p] Modeled after All-In & Acquired: 3-hour unedited interviews, downloadable PDF transcripts, and executive playbook takeaways.
+[div] FEATURED EPISODE 048 • 2H 45M • 1.2M PLAYS
+[h3] The Architecture of AGI & NHIL Infrastructure
+[p] Dr. Aris Thorne (CEO, Sovereign AI Labs) breaks down the hardware bottlenecks, synthetic data loops, and zero-human operations powering the 2030 AGI era.
+[button] ▶ Stream Episode
+[button] 📄 Download PDF Transcript
+[div] ★ EXECUTIVE PLAYBOOK TAKEAWAYS
+[li] 01. Compute efficiency scales faster than raw model size in 2026.
+[li] 02. Blueprint for 100% autonomous NHIL SaaS companies.
+[li] 03. How open weights are disrupting closed API margins.
+[h2] Monetize & Sponsor the Signal.
+[p] Direct access to 250,000+ decision-makers, VCs, founders, and engineers. Zero fluff. Instant automated contract booking.
+[h3] Signal Starter
+[div] $2,500
+[span] /mo
+[p] Ideal for fast-growing B2B tech brands & dev tool startups.
+[li] 2x Host-Read Pre-Roll Placements
+[li] Newsletter Feature Mention
+[li] Short-Form Clip Sponsor Tag
+[li] KGU Verification Badge
+[button] Select Starter
+[div] ★ Most Popular
+[h3] Market Builder
+[div] $10,000
+[span] /mo
+[p] For category leaders seeking high-intent founder & investor reach.
+[li] 4x Dedicated 60s Mid-Roll Segments
+[li] Category Exclusivity (Zero competitors)
+[li] 24/7 Voice AI Priority Guest Booking
+[li] Retargeting & Lead Dossiers
+[button] Select Builder
+[h3] Category Partner
+[div] $30,000
+[span] /mo
+[p] Sovereign enterprise partnership with full platform integration.
+[li] Title Sponsor ('Presented by Brand')
+[li] Custom AI Agent Avatar Integration
+[li] 12-Month Rate Lock Protection
+[li] Quarterly VIP Founder Dinners
+[button] Select Partner
+[h3] Instant Contract & Sponsorship Calculator
+[label] SELECT DURATION
+[option] 1 Month (Standard Rate)
+[option] 3 Months (Standard Rate)
+[option] 6 Months (15% Long-Term Discount)
+[option] 12 Months (15% Long-Term Discount)
+[span] Include VIP Founder & Investor Dinner Access (+$5,000)
+[div] ESTIMATED INVESTMENT:
+[div] $35,000
+[button] Execute Sponsorship Contract
+[h2] Choose the show engine.
+[p] Click a pillar to preview how the show becomes a scalable media company.
+[h3] Unfiltered Interviews
+[p] Founders, investors, researchers, engineers, and operators saying the quiet part out loud.
+[h3] Hype vs Reality
+[p] Separate what is investable, usable, and true from what is just narrative.
+[h3] The Signal Brief
+[p] A weekly digest of what happened in tech, why it matters, and what to do next.
+[h3] Output Stack
+[p] Full episode → 12 clips → founder quote cards → newsletter issue → guest relationship → sponsor inventory.
+[h3] Output Stack
+[p] Contrarian breakdown → carousel → debate clip → ranking list → premium research note.
+[h3] Output Stack
+[p] 10-minute brief → newsletter → LinkedIn post → X thread → paid analyst archive.
+[h2] Interactive launch command center.
+[h3] 90-Day Launch Checklist
+[p] Check items and watch the launch readiness score move.
+[p] launch ready
+[span] Finalize logo system
+[span] Publish landing page
+[span] Record trailer
+[span] Book first 10 guests
+[span] Record 10 episodes
+[span] Create 100 clips
+[span] Launch newsletter
+[span] Build sponsor list
+[span] Publish 3 episodes day one
+[span] Host first founder dinner
+[h3] Episode Idea Generator
+[option] Startups
+[option] Cybersecurity
+[option] Venture Capital
+[option] Consumer Tech
+[option] Robotics
+[button] Generate
+[div] Click generate to create a high-signal episode angle.
+[h3] Guest Outreach Builder
+[button] Build Invite
+[div] Your guest invite will appear here.
+[h3] Sponsor Package Estimator
+[option] Signal Starter
+[option] Market Builder
+[option] Category Partner
+[button] Calculate
+[div] Estimate sponsor package value.
+[h2] Interactive pitch deck.
+[div] 01 / 06
+[h3] Tech Unfiltered
+[p] No spin. No hype. Just the signal. Powered by KGU International.
+[h3] The Problem
+[p] Technology moves faster than trust. Decision-makers are drowning in hype, hot takes, and corporate-safe narratives.
+[h3] The Insight
+[p] The market does not need more tech content. It needs a trusted signal layer.
+[h3] The Wedge
+[p] A high-signal podcast and video show that turns every episode into a multi-platform content engine.
+[h3] The Business Model
+[p] Sponsorships → premium newsletter → community → events → research → enterprise intelligence.
+[h3] The Vision
+[p] Build the Bloomberg / Morning Brew / TED / Gartner-native hybrid for the AI age.
+[button] Previous
+[button] Next
+[h2] Join the Signal List
+[p] Get launch updates, guest drops, and the weekly Tech Unfiltered Signal Brief.
+[button] Notify Me
+[footer] © 2026 Tech Unfiltered · Powered by KGU International · No spin. No hype. Just the signal.
+[a] WhatsApp Us

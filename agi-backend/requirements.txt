@@ -1,0 +1,5 @@
+crewai
+chromadb
+crawlee[beautifulsoup]
+openai
+python-dotenv
