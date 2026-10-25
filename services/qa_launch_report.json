@@ -1,0 +1,702 @@
+{
+  "suite": "Tech Unfiltered SI \u2014 End-to-End QA & Media Stream Verification",
+  "targetServer": "http://127.0.0.1:8899",
+  "startedAt": "2026-10-20T03:58:40.881751+00:00",
+  "completedAt": "2026-10-20T03:58:41.038442+00:00",
+  "summary": {
+    "totalTests": 49,
+    "passed": 49,
+    "failed": 0,
+    "passRatePercent": 100.0,
+    "averageLatencyMs": 3.09,
+    "status": "100% PASS \u2014 PRODUCTION VERIFIED"
+  },
+  "categoryBreakdown": {
+    "audio_master_206": {
+      "total": 9,
+      "passed": 9
+    },
+    "avatar_video_206": {
+      "total": 4,
+      "passed": 4
+    },
+    "backend_workflow": {
+      "total": 12,
+      "passed": 12
+    },
+    "episode_video_206": {
+      "total": 12,
+      "passed": 12
+    },
+    "frontend_dom_and_security": {
+      "total": 1,
+      "passed": 1
+    },
+    "studio_reel_206": {
+      "total": 11,
+      "passed": 11
+    }
+  },
+  "tests": [
+    {
+      "category": "frontend_dom_and_security",
+      "name": "GET /landing_page.html (DOM IDs & Security Headers)",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 41.23,
+      "details": {
+        "bytes": 269837,
+        "domIdsVerified": {
+          "#liveCharacterVideo": true,
+          "#characters-4d": true,
+          "#n8n-10core-matrix": true,
+          "#episodes": true,
+          "#monetization": true,
+          "#book-now": true
+        },
+        "securityHeadersVerified": {
+          "x-frame-options": true,
+          "x-content-type-options": true,
+          "x-xss-protection": true,
+          "strict-transport-security": true,
+          "x-sovereign-shield": true,
+          "accept-ranges": true
+        }
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "GET /api/workflow/state",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 3.14,
+      "details": {
+        "engine": "KGU Sovereign Full-Stack Workflow & Memory Core",
+        "stats": {
+          "workflowsExecuted": 61,
+          "persistentMemories": 888,
+          "bookingsLocked": 14,
+          "cyberAuditsPassed": 130,
+          "orgAgentsOnline": 7
+        }
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/avatar-call (speaker=joann)",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 3.74,
+      "details": {
+        "workflowId": "WF-98D9145D",
+        "speaker": "joann",
+        "name": "Joann Coffey",
+        "videoStreamUrl": "/videos/avatar_joann.mp4"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/avatar-call (speaker=george)",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.08,
+      "details": {
+        "workflowId": "WF-B2BC29B5",
+        "speaker": "george",
+        "name": "George Dubec",
+        "videoStreamUrl": "/videos/avatar_george.mp4"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/avatar-call (speaker=aris)",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.61,
+      "details": {
+        "workflowId": "WF-EE4AC653",
+        "speaker": "aris",
+        "name": "Dr. Aris Thorne",
+        "videoStreamUrl": "/videos/avatar_aris.mp4"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/avatar-call (speaker=duo)",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 2.6,
+      "details": {
+        "workflowId": "WF-5193E166",
+        "speaker": "duo",
+        "name": "Joann Coffey & George Dubec",
+        "videoStreamUrl": "/videos/avatar_duo.mp4"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/client-tool (tool=\"tour\")",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 3.93,
+      "details": {
+        "workflowId": "WF-BA890AA7",
+        "domTargets": [
+          "callcenter",
+          "characters-4d",
+          "cyber-shield",
+          "episodes",
+          "monetization",
+          "book-now"
+        ],
+        "status": "EXECUTED"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/csuite-cycle",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 3.48,
+      "details": {
+        "workflowId": "WF-1979F5C5",
+        "executivesCount": 7,
+        "marginalCost": "$0.00"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/episode-select",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.09,
+      "details": {
+        "workflowId": "WF-635C25F8",
+        "episodeId": "ep-048",
+        "matchedVideo": "videos/tec_26_08_05.mp4",
+        "matchedReel": "videos/0805_clip1.mp4",
+        "matchedAudio": "audio/tec_26_08_05.mp3"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/book-call",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.97,
+      "details": {
+        "bookingId": "BOOK-A9A1D301",
+        "workflowId": "WF-31110843",
+        "tier": "liability-audit",
+        "amount": 25000,
+        "onboardingSteps": 5
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "POST /api/workflow/n8n-10core",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.08,
+      "details": {
+        "workflowId": "WF-408804B6",
+        "orchestrator": "KGU Standalone Sovereign n8n Engine (Zero Zapier \u2022 100% Self-Hosted)",
+        "moduleCode": "ALL-10-CORES",
+        "marginalCost": "$0.00"
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "GET /api/sovereign-modules",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 2.82,
+      "details": {
+        "engine": "KGU Sovereign 10-Module Physical SI Architecture Matrix",
+        "totalModules": 10,
+        "installedModulesCount": 10
+      }
+    },
+    {
+      "category": "backend_workflow",
+      "name": "GET /api/cyber-verify",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 4.9,
+      "details": {
+        "auditId": "AUD-371F2B15",
+        "digest": "fb379b2a1f331d1e9c581b6a",
+        "voiceVault": "AES-256-GCM Biometric Locked",
+        "antiScraper": "ACTIVE"
+      }
+    },
+    {
+      "category": "avatar_video_206",
+      "name": "GET /videos/avatar_joann.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.47,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/7293632",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 7293632
+      }
+    },
+    {
+      "category": "avatar_video_206",
+      "name": "GET /videos/avatar_george.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.43,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/6703215",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 6703215
+      }
+    },
+    {
+      "category": "avatar_video_206",
+      "name": "GET /videos/avatar_aris.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.64,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/6703215",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 6703215
+      }
+    },
+    {
+      "category": "avatar_video_206",
+      "name": "GET /videos/avatar_duo.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.37,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/9655626",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 9655626
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0805_clip1.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.43,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/33991171",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 33991171
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0805_clip2.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.57,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/42484352",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 42484352
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0805_clip3.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.53,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/46053648",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 46053648
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0805_clip4.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.1,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/41098672",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 41098672
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0805_clip5.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.54,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/31933026",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 31933026
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip1.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.33,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/147138559",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 147138559
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip2.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 0.85,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/52380082",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 52380082
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip3.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.32,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/14845172",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 14845172
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip4.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.37,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/54455240",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 54455240
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip5.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.81,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/134325973",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 134325973
+      }
+    },
+    {
+      "category": "studio_reel_206",
+      "name": "GET /videos/0827_clip6.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.12,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/46567230",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 46567230
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_001_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.25,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/17046465",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 17046465
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_002_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 0.95,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/9293477",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 9293477
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_003_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.46,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/21765692",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 21765692
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_004_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.83,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1994292282",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1994292282
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_005_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.37,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1089566954",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1089566954
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/ep_006_studio.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.14,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1124976286",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1124976286
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_08_05.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 0.97,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1994292282",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1994292282
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_08_13.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 0.95,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1089566954",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1089566954
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_08_20.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.03,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1124976286",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1124976286
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_08_27.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.18,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1502080910",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1502080910
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_09_03.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.33,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/992570122",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 992570122
+      }
+    },
+    {
+      "category": "episode_video_206",
+      "name": "GET /videos/tec_26_09_10.mp4 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.41,
+      "details": {
+        "contentType": "video/mp4",
+        "contentRange": "bytes 0-1023/1301666748",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 1301666748
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_08_05.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.42,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/65824432",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 65824432
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_08_13.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.86,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/36026393",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 36026393
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_08_20.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 3.11,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/37238994",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 37238994
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_08_27.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.57,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/49683037",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 49683037
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_09_03.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 4.68,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/32948605",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 32948605
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_09_09.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 3.86,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/43125466",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 43125466
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/tec_26_09_10.mp3 (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.49,
+      "details": {
+        "contentType": "audio/mpeg",
+        "contentRange": "bytes 0-1023/43125466",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 43125466
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/joann_coffey_ref.wav (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 2.08,
+      "details": {
+        "contentType": "audio/x-wav",
+        "contentRange": "bytes 0-1023/864078",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 864078
+      }
+    },
+    {
+      "category": "audio_master_206",
+      "name": "GET /audio/george_dubec_ref.wav (Range: bytes=0-1023)",
+      "passed": true,
+      "status_code": 206,
+      "latency_ms": 1.84,
+      "details": {
+        "contentType": "audio/x-wav",
+        "contentRange": "bytes 0-1023/627390",
+        "chunkBytes": 1024,
+        "totalFileSizeBytes": 627390
+      }
+    }
+  ]
+}

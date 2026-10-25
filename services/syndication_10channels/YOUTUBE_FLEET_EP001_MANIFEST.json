@@ -1,0 +1,412 @@
+{
+  "ok": true,
+  "manifestId": "YTFLEET-EP001-26AB5B31",
+  "episodeNumber": 1,
+  "episodeCode": "EP-001",
+  "episodeTitle": "Episode 01: The Architecture of SI & Sovereign Hardware Nodes",
+  "createdAt": "2026-10-25T20:03:11.374111+00:00",
+  "totalChannels": 12,
+  "stagedChannels": 10,
+  "protectedSkippedChannels": 2,
+  "antiSpamPolicy": "STRICT_CHANNEL_GATING_ACTIVE: Full uncut master restricted to @TechUnfilteredSI. Tailored short cuts staged to niche tech channels. Non-tech channels (Love List, After Swiping) protected with zero uploads.",
+  "fleet": {
+    "tech_unfiltered_si": {
+      "channelHandle": "@TechUnfilteredSI",
+      "channelName": "Tech Unfiltered SI",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Technology & Venture",
+      "role": "Primary 45-Min Broadcast Master (EXCLUSIVE UNEDITED HOME)",
+      "contentType": "FULL_45MIN_STUDIO_MASTER",
+      "videoTitle": "Episode 01: The Architecture of SI & Sovereign Hardware Nodes (Full 45m Studio Master)",
+      "hook": "Stop calling API wrappers Synthetic Intelligence. In Episode 01, Joann Coffey & George Dubec dissect the real physics of enterprise sovereignty.",
+      "videoFile": "videos/tec_26_08_05.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Episode 01: The Architecture of SI & Sovereign Hardware Nodes (Full 45m Studio Master)\n\nTHE BROADCAST THESIS:\n\"Stop calling API wrappers Synthetic Intelligence. In Episode 01, Joann Coffey & George Dubec dissect the real physics of enterprise sovereignty.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: FULL_45MIN_STUDIO_MASTER\nEDITORIAL CHARTER: Primary 45-Min Broadcast Master (EXCLUSIVE UNEDITED HOME)\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Stream in 4K with interactive avatars & download transcripts \u2192 https://techunfiltered.io\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://techunfiltered.io",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "kgu_international": {
+      "channelHandle": "@KGUINTERNATIONAL",
+      "channelName": "KGU INTERNATIONAL",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Science & Technology",
+      "role": "Flagship Enterprise Keynotes & Hardware Blueprints",
+      "contentType": "EXECUTIVE_KEYNOTE_CUT",
+      "videoTitle": "Sovereign Executive Node Architecture: Why Local Metal Clusters Beat Cloud Tokens",
+      "hook": "We are way beyond static models. We are engineering living worlds in code now, generated at runtime.",
+      "videoFile": "videos/0805_clip2.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Sovereign Executive Node Architecture: Why Local Metal Clusters Beat Cloud Tokens\n\nTHE BROADCAST THESIS:\n\"We are way beyond static models. We are engineering living worlds in code now, generated at runtime.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: EXECUTIVE_KEYNOTE_CUT\nEDITORIAL CHARTER: Flagship Enterprise Keynotes & Hardware Blueprints\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Deploy your Dedicated Sovereign Hardware Node ($150K) \u2192 https://kguinternational.com/hardware-node\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://kguinternational.com/hardware-node",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "the_promise_ai": {
+      "channelHandle": "@ThePromiseAI",
+      "channelName": "The Promise SI",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Science & Technology",
+      "role": "Conversational Digital Twins & High-EQ Empathy",
+      "contentType": "DIGITAL_TWIN_SHOWCASE",
+      "videoTitle": "The Promise SI: Engineering Living Digital Humans Generated at Runtime",
+      "hook": "Can a digital twin hold real human presence? Joann Coffey reveals the voice synthesis and memory architecture behind The Promise SI.",
+      "videoFile": "videos/0805_clip3.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "The Promise SI: Engineering Living Digital Humans Generated at Runtime\n\nTHE BROADCAST THESIS:\n\"Can a digital twin hold real human presence? Joann Coffey reveals the voice synthesis and memory architecture behind The Promise SI.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: DIGITAL_TWIN_SHOWCASE\nEDITORIAL CHARTER: Conversational Digital Twins & High-EQ Empathy\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Experience the next evolution of digital twins at The Promise SI \u2192 https://thepromise.si\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://thepromise.si",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "jc_coffey_foundation": {
+      "channelHandle": "@JCCOFFEYFOUNDATION",
+      "channelName": "JC COFFEY FOUNDATION",
+      "account": "jccoffey@jccoffeyfoundation.org",
+      "category": "Nonprofits & Activism",
+      "role": "501(c)(3) Sacred Memory & Love Effect OS",
+      "contentType": "PHILANTHROPIC_MISSION_BRIEF",
+      "videoTitle": "The Love Effect OS: Technology Grounded in Reverence, Love, and Honor for People",
+      "hook": "Technology without reverence, love, and honor for people is hollow. Joann Coffey shares the sacred foundation mission.",
+      "videoFile": "videos/0805_clip1.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "The Love Effect OS: Technology Grounded in Reverence, Love, and Honor for People\n\nTHE BROADCAST THESIS:\n\"Technology without reverence, love, and honor for people is hollow. Joann Coffey shares the sacred foundation mission.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: PHILANTHROPIC_MISSION_BRIEF\nEDITORIAL CHARTER: 501(c)(3) Sacred Memory & Love Effect OS\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Inscribe an eternal sacred memory or apply for a grant \u2192 https://jccoffeyfoundation.org\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://jccoffeyfoundation.org",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "digital_twin_network": {
+      "channelHandle": "@DigitalTwinNetwork",
+      "channelName": "Digital Twin Network",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Science & Technology",
+      "role": "24/7 Live Stream & Technical Node Demos",
+      "contentType": "TELEMETRY_BENCHMARK_CUT",
+      "videoTitle": "24/7 Node Telemetry: 92ms Full-Duplex Conversational Latency on Local Metal",
+      "hook": "Live telemetry from our dedicated Apple Silicon Metal node: 92ms full-duplex conversational latency with zero cloud exfiltration.",
+      "videoFile": "videos/0805_clip2.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "24/7 Node Telemetry: 92ms Full-Duplex Conversational Latency on Local Metal\n\nTHE BROADCAST THESIS:\n\"Live telemetry from our dedicated Apple Silicon Metal node: 92ms full-duplex conversational latency with zero cloud exfiltration.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: TELEMETRY_BENCHMARK_CUT\nEDITORIAL CHARTER: 24/7 Live Stream & Technical Node Demos\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Inspect live node telemetry and latency graphs in real-time \u2192 https://techunfiltered.io/telemetry\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://techunfiltered.io/telemetry",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "no_human_left_behind": {
+      "channelHandle": "@NHLB0",
+      "channelName": "No Human Left Behind",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Science & Technology",
+      "role": "NHIL State Machines & Enterprise Automation",
+      "contentType": "AUTONOMOUS_NHIL_WALKTHROUGH",
+      "videoTitle": "Engineering the 100% NHIL Enterprise: Autonomous Workflows Without Human Drift",
+      "hook": "Why human manual intervention is the primary vector for enterprise failure, and how autonomous state machines replace fragile operations.",
+      "videoFile": "videos/0805_clip3.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Engineering the 100% NHIL Enterprise: Autonomous Workflows Without Human Drift\n\nTHE BROADCAST THESIS:\n\"Why human manual intervention is the primary vector for enterprise failure, and how autonomous state machines replace fragile operations.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: AUTONOMOUS_NHIL_WALKTHROUGH\nEDITORIAL CHARTER: NHIL State Machines & Enterprise Automation\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Review our NHIL autonomous architecture white paper \u2192 https://kguinternational.com/nhil\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://kguinternational.com/nhil",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "business_interviews_411": {
+      "channelHandle": "@411BusinessJC",
+      "channelName": "411 Business Interviews",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Business & Investing",
+      "role": "Executive & Founder In-Depth Grills",
+      "contentType": "EXECUTIVE_INTERVIEW_HIGHLIGHT",
+      "videoTitle": "411 Business: Boardroom SI Liability & The Collapse of Rented Software Wrappers",
+      "hook": "George Dubec sits down with Joann Coffey to dissect how Fortune 500 boards are protecting themselves from rogue agent liability.",
+      "videoFile": "videos/0805_clip1.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "411 Business: Boardroom SI Liability & The Collapse of Rented Software Wrappers\n\nTHE BROADCAST THESIS:\n\"George Dubec sits down with Joann Coffey to dissect how Fortune 500 boards are protecting themselves from rogue agent liability.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: EXECUTIVE_INTERVIEW_HIGHLIGHT\nEDITORIAL CHARTER: Executive & Founder In-Depth Grills\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Book your 6-Point Forensic SI Liability Audit ($25K flat) \u2192 https://kguinternational.com/audit\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://kguinternational.com/audit",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "business_bitcoin_411": {
+      "channelHandle": "@411BUSINESSBITCOIN",
+      "channelName": "411 BUSINESS BITCOIN",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Finance & Macro",
+      "role": "Sovereign Money, Nodes & Micro-Grids",
+      "contentType": "SOVEREIGN_COMPUTE_MONEY_CUT",
+      "videoTitle": "Sovereign Compute Meets Sovereign Money: Running Nodes on Private Micro-Grids",
+      "hook": "Why running synthetic intelligence on rented clouds is as foolish as keeping capital in debased fiat. True sovereignty requires hard money and local compute.",
+      "videoFile": "videos/0805_clip2.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Sovereign Compute Meets Sovereign Money: Running Nodes on Private Micro-Grids\n\nTHE BROADCAST THESIS:\n\"Why running synthetic intelligence on rented clouds is as foolish as keeping capital in debased fiat. True sovereignty requires hard money and local compute.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: SOVEREIGN_COMPUTE_MONEY_CUT\nEDITORIAL CHARTER: Sovereign Money, Nodes & Micro-Grids\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Explore the KGU Sovereign Stack architecture \u2192 https://techunfiltered.io/sovereign-stack\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://techunfiltered.io/sovereign-stack",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "forgotten_founder": {
+      "channelHandle": "@ForgottenFounder",
+      "channelName": "Forgotten Founder",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Education & History",
+      "role": "Untold Tech History & IP Precedent",
+      "contentType": "HISTORICAL_ARCHIVAL_FEATURE",
+      "videoTitle": "Forgotten Founder: The 50-Year Lineage of Independent Digital Human Architecture",
+      "hook": "Before Big Tech claimed generative AI, decades of independent inventors laid the foundation. Joann Coffey documents the origins of digital humans.",
+      "videoFile": "videos/0805_clip3.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Forgotten Founder: The 50-Year Lineage of Independent Digital Human Architecture\n\nTHE BROADCAST THESIS:\n\"Before Big Tech claimed generative AI, decades of independent inventors laid the foundation. Joann Coffey documents the origins of digital humans.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: HISTORICAL_ARCHIVAL_FEATURE\nEDITORIAL CHARTER: Untold Tech History & IP Precedent\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Support the preservation of independent computing history \u2192 https://forgottenfounder.io\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://forgottenfounder.io",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "ethgate_exposed": {
+      "channelHandle": "@ETHGateExposed",
+      "channelName": "ETHGate Exposed",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "News & Politics",
+      "role": "Forensic Legal/Regulatory & Whistleblower Audits",
+      "contentType": "LEGAL_FORENSIC_DOSSIER",
+      "videoTitle": "Forensic Briefing: Boardroom Firewalls & Regulatory Risk Containment in 2026",
+      "hook": "Examining public court filings and unsealed discovery in federal prosecutions. Why sovereign legal firewalls are essential for builders.",
+      "videoFile": "videos/0805_clip1.mp4",
+      "thumbnail": "thumbs/thumb_01.jpg",
+      "description": "Forensic Briefing: Boardroom Firewalls & Regulatory Risk Containment in 2026\n\nTHE BROADCAST THESIS:\n\"Examining public court filings and unsealed discovery in federal prosecutions. Why sovereign legal firewalls are essential for builders.\"\n\nHOSTS: Joann Coffey (Conductor & Sovereign Builder) & George Dubec (CRO & Venture Deal-Flow Architect)\nPOWERED BY: KGU International \u00b7 Boca Raton Studio Hub\n\nCONTENT SPECIFICATION: LEGAL_FORENSIC_DOSSIER\nEDITORIAL CHARTER: Forensic Legal/Regulatory & Whistleblower Audits\n\nCHAPTERS:\n00:00 \u2014 Cold Open: We Are Way Beyond Static Models\n06:30 \u2014 Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)\n18:45 \u2014 George Dubec: Institutional Capital Rotation & Boardroom SI Liability\n31:20 \u2014 Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech\n41:10 \u2014 Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes\n\nDIRECT ACTION & SOVEREIGN ACCESS:\n\u2605 Access public court filings and forensic litigation dockets \u2192 https://techunfiltered.io/dossiers\n\u2605 Direct Hotline: 1-888-KGU-SOVEREIGN (1-844-SAFE-107)\n\u2605 Stream in 4K Interactive Theatre: https://techunfiltered.io\n\n#TechUnfilteredSI #PhysicalSI #NHIL #KGUInternational #SovereignHardware",
+      "chapters": [
+        {
+          "timestamp": "00:00",
+          "title": "Cold Open: We Are Way Beyond Static Models"
+        },
+        {
+          "timestamp": "06:30",
+          "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+        },
+        {
+          "timestamp": "18:45",
+          "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+        },
+        {
+          "timestamp": "31:20",
+          "title": "Dedicated Sovereign Hardware Nodes & 92ms Full-Duplex Speech"
+        },
+        {
+          "timestamp": "41:10",
+          "title": "Sovereign Capital Deal Desk: $10K Media / $25K Audit / $150K Nodes"
+        }
+      ],
+      "ctaUrl": "https://techunfiltered.io/dossiers",
+      "status": "STAGED_READY_TO_PUBLISH"
+    },
+    "love_list_network": {
+      "channelHandle": "@lovelistnetwork",
+      "channelName": "LOVE LIST NETWORK",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Lifestyle & Relationships",
+      "role": "High-EQ Relationships & Emotional Intelligence",
+      "contentType": "RELATIONSHIP_SERIES_ONLY",
+      "status": "SKIPPED_TOPIC_MISMATCH",
+      "reason": "CHANNEL_PURITY_RULE: Exclusively reserved for Relationship, High-EQ & Human Intimacy Content. Tech infrastructure episodes strictly blocked to protect audience algorithm.",
+      "videoTitle": "Dedicated Love List Series (Scheduled Separately)",
+      "videoFile": null,
+      "thumbnail": null,
+      "ctaUrl": "https://thepromise.si/love-list"
+    },
+    "after_swipping": {
+      "channelHandle": "@AfterSwipping-fp6cl",
+      "channelName": "After Swipping",
+      "account": "realjoanncoffey@gmail.com",
+      "category": "Culture & Society",
+      "role": "Post-Dating App Culture & Genuine Connection",
+      "contentType": "CULTURE_SERIES_ONLY",
+      "status": "SKIPPED_TOPIC_MISMATCH",
+      "reason": "CHANNEL_PURITY_RULE: Exclusively reserved for Post-Dating App Culture & Modern Dating Commentary. Technical hardware episodes strictly blocked to prevent algorithmic penalty.",
+      "videoTitle": "Dedicated After Swiping Series (Scheduled Separately)",
+      "videoFile": null,
+      "thumbnail": null,
+      "ctaUrl": "https://thepromise.si/after-swiping"
+    }
+  }
+}

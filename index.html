@@ -1,0 +1,3375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="js/three.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tech Unfiltered SI — The Sovereign Media Network</title>
+<meta name="description" content="Tech Unfiltered SI: The official broadcast network hosted by Joann Coffey & George Dubec. 100% No Human In The Loop infrastructure, Dedicated Sovereign Hardware Nodes, and Boardroom Liability Defense.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #050507;
+  --surface: #0e0e12;
+  --surface-raised: #14141b;
+  --ink: #f4f2ef;
+  --dim: #8e8a85;
+  --line: rgba(244, 242, 239, 0.12);
+  --cyan: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.35);
+  --accent-gold: #e5b958;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+  --mono: "JetBrains Mono", Menlo, Consolas, monospace;
+  --pad: clamp(16px, 3.2vw, 42px);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ============================================================
+   TOP SOVEREIGN NAVIGATION BAR
+   ============================================================ */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: calc(12px + var(--safe-top)) var(--pad) 12px;
+  background: linear-gradient(180deg, rgba(5, 5, 7, 0.96) 0%, rgba(5, 5, 7, 0.8) 75%, transparent 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(244, 242, 239, 0.06);
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.brand-logo em {
+  font-style: normal;
+  color: var(--ink);
+}
+.si-badge {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseLive 1.6s infinite ease-in-out;
+}
+@keyframes pulseLive {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.search-box-wrap {
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(244, 242, 239, 0.14);
+  border-radius: 999px;
+  padding: 8px 18px 8px 38px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: #fff;
+  outline: none;
+  transition: all 0.25s var(--ease);
+}
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+}
+.search-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 13px;
+  color: var(--dim);
+  pointer-events: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hotline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(244, 242, 239, 0.16);
+  padding: 7px 14px;
+  border-radius: 999px;
+  transition: all 0.2s var(--ease);
+}
+.hotline-pill:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.deal-desk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 240, 255, 0.05) 100%);
+  border: 1px solid var(--cyan);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+  transition: all 0.25s var(--ease);
+}
+.deal-desk-btn:hover {
+  background: var(--cyan);
+  color: #000;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(244, 242, 239, 0.18);
+  color: var(--ink);
+  transition: all 0.2s var(--ease);
+}
+.view-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   TOPIC FILTER PILLS BAR
+   ============================================================ */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(64px + var(--safe-top)) var(--pad) 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+.filter-pill {
+  flex-shrink: 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(244, 242, 239, 0.08);
+  padding: 6px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.filter-pill:hover {
+  color: #fff;
+  border-color: rgba(244, 242, 239, 0.25);
+}
+.filter-pill.active {
+  color: #000;
+  background: #fff;
+  border-color: #fff;
+  font-weight: 500;
+}
+
+/* ============================================================
+   FEATURED HERO BANNER (NETFLIX STYLE)
+   ============================================================ */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  min-height: min(72vh, 640px);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px var(--pad);
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.48) contrast(1.08);
+  transform: scale(1.03);
+  transition: transform 1.2s var(--ease);
+}
+.hero-banner:hover .hero-video-bg {
+  transform: scale(1.0);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #050507 0%, rgba(5,5,7,0.7) 40%, rgba(5,5,7,0.2) 80%, rgba(5,5,7,0.8) 100%),
+              linear-gradient(90deg, #050507 0%, rgba(5,5,7,0.6) 45%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.hero-meta-item {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4.4vw, 54px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.hero-hosts {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(244, 242, 239, 0.95);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-hosts span {
+  color: var(--cyan);
+}
+
+.hero-desc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.6;
+  color: rgba(244, 242, 239, 0.82);
+  max-width: 680px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
+.btn-primary-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  background: #fff;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
+  transition: all 0.2s var(--ease);
+}
+.btn-primary-hero:hover {
+  background: var(--cyan);
+  color: #000;
+  box-shadow: 0 0 24px var(--cyan);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 12px 22px;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s var(--ease);
+}
+.btn-secondary-hero:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-sponsor-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(0, 240, 255, 0.12);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 12px 20px;
+  border-radius: 999px;
+  transition: all 0.2s var(--ease);
+}
+.btn-sponsor-hero:hover {
+  background: rgba(0, 240, 255, 0.25);
+  border-color: var(--cyan);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* ============================================================
+   CONTENT ROWS & HORIZONTAL CAROUSELS
+   ============================================================ */
+.content-section {
+  padding: 0 var(--pad) 38px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-subtitle {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.carousel-wrap {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 0 16px;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Video Card (Horizontal 16:9 Standard) */
+.stream-card {
+  flex: 0 0 clamp(240px, 22vw, 320px);
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.stream-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 240, 255, 0.2);
+}
+
+.card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+.card-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.stream-card:hover .card-thumb-img {
+  transform: scale(1.06);
+}
+
+.card-overlay-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.card-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.play-hover-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+.stream-card:hover .play-hover-icon {
+  opacity: 1;
+}
+.play-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cyan);
+  color: #000;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  padding-left: 3px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
+  transform: scale(0.85);
+  transition: transform 0.25s var(--ease);
+}
+.stream-card:hover .play-circle {
+  transform: scale(1);
+}
+
+.card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.card-location {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--cyan);
+  letter-spacing: 0.5px;
+}
+.card-title {
+  font-family: var(--serif);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.25;
+}
+.card-note {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+/* Video Card (Vertical 9:16 Reel) */
+.stream-card.vertical-reel {
+  flex: 0 0 clamp(160px, 14vw, 195px);
+}
+.stream-card.vertical-reel .card-thumb-wrap {
+  aspect-ratio: 9 / 16;
+}
+.stream-card.vertical-reel .card-title {
+  font-size: 13.5px;
+}
+
+/* ============================================================
+   HOST SPOTLIGHT BAR
+   ============================================================ */
+.host-spotlight {
+  margin: 0 var(--pad) 40px;
+  background: linear-gradient(135deg, rgba(20, 20, 27, 0.95) 0%, rgba(9, 9, 12, 0.98) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  padding: clamp(20px, 3vw, 32px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.host-avatars {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.host-avatar-real {
+  width: clamp(64px, 6vw, 84px);
+  height: clamp(64px, 6vw, 84px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+}
+
+.host-details h3 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: #fff;
+  margin-bottom: 4px;
+}
+.host-role {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.host-bio {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(244, 242, 239, 0.85);
+  max-width: 650px;
+}
+
+.host-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+/* ============================================================
+   CINEMATIC VIDEO MODAL PLAYER (ADAPTIVE 16:9 & 9:16)
+   ============================================================ */
+#streamModal {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 4vh, 48px) var(--pad);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+body.modal-open #streamModal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#streamModal .modal-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  cursor: pointer;
+}
+
+#streamModal .modal-plate {
+  position: relative;
+  z-index: 2;
+  width: min(86vw, 1020px, (100vh - 180px) * 1.777);
+  max-width: 100%;
+  transition: width 0.35s var(--ease);
+}
+#streamModal .modal-plate.portrait-mode {
+  width: min(90vw, 420px);
+}
+
+.modal-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.modal-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+.modal-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(244, 242, 239, 0.25);
+  border-radius: 999px;
+  color: #f4f2ef;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+.modal-close-btn:hover {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: var(--cyan);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+}
+
+.modal-video-shell {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 60px rgba(0, 240, 255, 0.25);
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+}
+
+#streamVideo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(65vh, 580px);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+.modal-plate.portrait-mode #streamVideo {
+  aspect-ratio: 9 / 16;
+  max-height: min(72vh, 620px);
+  object-fit: cover;
+}
+
+/* Audio Waveform Animation */
+.waveform-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 16px;
+  margin-left: 10px;
+}
+.wave-bar {
+  width: 3px;
+  height: 100%;
+  background: var(--cyan);
+  border-radius: 2px;
+  animation: waveBar 1.2s infinite ease-in-out;
+}
+.wave-bar:nth-child(1) { animation-delay: 0.1s; height: 40%; }
+.wave-bar:nth-child(2) { animation-delay: 0.3s; height: 90%; }
+.wave-bar:nth-child(3) { animation-delay: 0.15s; height: 60%; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; height: 100%; }
+.wave-bar:nth-child(5) { animation-delay: 0.2s; height: 50%; }
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.modal-info-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(18px, 2.5vw, 36px);
+  padding-top: 14px;
+}
+.modal-plate.portrait-mode .modal-info-panel {
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+#modalTitle {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(18px, 1.8vw, 25px);
+  line-height: 1.18;
+  color: #fff;
+  margin-bottom: 4px;
+}
+#modalPlace {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--cyan);
+}
+#modalNote {
+  font-size: 13px;
+  line-height: 1.58;
+  color: rgba(244, 242, 239, 0.85);
+}
+
+/* ============================================================
+   SOVEREIGN DEAL DESK DRAWER (MONETIZATION)
+   ============================================================ */
+#dealDeskDrawer {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+body.deal-desk-open #dealDeskDrawer {
+  opacity: 1;
+  pointer-events: auto;
+}
+.desk-drawer-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+}
+.desk-drawer-body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(94vw, 560px);
+  background: #0a0a0e;
+  border-left: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: -25px 0 70px rgba(0, 0, 0, 0.95);
+  padding: clamp(24px, 4vw, 40px);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.45s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body.deal-desk-open .desk-drawer-body {
+  transform: translateX(0);
+}
+
+.desk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(244, 242, 239, 0.12);
+  padding-bottom: 16px;
+}
+.desk-header h2 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+}
+.desk-header p {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--cyan);
+}
+
+.tier-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 18px 20px;
+  transition: all 0.25s var(--ease);
+}
+.tier-card:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.04);
+}
+.tier-card.featured {
+  border-color: rgba(0, 240, 255, 0.6);
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+.tier-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.tier-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.tier-price {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.tier-price span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--dim);
+}
+.tier-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(244, 242, 239, 0.82);
+  margin-bottom: 14px;
+}
+.tier-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tier-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--cyan);
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: all 0.2s var(--ease);
+}
+.tier-btn-primary:hover {
+  background: #fff;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
+}
+.tier-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(244, 242, 239, 0.2);
+  color: #f4f2ef;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.2s var(--ease);
+}
+.tier-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(244, 242, 239, 0.4);
+}
+
+/* ============================================================
+   RESPONSIVE OVERRIDES
+   ============================================================ */
+@media (max-width: 900px) {
+  .search-box-wrap {
+    display: none;
+  }
+  .host-spotlight {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .host-contacts {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .hotline-pill {
+    display: none;
+  }
+  .hero-banner {
+    min-height: 520px;
+    padding: 24px var(--pad);
+  }
+  .hero-title {
+    font-size: 26px;
+  }
+}
+
+/* ==========================================================================
+   GOD'S EYE VIEW (TACTICAL SATELLITE ZENITH PERSPECTIVE) & GITHUB STYLES
+   ========================================================================== */
+
+/* GitHub Link Pill */
+.github-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+.github-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--cyan);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Tactical God's Eye View Reticle Overlay */
+#godsEyeReticle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(84vw, 680px);
+  height: min(84vw, 680px);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.godseye-active #godsEyeReticle {
+  opacity: 1;
+}
+
+.reticle-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.22);
+  pointer-events: none;
+}
+
+.reticle-ring.outer {
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: rgba(0, 240, 255, 0.18);
+  box-shadow: inset 0 0 40px rgba(0, 240, 255, 0.05), 0 0 30px rgba(0, 240, 255, 0.08);
+}
+
+.reticle-ring.mid {
+  width: 70%;
+  height: 70%;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.reticle-ring.inner {
+  width: 40%;
+  height: 40%;
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.reticle-crosshair {
+  position: absolute;
+  pointer-events: none;
+}
+
+.reticle-crosshair.h {
+  width: 110%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+}
+
+.reticle-crosshair.v {
+  width: 1px;
+  height: 110%;
+  background: linear-gradient(180deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+}
+
+.reticle-sweep {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  right: 0;
+  transform-origin: 0% 100%;
+  background: conic-gradient(from 0deg at 0% 100%, rgba(0, 240, 255, 0.14) 0deg, transparent 55deg);
+  animation: radarSweep 4s linear infinite;
+  border-radius: 100% 0 0 0;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.reticle-bearing {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+  pointer-events: none;
+}
+
+.reticle-bearing.n { top: -22px; left: 50%; transform: translateX(-50%); }
+.reticle-bearing.s { bottom: -22px; left: 50%; transform: translateX(-50%); }
+.reticle-bearing.e { right: -28px; top: 50%; transform: translateY(-50%); }
+.reticle-bearing.w { left: -28px; top: 50%; transform: translateY(-50%); }
+
+body.godseye-active .globe-card {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25), 0 8px 30px rgba(0, 0, 0, 0.8);
+}
+
+body.godseye-active #globeHeadline .gh-sub {
+  color: #10b981;
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.7);
+}
+
+/* ==========================================================================
+   3D LIVING GLOBE & VIEW SWITCHER STYLES (ASTRA / PROCEDURAL 3D RUNTIME)
+   ========================================================================== */
+
+/* Top Nav View Switcher */
+.view-switcher {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.view-toggle {
+  background: transparent;
+  border: none;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.view-toggle:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.view-toggle.active {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(16, 185, 129, 0.25));
+  color: #fff;
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.view-toggle .vt-icon {
+  font-size: 13px;
+}
+
+/* Globe View Container */
+#globeView {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 72px);
+  min-height: 600px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #080c18 0%, #030408 80%, #010204 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Three.js Background Canvas */
+#globeCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* CSS 3D Stage */
+#globeStage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  perspective: var(--persp, 1150px);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#globeStage:active {
+  cursor: grabbing;
+}
+
+#globeWorld {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+#globeOrb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+/* 3D Fibonacci Video Node Cards */
+.globe-card {
+  position: absolute;
+  left: calc(var(--cw, 140px) * -0.5);
+  top: calc(var(--ch, 190px) * -0.5);
+  width: var(--cw, 140px);
+  height: var(--ch, 190px);
+  border-radius: 10px;
+  background: rgba(14, 14, 20, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease), opacity 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.globe-card:hover, .globe-card.focused {
+  border-color: var(--cyan);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.45), 0 15px 40px rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+.globe-card.dimmed {
+  opacity: 0.12 !important;
+  pointer-events: none !important;
+  filter: grayscale(80%) blur(1px);
+}
+
+.globe-card.highlighted {
+  border-color: var(--cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+}
+
+.globe-card .card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  background: #000;
+}
+
+.globe-card .card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.globe-card:hover .card-thumb {
+  transform: scale(1.08);
+}
+
+.globe-card .card-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 800;
+  font-family: var(--mono);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.globe-card .card-dur {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-family: var(--mono);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.globe-card .card-body {
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  background: linear-gradient(180deg, rgba(14, 14, 20, 0.96), rgba(8, 8, 12, 0.98));
+}
+
+.globe-card .card-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.globe-card .card-place {
+  font-size: 8.5px;
+  color: var(--dim);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--mono);
+}
+
+.globe-card .card-wave {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 10px;
+  margin-top: 3px;
+  opacity: 0.6;
+}
+
+.globe-card:hover .card-wave {
+  opacity: 1;
+}
+
+.globe-card .card-wave span {
+  width: 2px;
+  background: var(--cyan);
+  border-radius: 1px;
+  animation: wavePulse 0.8s ease-in-out infinite alternate;
+}
+
+.globe-card .card-wave span:nth-child(1) { height: 4px; animation-delay: 0.0s; }
+.globe-card .card-wave span:nth-child(2) { height: 8px; animation-delay: 0.15s; }
+.globe-card .card-wave span:nth-child(3) { height: 6px; animation-delay: 0.3s; }
+.globe-card .card-wave span:nth-child(4) { height: 10px; animation-delay: 0.45s; }
+
+/* Globe Center Optical Headline */
+#globeHeadline {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  text-align: center;
+  z-index: 5;
+  opacity: 0.9;
+}
+
+#globeHeadline .gh-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.8vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.4), 0 4px 15px rgba(0,0,0,0.8);
+}
+
+#globeHeadline .gh-sub {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.2vw, 13px);
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+/* Globe HUD Elements */
+#globeHud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+#globeTopHud {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#globeTelemetryRibbon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+  background: rgba(14, 14, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 7px 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--dim);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#globeTelemetryRibbon .hud-pill-live {
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+#globeTelemetryRibbon .hud-pill-live::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: liveBlink 1.4s infinite;
+}
+
+#globeFilters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  pointer-events: auto;
+  flex-wrap: wrap;
+}
+
+.globe-filter-btn {
+  background: rgba(14, 14, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+
+.globe-filter-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.globe-filter-btn.active {
+  background: rgba(0, 240, 255, 0.18);
+  border-color: var(--cyan);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+#globeBottomHud {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#globeControlsDeck {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+  background: rgba(14, 14, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.globe-ctrl-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.globe-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.globe-ctrl-btn.active {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* Quick Inspector Card (Bottom-Right HUD) */
+#globeInspector {
+  width: 320px;
+  max-width: calc(100vw - 48px);
+  background: rgba(14, 14, 20, 0.88);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 14px 16px;
+  pointer-events: auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+#globeInspector .insp-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+#globeInspector .insp-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin: 4px 0 6px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#globeInspector .insp-note {
+  font-size: 11px;
+  color: var(--dim);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#globeInspector .insp-actions {
+  display: flex;
+  gap: 8px;
+}
+
+#globeInspector .insp-play-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--cyan), #00a8ff);
+  color: #000;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 800;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+#globeInspector .insp-play-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+#globeInspector .insp-deal-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#globeInspector .insp-deal-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Streaming Hub Wrapper */
+#streamingHub {
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  #globeBottomHud {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+  #globeInspector {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP SOVEREIGN NAVIGATION BAR -->
+<header class="nav-bar">
+  <div class="brand-group">
+    <a href="#" class="brand-logo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
+      Tech<em>Unfiltered</em> <span class="si-badge">SI</span>
+    </a>
+    <div class="live-indicator">
+      <span class="live-dot"></span> BOCA RATON 24/7
+    </div>
+  </div>
+
+  
+  <div class="view-switcher">
+    <button id="viewBtnGlobe" class="view-toggle active" onclick="switchMainView('globe')" title="Interactive 3D Living Globe (Equatorial Orbit)">
+      <span class="vt-icon">🌐</span> 3D GLOBE
+    </button>
+    <button id="viewBtnGodsEye" class="view-toggle" onclick="switchMainView('godseye')" title="God's Eye View (Orbital Satellite Zenith Perspective)">
+      <span class="vt-icon">👁️</span> GOD'S EYE VIEW
+    </button>
+    <button id="viewBtnStream" class="view-toggle" onclick="switchMainView('stream')" title="Cinema Streaming Hub">
+      <span class="vt-icon">📺</span> STREAMING HUB
+    </button>
+  </div>
+<div class="search-box-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search 26 episodes, reels & neural streams...">
+  </div>
+
+  <div class="nav-actions">
+    <a href="https://github.com/kguinternational/tech-unfiltered" target="_blank" rel="noopener noreferrer" class="github-pill" title="View Source on GitHub">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GITHUB
+    </a>
+    <a href="tel:18883238324" class="hotline-pill" title="Call Tech Unfiltered Studio">
+      📞 1-888-323-TECH
+    </a>
+    <button id="openDealDeskTop" class="deal-desk-btn">
+      💼 DEAL DESK ($10k–$150k)
+    </button>
+  </div>
+</header>
+<!-- ==========================================================================
+     3D INTERACTIVE LIVING GLOBE (ASTRA / PROCEDURAL 3D RUNTIME PLATFORM)
+     ========================================================================== -->
+<div id="globeView">
+  <!-- Three.js Procedural WebGL Canvas -->
+  <canvas id="globeCanvas"></canvas>
+
+  <!-- CSS 3D Stage & Fibonacci Card Constellation -->
+  <div id="globeStage">
+    <!-- Tactical God's Eye View Reticle -->
+    <div id="godsEyeReticle">
+      <div class="reticle-ring outer"></div>
+      <div class="reticle-ring mid"></div>
+      <div class="reticle-ring inner"></div>
+      <div class="reticle-crosshair h"></div>
+      <div class="reticle-crosshair v"></div>
+      <div class="reticle-sweep"></div>
+      <div class="reticle-bearing n">000° N [ZENITH]</div>
+      <div class="reticle-bearing e">090° E</div>
+      <div class="reticle-bearing s">180° S</div>
+      <div class="reticle-bearing w">270° W</div>
+    </div>
+
+    <div id="globeWorld">
+      <div id="globeOrb"></div>
+      <div id="globeHeadline">
+        <h1 class="gh-title">Tech <em>Unfiltered</em> <span style="color:var(--cyan); font-weight:800; font-family:var(--sans); font-size:0.6em; vertical-align:super;">SI</span></h1>
+        <div class="gh-sub">21 SOVEREIGN MEDIA NODES • LIVING WORLD RUNTIME</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Globe Heads-Up Display (HUD) -->
+  <div id="globeHud">
+    <div id="globeTopHud">
+      <div id="globeTelemetryRibbon">
+        <span class="hud-pill-live">BOCA RATON TRANSMITTER (26.3683° N, 80.1289° W)</span>
+        <span>NHIL PROTOCOL: 100% ACTIVE</span>
+        <span>LATENCY: 0.0ms</span>
+        <span>ORBIT: FIBONACCI (26 NODES)</span>
+      </div>
+
+      <div id="globeFilters">
+        <button class="globe-filter-btn active" onclick="filterGlobeNodes('all', this)">All Nodes (26)</button>
+        <button class="globe-filter-btn" onclick="filterGlobeNodes('master', this)">4K Master Sessions (7)</button>
+        <button class="globe-filter-btn" onclick="filterGlobeNodes('reels', this)">Boca Raton Reels (11)</button>
+        <button class="globe-filter-btn" onclick="filterGlobeNodes('twins', this)">Neural Twins & Labs (3)</button>
+      </div>
+    </div>
+
+    <div id="globeBottomHud">
+      <div id="globeControlsDeck">
+        <button id="godsEyeToggleBtn" class="globe-ctrl-btn" onclick="toggleGodsEyeView()" title="Toggle God's Eye View (Polar Satellite Zenith)">
+          <span>👁️</span> God's Eye
+        </button>
+        <button id="globeOrbitBtn" class="globe-ctrl-btn active" onclick="toggleGlobeOrbit()" title="Toggle auto-orbit">
+          <span>⏸</span> Pause Orbit
+        </button>
+        <button class="globe-ctrl-btn" onclick="resetGlobeCamera()" title="Reset Camera View">
+          <span>⟲</span> Reset
+        </button>
+        <button class="globe-ctrl-btn" onclick="adjustGlobeZoom(1)" title="Zoom In">
+          <span>🔍+</span>
+        </button>
+        <button class="globe-ctrl-btn" onclick="adjustGlobeZoom(-1)" title="Zoom Out">
+          <span>🔍-</span>
+        </button>
+        <button class="globe-ctrl-btn" onclick="switchMainView('stream')" title="Open Cinema Streaming Hub">
+          <span>📺</span> Streaming Hub
+        </button>
+      </div>
+
+      <div id="globeInspector">
+        <div class="insp-badge" id="inspBadge">BOCA RATON FLAGSHIP BRIEFING</div>
+        <h3 class="insp-title" id="inspTitle">Episode 01: The Architecture of SI & Sovereign Hardware Nodes</h3>
+        <p class="insp-note" id="inspNote">Unfiltered studio session with Joann Coffey & George Dubec dissecting Dedicated Sovereign Hardware Nodes, 100% NHIL execution, and why we are engineering living worlds in code at runtime.</p>
+        <div class="insp-actions">
+          <button class="insp-play-btn" id="inspPlayBtn" onclick="openModal('ep1')">
+            <span>▶</span> WATCH NOW
+          </button>
+          <button class="insp-deal-btn" onclick="openDealDesk('General Inquiry')">
+            💼 DEAL DESK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     CINEMA STREAMING HUB (NETFLIX / SURYA STYLE BROWSE EXPERIENCE)
+     ========================================================================== -->
+<div id="streamingHub" style="display:none;">
+
+
+<!-- 2. TOPIC FILTER PILLS -->
+<nav class="filter-bar" id="filterBar">
+  <button class="filter-pill active" data-filter="all">All Broadcasts (26)</button>
+  <button class="filter-pill" data-filter="master">Master Sessions (4K) (7)</button>
+  <button class="filter-pill" data-filter="reels">Boca Raton Reels (9:16) (11)</button>
+  <button class="filter-pill" data-filter="twins">Neural Twins & Hosts (3)</button>
+  <button class="filter-pill" data-filter="hardware">Hardware Nodes & SI (5)</button>
+  <button class="filter-pill" data-filter="liability">Boardroom Shield</button>
+</nav>
+
+<!-- 3. MASSIVE FEATURED HERO BANNER -->
+<section class="hero-banner" id="heroBanner">
+  <video class="hero-video-bg" src="videos/tec_26_08_05.mp4" muted autoplay loop playsinline preload="auto"></video>
+  <div class="hero-gradient-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badges">
+      <span class="hero-tag">PREMIERE MASTER SESSION</span>
+      <span class="hero-meta-item">45 MINS</span>
+      <span class="hero-meta-item">4K DOLBY AUDIO</span>
+      <span class="hero-meta-item">NODE 127.0.0.1</span>
+    </div>
+    <h1 class="hero-title">The Architecture of SI & Dedicated Sovereign Hardware Nodes</h1>
+    <div class="hero-hosts">
+      With <span>Joann Coffey</span> &amp; <span>George Dubec</span> · Boca Raton Master Studio
+    </div>
+    <p class="hero-desc">
+      Dissecting why software wrappers face an existential margin collapse under OpenAI token tax, the physics of local Apple Silicon clusters, 100% No Human In The Loop (NHIL) infrastructure, and why we are engineering living worlds in code at runtime.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-globe-hero" onclick="switchMainView('globe')" style="background:linear-gradient(135deg, rgba(0,240,255,0.25), rgba(16,185,129,0.25)); border:1px solid var(--cyan); color:#fff; font-family:var(--mono); font-size:12px; font-weight:800; padding:12px 20px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 0 15px rgba(0,240,255,0.3);">
+        🌐 Launch 3D Living Globe
+      </button>
+      <button class="btn-primary-hero" onclick="playVideoById('ep1')">
+        ▶ Watch Master Session (45m)
+      </button>
+      <button class="btn-secondary-hero" onclick="playVideoById('clip_0805_1')">
+        ⚡ 60s Reel: Cloud Margin Collapse
+      </button>
+      <button class="btn-sponsor-hero" onclick="openDealDesk()">
+        💼 Sponsor Next Episode ($10,000)
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOST SPOTLIGHT -->
+<section class="host-spotlight">
+  <div class="host-avatars">
+    <img src="joann_portrait_real.png" alt="Joann Coffey" class="host-avatar-real">
+  </div>
+  <div class="host-details">
+    <h3>Joann Coffey &amp; George Dubec</h3>
+    <div class="host-role">EXECUTIVE CONDUCTOR &amp; SYNTHETIC HOST MATRIX · KGU INTERNATIONAL</div>
+    <p class="host-bio">
+      50 years of entrepreneurial mastery driving 100% No Human In The Loop (NHIL) architecture, Physical Superintelligence, and author of <em>"The Love Effect OS"</em>. Every broadcast is captured unfiltered from our private Boca Raton facility without corporate spin.
+    </p>
+  </div>
+  <div class="host-contacts">
+    <a href="tel:18883238324" class="tier-btn-primary">📞 Studio: 1-888-323-TECH</a>
+    <a href="#dealdesk" class="tier-btn-secondary" onclick="document.getElementById('dealDeskModal').style.display='flex'">💼 Access Deal Desk</a>
+  </div>
+</section>
+
+<!-- 5. ROW: START HERE (ESSENTIAL BRIEFING) -->
+<section class="content-section" data-category="start">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">⚡ Start Here: Essential Briefing</h2>
+      <div class="section-subtitle">Core Philosophy, Host Introductions & Master Sessions</div>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="rowStartHere"></div>
+  </div>
+</section>
+
+<!-- 6. ROW: FULL MASTER STUDIO SESSIONS (16:9 4K) -->
+<section class="content-section" data-category="master">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">🎙️ Full Master Studio Sessions (4K Broadcast)</h2>
+      <div class="section-subtitle">Deep-Dive 45+ Minute Unfiltered Dialogues with Joann & George</div>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="rowMasterSessions"></div>
+  </div>
+</section>
+
+<!-- 7. ROW: BOCA RATON STUDIO REELS (9:16 VERTICAL HIGH-IMPACT) -->
+<section class="content-section" data-category="reels">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">📱 Boca Raton Short-Form Reels (9:16 Vertical)</h2>
+      <div class="section-subtitle">Fast, Hard-Hitting Insights · Optimized for Smartphone Viewing</div>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="rowShortReels"></div>
+  </div>
+</section>
+
+<!-- 8. ROW: SYNTHETIC HOST NEURAL STREAMS -->
+<section class="content-section" data-category="twins">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">🧠 Host Neural Twins & Synthetic SI Streams</h2>
+      <div class="section-subtitle">Zero-Latency Digital Twin Broadcasts & Voice Clone Telemetry</div>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="rowNeuralTwins"></div>
+  </div>
+</section>
+
+<!-- 9. ROW: HARDWARE RACKS & SOVEREIGN TELEMETRY -->
+<section class="content-section" data-category="hardware">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">⚙️ Production Floor & Hardware Rack Telemetry</h2>
+      <div class="section-subtitle">Dedicated Apple Silicon Metal Clusters, Air-Gapped Microgrids & Mesh Logs</div>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="rowHardwareTelemetry"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOVEREIGN TRIPARTITE NETWORK FOOTER
+     ============================================================ -->
+<footer style="margin-top: 80px; padding: 60px var(--pad) 40px; background: #07070b; border-top: 1px solid var(--line);">
+  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; margin-bottom: 48px;">
+    
+    <!-- COL 1: KGU INTERNATIONAL -->
+    <div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-family: var(--serif); font-size: 20px; font-weight: 700; color: #fff;">KGU INTERNATIONAL</span>
+      </div>
+      <p style="font-size: 13px; line-height: 1.6; color: var(--dim); margin-bottom: 16px;">
+        Commercial Technology Operator &amp; Hardware Infrastructure. Dedicated Sovereign Hardware Nodes, air-gapped on-premise Metal clusters, and 100% No Human In The Loop (NHIL) architecture.
+      </p>
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--cyan);">
+        SOVEREIGN OPERATOR · BOCA RATON STUDIO
+      </div>
+    </div>
+
+    <!-- COL 2: JC COFFEY FOUNDATION -->
+    <div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-family: var(--serif); font-size: 20px; font-weight: 700; color: #fff;">JC Coffey Foundation</span>
+        <span style="font-size: 10px; font-weight: 800; background: rgba(229,185,88,0.15); color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 2px 8px; border-radius: 999px;">501(c)(3)</span>
+      </div>
+      <p style="font-size: 13px; line-height: 1.6; color: var(--dim); margin-bottom: 16px;">
+        <em>"The Love Effect OS"</em>: Technology without reverence, love, and honor for people is hollow. Sacred Memory Vault preservation, elder legacy archives, and humanitarian fellowships.
+      </p>
+      <a href="https://jccoffeyfoundation.org" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent-gold); text-decoration: underline;">
+        ❤️ Visit jccoffeyfoundation.org →
+      </a>
+    </div>
+
+    <!-- COL 3: HOTLINES & DISPATCH -->
+    <div>
+      <div style="font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
+        Direct Inquiries &amp; Hotlines
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+        <div>📞 Studio Hotline: <a href="tel:18883238324" style="color: #fff; font-weight: 600;">1-888-323-TECH</a></div>
+        <div>❤️ JC Coffey Foundation: <a href="tel:18447233107" style="color: #fff; font-weight: 600;">1-844-SAFE-107</a></div>
+        <div>⚡ 24/7 AI Line: <a href="tel:+15617773196" style="color: #fff; font-weight: 600;">561-777-3196</a></div>
+        <div style="margin-top: 6px;">
+          <a href="/podcast_feed_spotify.xml" style="color: var(--dim); font-size: 12px; font-family: var(--mono);">🎙️ RSS / Spotify Video Feed</a>
+          <a href="https://github.com/kguinternational/tech-unfiltered" target="_blank" rel="noopener noreferrer" style="color: var(--cyan); font-size: 12px; font-family: var(--mono); display: inline-flex; align-items: center; gap: 4px;">💻 GitHub Repository</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(244,242,239,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--dim);">
+    <div>
+      © 2026 Tech Unfiltered SI. All rights reserved. Sovereign Broadcast Matrix powered by KGU International.
+    </div>
+    <div style="display: flex; gap: 20px; font-family: var(--mono); font-size: 11px;">
+      <a href="https://jccoffeyfoundation.org" target="_blank" style="color: var(--dim);">jccoffeyfoundation.org</a>
+      <a href="mailto:legal@kgu.international" style="color: var(--dim);">legal@kgu.international</a>
+    </div>
+  </div>
+</footer>
+</div><!-- /#streamingHub -->
+
+<div id="streamModal">
+  <div class="modal-scrim" id="modalScrim"></div>
+  <div class="modal-plate" id="modalPlate">
+    <div class="modal-header-bar">
+      <div style="display:flex; align-items:center;">
+        <span class="modal-badge" id="modalBadge">MASTER STUDIO BROADCAST · 16:9</span>
+        <div class="waveform-bar-wrap" id="audioWaveform">
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="modalCloseBtn">✕ Close</button>
+    </div>
+
+    <div class="modal-video-shell">
+      <video id="streamVideo" controls playsinline preload="auto" poster=""></video>
+    </div>
+
+    <div class="modal-info-panel">
+      <div>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-place" id="modalPlace"></div>
+      </div>
+      <div class="modal-note" id="modalNote"></div>
+      <div id="modalAudioPlayerContainer" style="margin-top:16px; display:none; padding:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-family:var(--mono); font-size:11px; color:var(--cyan); text-transform:uppercase; letter-spacing:0.05em; font-weight:700;">📻 320kbps Uncompressed Studio Master Audio</span>
+          <span style="font-family:var(--mono); font-size:10px; color:var(--dim);">ZERO CLOUD EGRESS</span>
+        </div>
+        <audio id="modalAudio" controls style="width:100%; height:32px; filter:invert(0.9) hue-rotate(180deg);"></audio>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SOVEREIGN DEAL DESK DRAWER (CAPITAL INTAKE)
+     ============================================================ -->
+
+<div id="dealDeskDrawer">
+  <div class="desk-drawer-scrim" id="dealDeskDrawerScrim"></div>
+  <div class="desk-drawer-body">
+    <div class="desk-header">
+      <div>
+        <h2>Sovereign Deal Desk</h2>
+        <p>CAPITAL INTAKE · ENTERPRISE ACCESS</p>
+      </div>
+      <button class="modal-close-btn" id="dealDeskDrawerClose">✕</button>
+    </div>
+
+    <!-- TIER 1 -->
+    <div class="tier-card featured">
+      <span class="tier-tag">BROADCAST COMMERCIAL</span>
+      <h3 class="tier-title">Episode Media Sponsorship</h3>
+      <div class="tier-price">$10,000 <span>/ month</span></div>
+      <p class="tier-desc">60-second host-read segment by Joann Coffey & George Dubec, prominent top-banner placement, and neural twin promotional distribution across all sovereign feeds.</p>
+      <div class="tier-actions">
+        <a href="tel:18883238324" class="tier-btn-primary">📞 Call 1-888-323-TECH</a>
+        <a href="mailto:studio@kgu.international?subject=Episode%20Media%20Sponsorship%20Inquiry%20($10k/mo)" class="tier-btn-secondary">Lock Slot</a>
+      </div>
+    </div>
+
+    <!-- TIER 2 -->
+    <div class="tier-card">
+      <span class="tier-tag">BOARDROOM LEGAL DEFENSE</span>
+      <h3 class="tier-title">6-Point Forensic SI Liability Audit</h3>
+      <div class="tier-price">$25,000 <span>Retainer</span></div>
+      <p class="tier-desc">Forensic product liability defense shielding corporate directors against autonomous model liability under August 2026 legal standards. Full sandbox containment certification.</p>
+      <div class="tier-actions">
+        <a href="tel:18883238324" class="tier-btn-primary">📞 Call 1-888-323-TECH</a>
+        <a href="mailto:legal@kgu.international?subject=SI%20Liability%20Audit%20Retainer%20($25,000)" class="tier-btn-secondary">Retain Shield</a>
+      </div>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="tier-card">
+      <span class="tier-tag">ENTERPRISE HARDWARE</span>
+      <h3 class="tier-title">Sovereign Synthetic Executive Node</h3>
+      <div class="tier-price">$150,000 <span>+ $15k/mo</span></div>
+      <p class="tier-desc">Dedicated, air-gapped on-premise hardware node (Apple Silicon Metal cluster). Zero third-party cloud token taxes, zero kill-switches, 100% NHIL execution.</p>
+      <div class="tier-actions">
+        <a href="tel:18883238324" class="tier-btn-primary">📞 1-888-323-TECH</a>
+        <a href="mailto:enterprise@kgu.international?subject=Sovereign%20Executive%20Node%20Deployment%20($150k)" class="tier-btn-secondary">Deploy Node</a>
+      </div>
+    </div>
+
+    <!-- TIER 4: 501(c)(3) PHILANTHROPY -->
+    <div class="tier-card">
+      <span class="tier-tag">501(c)(3) PHILANTHROPY</span>
+      <h3 class="tier-title">JC Coffey Foundation Sacred Memory Vault</h3>
+      <div class="tier-price">Tax-Deductible <span>Endowment</span></div>
+      <p class="tier-desc">"The Love Effect OS": Technology without reverence, love, and honor for people is hollow. Sacred Memory preservation grants and youth sovereign compute access.</p>
+      <div class="tier-actions">
+        <a href="tel:18447233107" class="tier-btn-primary">📞 Foundation: 1-844-SAFE-107</a>
+        <a href="mailto:foundation@jccoffeyfoundation.org?subject=JC%20Coffey%20Foundation%20Endowment%20Inquiry" class="tier-btn-secondary">Inquire</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT: STREAMING APP LOGIC & VIDEO ORCHESTRATION
+     ============================================================ -->
+<script>
+const ITEMS = [
+  // === MASTER STUDIO SESSIONS (CHRONOLOGICAL EPISODES 1 TO 6 + TRAILER) ===
+  {
+    id: "ep1",
+    title: "Episode 01: Why Rented Cloud Wrappers Collapse Under Margin Pressure",
+    place: "Boca Raton Studio · Aug 5 Master Session",
+    duration: "45:41",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_08_05.mp4",
+    audioSrc: "audio/tec_26_08_05.mp3",
+    thumbSrc: "thumbs/thumb_ep01.jpg",
+    note: "Unfiltered 45-minute Boca Raton studio master with Joann Coffey & George Dubec dissecting Dedicated Sovereign Hardware Nodes, 100% NHIL execution, and why we are engineering living worlds in code at runtime."
+  },
+  {
+    id: "ep2",
+    title: "Episode 02: We Replaced a $40,000/Mo Call Center With a Local GPU (92ms Test)",
+    place: "Boca Raton Studio · Aug 13 Master Session",
+    duration: "24:59",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_08_13.mp4",
+    audioSrc: "audio/tec_26_08_13.mp3",
+    thumbSrc: "thumbs/thumb_ep02.jpg",
+    note: "Sub-100ms full-duplex conversational voice AI live test. Eliminating hosted per-minute SaaS tolls and scaling up to 250 simultaneous calls on local Apple Silicon Metal clusters at $0.00 marginal cost."
+  },
+  {
+    id: "ep3",
+    title: "Episode 03: Living Worlds in Code Runtime: Why Static 3D Models Are Dead",
+    place: "Boca Raton Studio · Aug 20 Master Session",
+    duration: "25:49",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_08_20.mp4",
+    audioSrc: "audio/tec_26_08_20.mp3",
+    thumbSrc: "thumbs/thumb_ep03.jpg",
+    note: "We are way beyond static models. Joann Coffey & George Dubec unveil the Code-as-Geometry paradigm—generating living interactive worlds at runtime from trigonometric kinematics, procedural physics, and sovereign microgrids."
+  },
+  {
+    id: "ep4",
+    title: "Episode 04: Autonomous AI Agents Broke Our Contract: The Boardroom Shield",
+    place: "Boca Raton Studio · Aug 27 Master Session",
+    duration: "34:28",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_08_27.mp4",
+    audioSrc: "audio/tec_26_08_27.mp3",
+    thumbSrc: "thumbs/thumb_ep04.jpg",
+    note: "Corporate directors face personal liability when autonomous agent swarms make unauthorized financial commitments. Revealing KGU's 6-point forensic audit, BDI attestation, and The Love Effect OS."
+  },
+  {
+    id: "ep5",
+    title: "Episode 05: Autonomous C-Suite Swarms: 7 Exec Agents Running a Company NHIL",
+    place: "Boca Raton Studio · Sep 3 Master Session",
+    duration: "22:47",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_09_03.mp4",
+    audioSrc: "audio/tec_26_09_03.mp3",
+    thumbSrc: "thumbs/thumb_ep05.jpg",
+    note: "How 7 autonomous executive agents govern corporate capital, media syndication, and deal onboarding using the Paperclip protocol, deterministic BDI state transitions, and zero marginal token cost."
+  },
+  {
+    id: "ep6",
+    title: "Episode 06: $100K/Day Sovereign Deal Flow: The Trillion-Dollar Blueprint",
+    place: "Boca Raton Studio · Sep 10 Master Session",
+    duration: "29:51",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_26_09_10.mp4",
+    audioSrc: "audio/tec_26_09_10.mp3",
+    thumbSrc: "thumbs/thumb_ep06.jpg",
+    note: "High-ticket capital velocity in Physical Superintelligence. Converting enterprise deal inquiries into verified JPMorgan Chase escrow deposits without relying on third-party ad platforms or intermediaries."
+  },
+  {
+    id: "trailer",
+    title: "Tech Unfiltered SI: The Sovereign Media Network (Official Trailer)",
+    place: "Boca Raton Studio · Aug 21 Network Master",
+    duration: "1:14",
+    category: "master",
+    portrait: false,
+    videoSrc: "videos/tec_trailer.mp4",
+    audioSrc: "audio/tec_trailer.mp3",
+    thumbSrc: "thumbs/thumb_trailer.jpg",
+    note: "No teleprompters. No corporate PR spin. 100% No Human In The Loop. Joann Coffey & George Dubec introduce the Boca Raton studio broadcast network driving Physical Superintelligence."
+  },
+
+  // === BOCA RATON STUDIO REELS (9:16 VERTICAL CLIPS) ===
+  {
+    id: "clip_0805_1",
+    title: "Rented Cloud Margins Collapse",
+    place: "Boca Raton Studio · Studio Reel 01",
+    duration: "0:48",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0805_clip1.mp4",
+    thumbSrc: "thumbs/thumb_clip_0805_1.jpg",
+    note: "Software wrappers face an existential margin collapse under OpenAI token tax. True enterprise sovereignty requires owning the dedicated compute wafer at $0.00 marginal cost."
+  },
+  {
+    id: "clip_0805_2",
+    title: "Dedicated Sovereign Hardware Nodes",
+    place: "Boca Raton Studio · Studio Reel 02",
+    duration: "0:56",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0805_clip2.mp4",
+    thumbSrc: "thumbs/thumb_clip_0805_2.jpg",
+    note: "The physics of local Apple Silicon Metal clusters and private micro-grids. Zero latency, zero third-party kill-switch, zero cloud token bills."
+  },
+  {
+    id: "clip_0805_3",
+    title: "Living Worlds in Code Runtime",
+    place: "Boca Raton Studio · Studio Reel 03",
+    duration: "1:02",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0805_clip3.mp4",
+    thumbSrc: "thumbs/thumb_clip_0805_3.jpg",
+    note: "We are way beyond static models. We are engineering living worlds in code now, generated at runtime from pure geometry, physics, and state machines."
+  },
+  {
+    id: "clip_0805_4",
+    title: "The 100% NHIL Directive",
+    place: "Boca Raton Studio · Studio Reel 04",
+    duration: "0:52",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0805_clip4.mp4",
+    thumbSrc: "thumbs/thumb_clip_0805_4.jpg",
+    note: "Human manual intervention is the ultimate failure mode of modern enterprise. Software and physical operations must be engineered as self-executing autonomous state machines."
+  },
+  {
+    id: "clip_0805_5",
+    title: "Air-Gapped Sovereign Operations",
+    place: "Boca Raton Studio · Studio Reel 05",
+    duration: "0:44",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0805_clip5.mp4",
+    thumbSrc: "thumbs/thumb_clip_0805_5.jpg",
+    note: "When cloud APIs go down or freeze accounts, who still executes corporate contracts? The case for private local clusters."
+  },
+  {
+    id: "clip_0827_1",
+    title: "Rogue Agent Liability Crisis",
+    place: "Boca Raton Studio · Studio Reel 06",
+    duration: "1:14",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip1.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_1.jpg",
+    note: "Autonomous models breaking out of sandboxes spark massive legal exposure. Corporate directors face personal fiduciary liability unless shielded by forensic guardrails."
+  },
+  {
+    id: "clip_0827_2",
+    title: "NYC's Gen-AI Ban & Cognitive Surrender",
+    place: "Boca Raton Studio · Studio Reel 07",
+    duration: "1:08",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip2.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_2.jpg",
+    note: "A massive moratorium on AI in public schools due to fears that over-reliance on chatbots is stunting cognitive development. Why sovereign education must replace algorithmic dependency."
+  },
+  {
+    id: "clip_0827_3",
+    title: "The Mechanical Compute Bottleneck",
+    place: "Boca Raton Studio · Studio Reel 08",
+    duration: "0:36",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip3.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_3.jpg",
+    note: "The hard physical limits crushing the software AI boom: aging electrical power grids, water constraints, and a severe shortage of skilled industrial welders for data centers."
+  },
+  {
+    id: "clip_0827_4",
+    title: "Boardroom Legal Defense Shield",
+    place: "Boca Raton Studio · Studio Reel 09",
+    duration: "1:18",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip4.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_4.jpg",
+    note: "How KGU's 6-point forensic audit creates a permanent evidentiary barrier protecting executive teams against autonomous product liability litigation."
+  },
+  {
+    id: "clip_0827_5",
+    title: "Physical SI & Geothermal Microgrids",
+    place: "Boca Raton Studio · Studio Reel 10",
+    duration: "1:22",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip5.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_5.jpg",
+    note: "Superintelligence must be grounded in physical embodiment: robotic manipulation, sovereign power generation, and organoid biocompute clusters."
+  },
+  {
+    id: "clip_0827_6",
+    title: "The Love Effect OS",
+    place: "Boca Raton Studio · Studio Reel 11",
+    duration: "1:05",
+    category: "reels",
+    portrait: true,
+    videoSrc: "videos/0827_clip6.mp4",
+    thumbSrc: "thumbs/thumb_clip_0827_6.jpg",
+    note: "Technology without reverence, love, and honor for people is hollow. How the JC Coffey Foundation preserves sacred memories and empowers human legacy."
+  },
+
+  // === SYNTHETIC NEURAL TWINS ===
+  {
+    id: "avatar_joann",
+    title: "Joann Coffey Neural Twin Stream",
+    place: "Boca Raton Studio · Synthetic Host Stream",
+    duration: "0:28",
+    category: "twins",
+    portrait: false,
+    videoSrc: "videos/avatar_joann.mp4",
+    thumbSrc: "thumbs/thumb_14.jpg",
+    note: "Real-time neural twin broadcast demonstration rendered from voice profiles and cognitive architecture without human teleprompters."
+  },
+  {
+    id: "avatar_george",
+    title: "George Dubec Commercial Voice Clone",
+    place: "Boca Raton Studio · Synthetic Host Stream",
+    duration: "0:31",
+    category: "twins",
+    portrait: false,
+    videoSrc: "videos/avatar_george.mp4",
+    thumbSrc: "thumbs/thumb_15.jpg",
+    note: "High-fidelity commercial voice cloning telemetry with sub-350ms conversational response time and emotional prosody tuning."
+  },
+  {
+    id: "avatar_duo",
+    title: "Dual-Host Synthetic Broadcast",
+    place: "Boca Raton Studio · Neural Co-Host Feed",
+    duration: "0:45",
+    category: "twins",
+    portrait: false,
+    videoSrc: "videos/avatar_duo.mp4",
+    thumbSrc: "thumbs/thumb_16.jpg",
+    note: "Fully autonomous dual-agent conversation between synthetic twins debating cloud vendor lock-in and physical compute sovereignty."
+  },
+
+  // === HARDWARE TELEMETRY & STUDIO OPS ===
+  {
+    id: "studio_ep1",
+    title: "Studio Production Floor Highlights",
+    place: "Boca Raton Studio · Behind The Scenes",
+    duration: "1:15",
+    category: "hardware",
+    portrait: false,
+    videoSrc: "videos/ep_001_studio.mp4",
+    thumbSrc: "thumbs/thumb_17.jpg",
+    note: "Production floor telemetry showing 4K camera arrays, low-latency audio capture interfaces, and local GPU monitoring monitors."
+  },
+  {
+    id: "studio_ep2",
+    title: "Hardware Node Rack Telemetry",
+    place: "Boca Raton Studio · Server Room B",
+    duration: "0:52",
+    category: "hardware",
+    portrait: false,
+    videoSrc: "videos/ep_002_studio.mp4",
+    thumbSrc: "thumbs/thumb_18.jpg",
+    note: "On-premise hardware nodes executing local inference with zero external network dependencies and hardware security keys."
+  },
+  {
+    id: "studio_ep3",
+    title: "Sovereign Mesh Coordination",
+    place: "Boca Raton Studio · Network Operations",
+    duration: "1:34",
+    category: "hardware",
+    portrait: false,
+    videoSrc: "videos/ep_003_studio.mp4",
+    thumbSrc: "thumbs/thumb_19.jpg",
+    note: "Peer-to-peer node coordination across private fiber links, ensuring uninterrupted 24/7 broadcast delivery."
+  },
+  {
+    id: "what_to_expect",
+    title: "What to Expect: Tech Unfiltered SI",
+    place: "Boca Raton Studio · Network Trailer",
+    duration: "1:42",
+    category: "start",
+    portrait: false,
+    videoSrc: "videos/what_to_expect.mp4",
+    thumbSrc: "thumbs/thumb_20.jpg",
+    note: "Executive overview of the Tech Unfiltered network mission: stripping away PR spin to reveal the harsh technical and economic realities of AI."
+  },
+  {
+    id: "intro_duo",
+    title: "Meet the Hosts: Joann & George",
+    place: "Boca Raton Studio · Host Induction",
+    duration: "1:18",
+    category: "start",
+    portrait: false,
+    videoSrc: "videos/george_joann_intro.mp4",
+    thumbSrc: "thumbs/thumb_21.jpg",
+    note: "Joann Coffey and George Dubec introduce the Boca Raton production philosophy, the Love Effect OS, and the 100% NHIL standard."
+  }
+];
+
+// Helper to create card HTML
+function createCardHTML(item) {
+  const isVert = item.portrait;
+  const badgeText = isVert ? "9:16 REEL" : (item.category === "master" ? "4K MASTER" : "HD STREAM");
+  const audioTag = item.audioSrc ? `<span class="card-audio-pill" onclick="event.stopPropagation(); playVideoById('${item.id}');" style="font-family:var(--mono); font-size:9px; background:rgba(0,240,255,0.15); color:var(--cyan); padding:2px 6px; border-radius:4px; border:1px solid rgba(0,240,255,0.3); display:inline-block; margin-top:6px;">📻 STUDIO AUDIO AVAILABLE</span>` : '';
+  return `
+    <div class="stream-card ${isVert ? 'vertical-reel' : ''}" data-id="${item.id}" onclick="playVideoById('${item.id}')">
+      <div class="card-thumb-wrap">
+        <img class="card-thumb-img" src="${item.thumbSrc}" alt="${item.title}" loading="lazy">
+        <span class="card-overlay-badge">${badgeText}</span>
+        <span class="card-duration">${item.duration || 'HD'}</span>
+        <div class="play-hover-icon">
+          <div class="play-circle">▶</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-location">${item.place}</div>
+        <h4 class="card-title">${item.title}</h4>
+        <p class="card-note">${item.note}</p>
+        ${audioTag}
+      </div>
+    </div>
+  `;
+}
+
+// Populate Carousels
+function populateTracks() {
+  const rowStart = document.getElementById("rowStartHere");
+  const rowMaster = document.getElementById("rowMasterSessions");
+  const rowReels = document.getElementById("rowShortReels");
+  const rowTwins = document.getElementById("rowNeuralTwins");
+  const rowHardware = document.getElementById("rowHardwareTelemetry");
+
+  // Start Here Track (What to expect, meet hosts, trailer, Ep 01, Ep 02)
+  const startItems = [
+    ITEMS.find(it => it.id === "what_to_expect"),
+    ITEMS.find(it => it.id === "intro_duo"),
+    ITEMS.find(it => it.id === "trailer"),
+    ITEMS.find(it => it.id === "ep1"),
+    ITEMS.find(it => it.id === "ep2")
+  ].filter(Boolean);
+  if (rowStart) rowStart.innerHTML = startItems.map(createCardHTML).join("");
+
+  // Master Sessions Track (All 6 full episodes in chronological order + trailer)
+  const masterItems = ITEMS.filter(it => it.category === "master");
+  if (rowMaster) rowMaster.innerHTML = masterItems.map(createCardHTML).join("");
+
+  // Reels Track (11 vertical clips)
+  const reelItems = ITEMS.filter(it => it.category === "reels");
+  if (rowReels) rowReels.innerHTML = reelItems.map(createCardHTML).join("");
+
+  // Twins Track
+  const twinItems = ITEMS.filter(it => it.category === "twins");
+  if (rowTwins) rowTwins.innerHTML = twinItems.map(createCardHTML).join("");
+
+  // Hardware Track
+  const hardwareItems = ITEMS.filter(it => it.category === "hardware");
+  if (rowHardware) rowHardware.innerHTML = hardwareItems.map(createCardHTML).join("");
+}
+populateTracks();
+
+// Video Player Modal Logic
+const modal = document.getElementById("streamModal");
+const modalPlate = document.getElementById("modalPlate");
+const modalVideo = document.getElementById("streamVideo");
+const modalBadge = document.getElementById("modalBadge");
+const modalTitle = document.getElementById("modalTitle");
+const modalPlace = document.getElementById("modalPlace");
+const modalNote = document.getElementById("modalNote");
+const modalCloseBtn = document.getElementById("modalCloseBtn");
+const modalScrim = document.getElementById("modalScrim");
+
+function openModal(id) { playVideoById(id); }
+function playVideoById(id) {
+  const item = ITEMS.find(it => it.id === id);
+  if (!item) return;
+
+  modalTitle.textContent = item.title;
+  modalPlace.textContent = item.place;
+  modalNote.textContent = item.note;
+
+  if (item.portrait) {
+    modalPlate.classList.add("portrait-mode");
+    modalBadge.textContent = "BOCA RATON REEL · 9:16 SMARTPHONE THEATER";
+  } else {
+    modalPlate.classList.remove("portrait-mode");
+    modalBadge.textContent = item.category === "master" ? "4K MASTER STUDIO BROADCAST · 16:9" : "SOVEREIGN HD BROADCAST · 16:9";
+  }
+
+  // Audio container hook
+  const audioCont = document.getElementById("modalAudioPlayerContainer");
+  const modalAud = document.getElementById("modalAudio");
+  if (item.audioSrc && audioCont && modalAud) {
+    audioCont.style.display = "block";
+    modalAud.src = item.audioSrc;
+  } else if (audioCont) {
+    audioCont.style.display = "none";
+  }
+
+  modalVideo.poster = item.thumbSrc;
+  modalVideo.setAttribute("src", item.videoSrc);
+  modalVideo.src = item.videoSrc;
+  modalVideo.currentTime = 0;
+  modalVideo.load();
+  modalVideo.play().catch(() => {});
+
+  document.body.classList.add("modal-open");
+}
+
+function closeModal() {
+  document.body.classList.remove("modal-open");
+  try { modalVideo.pause(); } catch(e) {}
+  const modalAud = document.getElementById("modalAudio");
+  if (modalAud) {
+    try { modalAud.pause(); modalAud.removeAttribute("src"); } catch(e) {}
+  }
+  setTimeout(() => {
+    modalVideo.removeAttribute("src");
+    modalVideo.load();
+    modalPlate.classList.remove("portrait-mode");
+  }, 350);
+}
+
+modalCloseBtn.addEventListener("click", closeModal);
+modalScrim.addEventListener("click", closeModal);
+
+// Deal Desk Drawer Logic
+const deskDrawer = document.getElementById("dealDeskDrawer");
+const openDealBtn = document.getElementById("openDealDeskTop");
+const closeDealBtn = document.getElementById("dealDeskDrawerClose");
+const deskScrim = document.getElementById("dealDeskDrawerScrim");
+
+function openDealDesk() {
+  closeModal();
+  document.body.classList.add("deal-desk-open");
+}
+
+function closeDealDesk() {
+  document.body.classList.remove("deal-desk-open");
+}
+
+if (openDealBtn) openDealBtn.addEventListener("click", openDealDesk);
+if (closeDealBtn) closeDealBtn.addEventListener("click", closeDealDesk);
+if (deskScrim) deskScrim.addEventListener("click", closeDealDesk);
+
+// Keyboard controls
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" || e.keyCode === 27) {
+    if (document.body.classList.contains("modal-open")) {
+      closeModal();
+    } else if (document.body.classList.contains("deal-desk-open")) {
+      closeDealDesk();
+    }
+  }
+});
+
+// Search & Filter Logic
+const searchInput = document.getElementById("searchInput");
+const filterBar = document.getElementById("filterBar");
+
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    const term = e.target.value.toLowerCase().trim();
+    const allCards = document.querySelectorAll(".stream-card");
+    allCards.forEach(card => {
+      const id = card.getAttribute("data-id");
+      const item = ITEMS.find(it => it.id === id);
+      if (!item) return;
+      const match = item.title.toLowerCase().includes(term) || item.note.toLowerCase().includes(term) || item.place.toLowerCase().includes(term);
+      card.style.display = match ? "" : "none";
+    });
+  });
+}
+
+if (filterBar) {
+  filterBar.addEventListener("click", (e) => {
+    const pill = e.target.closest(".filter-pill");
+    if (!pill) return;
+
+    filterBar.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+    pill.classList.add("active");
+
+    const filter = pill.getAttribute("data-filter");
+    const sections = document.querySelectorAll(".content-section");
+
+    sections.forEach(sec => {
+      const cat = sec.getAttribute("data-category");
+      if (filter === "all") {
+        sec.style.display = "";
+      } else if (filter === "liability") {
+        sec.style.display = (cat === "master" || cat === "reels") ? "" : "none";
+      } else {
+        sec.style.display = (cat === filter) ? "" : "none";
+      }
+    });
+  });
+}
+
+
+/* ==========================================================================
+   3D INTERACTIVE LIVING GLOBE RUNTIME ENGINE (ASTRA / PROCEDURAL 3D PARADIGM)
+   ========================================================================== */
+
+// --- Globe State Variables ---
+let threeRenderer = null;
+let threeScene = null;
+let threeCamera = null;
+let threeGlobeGroup = null;
+let threeRadarRing = null;
+let threeGimbal1 = null;
+let threeGimbal2 = null;
+let globeAnimFrame = null;
+let isGlobeRunning = false;
+
+let globePitch = -6;
+let globeYaw = 0;
+let globeZoom = 1.0;
+let targetGlobePitch = -6;
+let targetGlobeZoom = 1.0;
+let isGodsEyeMode = false;
+let globeVelX = 0;
+let globeVelY = 0;
+let isGlobeDragging = false;
+let globeLastPointerX = 0;
+let globeLastPointerY = 0;
+let globeAutoOrbit = true;
+let globeOrbitSpeed = 0.08;
+let currentGlobeFilter = "all";
+
+// Procedural Continents Bounding Box Math (Zero External Asset Invariant)
+function isLandCoord(lat, lon) {
+  // North America & Florida
+  if (lat >= 24 && lat <= 72 && lon >= -168 && lon <= -52) return true;
+  if (lat >= 10 && lat < 24 && lon >= -105 && lon <= -75) return true; // Central America
+  // South America
+  if (lat >= -55 && lat <= 12 && lon >= -82 && lon <= -34) return true;
+  // Europe & UK
+  if (lat >= 35 && lat <= 71 && lon >= -10 && lon <= 45) return true;
+  // Africa
+  if (lat >= -35 && lat <= 37 && lon >= -18 && lon <= 52) return true;
+  // Asia & Middle East
+  if (lat >= 10 && lat <= 75 && lon >= 45 && lon <= 170) return true;
+  // Australia & NZ
+  if (lat >= -47 && lat <= -10 && lon >= 112 && lon <= 178) return true;
+  // Japan archipelago
+  if (lat >= 30 && lat <= 46 && lon >= 129 && lon <= 146) return true;
+  return false;
+}
+
+// Convert Lat/Lon degrees to 3D Cartesian coordinates on sphere
+function latLonToVector3(latDeg, lonDeg, radius) {
+  const phi = (90 - latDeg) * (Math.PI / 180);
+  const theta = (lonDeg + 180) * (Math.PI / 180);
+  const x = -(radius * Math.sin(phi) * Math.cos(theta));
+  const z = (radius * Math.sin(phi) * Math.sin(theta));
+  const y = (radius * Math.cos(phi));
+  return { x, y, z };
+}
+
+// Initialize Three.js Procedural 3D World (Zero External Textures/Assets)
+function initThreeGlobe() {
+  const canvas = document.getElementById("globeCanvas");
+  if (!canvas || typeof THREE === "undefined") return;
+
+  const width = canvas.parentElement.clientWidth || window.innerWidth;
+  const height = canvas.parentElement.clientHeight || (window.innerHeight - 72);
+
+  // 1. Renderer
+  threeRenderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: true,
+    alpha: true,
+    powerPreference: "high-performance", preserveDrawingBuffer: true
+  });
+  threeRenderer.setSize(width, height);
+  threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // 2. Scene & Camera
+  threeScene = new THREE.Scene();
+  threeCamera = new THREE.PerspectiveCamera(42, width / height, 0.1, 3000);
+  threeCamera.position.set(0, 0, 850);
+
+  // 3. Root Globe Assembly Group
+  threeGlobeGroup = new THREE.Group();
+  threeScene.add(threeGlobeGroup);
+
+  const R_globe = 220;
+
+  // A. Dark Occlusion Core (Gives Planet Solid Substance)
+  const coreGeo = new THREE.SphereGeometry(R_globe * 0.985, 48, 24);
+  const coreMat = new THREE.MeshBasicMaterial({ color: 0x030611 });
+  const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+  threeGlobeGroup.add(coreMesh);
+
+  // B. Holographic Wireframe Grid
+  const wireGeo = new THREE.SphereGeometry(R_globe, 36, 18);
+  const wireMat = new THREE.MeshBasicMaterial({
+    color: 0x00f0ff,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.13
+  });
+  const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+  threeGlobeGroup.add(wireMesh);
+
+  // C. Procedural Continents Dot Matrix (~2,600 Fibonacci points)
+  const landPositions = [];
+  const oceanPositions = [];
+  const ptCount = 2600;
+  const goldenRatio = Math.PI * (3 - Math.sqrt(5));
+
+  for (let i = 0; i < ptCount; i++) {
+    const yNorm = 1 - (i / (ptCount - 1)) * 2;
+    const rad = Math.sqrt(Math.max(0, 1 - yNorm * yNorm));
+    const theta = i * goldenRatio;
+
+    const xNorm = Math.cos(theta) * rad;
+    const zNorm = Math.sin(theta) * rad;
+
+    const lat = Math.asin(yNorm) * 180 / Math.PI;
+    const lon = Math.atan2(xNorm, zNorm) * 180 / Math.PI;
+
+    const px = xNorm * (R_globe * 1.002);
+    const py = yNorm * (R_globe * 1.002);
+    const pz = zNorm * (R_globe * 1.002);
+
+    if (isLandCoord(lat, lon)) {
+      landPositions.push(px, py, pz);
+    } else {
+      oceanPositions.push(px, py, pz);
+    }
+  }
+
+  // Land Points (Glowing Cyan/Emerald)
+  const landGeo = new THREE.BufferGeometry();
+  landGeo.setAttribute("position", new THREE.Float32BufferAttribute(landPositions, 3));
+  const landMat = new THREE.PointsMaterial({
+    color: 0x00f0ff,
+    size: 2.8,
+    transparent: true,
+    opacity: 0.95,
+    blending: THREE.AdditiveBlending
+  });
+  const landPointsMesh = new THREE.Points(landGeo, landMat);
+  threeGlobeGroup.add(landPointsMesh);
+
+  // Ocean Points (Faint Deep Navy/Cyan)
+  const oceanGeo = new THREE.BufferGeometry();
+  oceanGeo.setAttribute("position", new THREE.Float32BufferAttribute(oceanPositions, 3));
+  const oceanMat = new THREE.PointsMaterial({
+    color: 0x004466,
+    size: 1.3,
+    transparent: true,
+    opacity: 0.22
+  });
+  const oceanPointsMesh = new THREE.Points(oceanGeo, oceanMat);
+  threeGlobeGroup.add(oceanPointsMesh);
+
+  // D. Atmospheric Telemetry Particle Cloud (1,000 points)
+  const atmoPositions = [];
+  for (let i = 0; i < 1000; i++) {
+    const rDist = R_globe * (1.06 + Math.random() * 0.32);
+    const costheta = Math.random() * 2 - 1;
+    const u = Math.random();
+    const phi = Math.acos(costheta);
+    const theta = 2 * Math.PI * u;
+
+    atmoPositions.push(
+      rDist * Math.sin(phi) * Math.cos(theta),
+      rDist * Math.sin(phi) * Math.sin(theta),
+      rDist * Math.cos(phi)
+    );
+  }
+  const atmoGeo = new THREE.BufferGeometry();
+  atmoGeo.setAttribute("position", new THREE.Float32BufferAttribute(atmoPositions, 3));
+  const atmoMat = new THREE.PointsMaterial({
+    color: 0x10b981,
+    size: 2.0,
+    transparent: true,
+    opacity: 0.45,
+    blending: THREE.AdditiveBlending
+  });
+  const atmoMesh = new THREE.Points(atmoGeo, atmoMat);
+  threeGlobeGroup.add(atmoMesh);
+
+  // E. Dual Orbital Gimbal Rings
+  const ring1Geo = new THREE.RingGeometry(R_globe * 1.25, R_globe * 1.256, 72);
+  const ring1Mat = new THREE.MeshBasicMaterial({
+    color: 0x00f0ff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.35
+  });
+  threeGimbal1 = new THREE.Mesh(ring1Geo, ring1Mat);
+  threeGimbal1.rotation.x = Math.PI / 2;
+  threeGlobeGroup.add(threeGimbal1);
+
+  const ring2Geo = new THREE.RingGeometry(R_globe * 1.35, R_globe * 1.356, 72);
+  const ring2Mat = new THREE.MeshBasicMaterial({
+    color: 0x10b981,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.28
+  });
+  threeGimbal2 = new THREE.Mesh(ring2Geo, ring2Mat);
+  threeGimbal2.rotation.x = Math.PI / 3;
+  threeGimbal2.rotation.y = Math.PI / 6;
+  threeGlobeGroup.add(threeGimbal2);
+
+  // F. Boca Raton Transmitter Beacon (26.3683° N, 80.1289° W)
+  const bocaCoords = latLonToVector3(26.3683, -80.1289, R_globe);
+  const beaconGroup = new THREE.Group();
+  beaconGroup.position.set(bocaCoords.x, bocaCoords.y, bocaCoords.z);
+
+  // Surface Marker Pin
+  const pinGeo = new THREE.SphereGeometry(3.5, 16, 16);
+  const pinMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
+  beaconGroup.add(new THREE.Mesh(pinGeo, pinMat));
+
+  // Laser Pillar Beam (Radial outward along normal)
+  const beamGeo = new THREE.CylinderGeometry(0.8, 1.8, 55, 12);
+  const beamMat = new THREE.MeshBasicMaterial({
+    color: 0x00f0ff,
+    transparent: true,
+    opacity: 0.75,
+    blending: THREE.AdditiveBlending
+  });
+  const beamMesh = new THREE.Mesh(beamGeo, beamMat);
+  beamMesh.position.y = 27;
+  // Orient beam outward from sphere center
+  const normal = new THREE.Vector3(bocaCoords.x, bocaCoords.y, bocaCoords.z).normalize();
+  beaconGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+  beaconGroup.add(beamMesh);
+
+  // Pulsing Radar Waves
+  const radarGeo = new THREE.RingGeometry(2, 4, 32);
+  const radarMat = new THREE.MeshBasicMaterial({
+    color: 0x00f0ff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.8
+  });
+  threeRadarRing = new THREE.Mesh(radarGeo, radarMat);
+  threeRadarRing.rotation.x = Math.PI / 2;
+  threeRadarRing.position.y = 1;
+  beaconGroup.add(threeRadarRing);
+
+  threeGlobeGroup.add(beaconGroup);
+
+  // Polar Coordinate Tactical Grid (God's Eye View)
+  const polarGrid = new THREE.PolarGridHelper(R_globe * 1.55, 16, 8, 64, 0x00f0ff, 0x10b981);
+  polarGrid.material.transparent = true;
+  polarGrid.material.opacity = 0.16;
+  threeGlobeGroup.add(polarGrid);
+
+  // Vertical Polar Coordinate Zenith Laser Axis
+  const polarBeamGeo = new THREE.CylinderGeometry(0.7, 0.7, R_globe * 3.4, 16);
+  const polarBeamMat = new THREE.MeshBasicMaterial({
+    color: 0x00f0ff,
+    transparent: true,
+    opacity: 0.45,
+    blending: THREE.AdditiveBlending
+  });
+  const polarBeam = new THREE.Mesh(polarBeamGeo, polarBeamMat);
+  threeGlobeGroup.add(polarBeam);
+
+  // G. Secondary Global Sovereign Node Beacons
+  const secondaryNodes = [
+    { name: "New York", lat: 40.71, lon: -74.00 },
+    { name: "London", lat: 51.50, lon: -0.12 },
+    { name: "Zurich", lat: 47.37, lon: 8.54 },
+    { name: "Tokyo", lat: 35.68, lon: 139.76 }
+  ];
+
+  secondaryNodes.forEach(node => {
+    const coords = latLonToVector3(node.lat, node.lon, R_globe);
+    const nodePin = new THREE.Mesh(
+      new THREE.SphereGeometry(2.5, 12, 12),
+      new THREE.MeshBasicMaterial({ color: 0x10b981 })
+    );
+    nodePin.position.set(coords.x, coords.y, coords.z);
+    threeGlobeGroup.add(nodePin);
+  });
+}
+
+// Three.js Render Frame
+let radarScale = 1.0;
+function renderThreeGlobeFrame() {
+  if (!threeRenderer || !threeScene || !threeCamera) return;
+
+  // Sync Globe Group rotation with CSS 3D pitch and yaw
+  threeGlobeGroup.rotation.x = globePitch * (Math.PI / 180);
+  threeGlobeGroup.rotation.y = globeYaw * (Math.PI / 180);
+  threeGlobeGroup.scale.set(globeZoom, globeZoom, globeZoom);
+
+  // Counter-rotate gimbal rings
+  if (threeGimbal1) threeGimbal1.rotation.z += 0.003;
+  if (threeGimbal2) threeGimbal2.rotation.z -= 0.002;
+
+  // Pulse Boca Raton Radar wave
+  if (threeRadarRing) {
+    radarScale += 0.04;
+    if (radarScale > 4.5) radarScale = 1.0;
+    threeRadarRing.scale.set(radarScale, radarScale, radarScale);
+    threeRadarRing.material.opacity = Math.max(0, 0.85 * (1 - (radarScale / 4.5)));
+  }
+
+  threeRenderer.render(threeScene, threeCamera);
+}
+
+// --- CSS 3D Fibonacci Video Node Constellation ---
+const cardElements = [];
+let sphereRadius = 490;
+let cardWidth = 140;
+let cardHeight = 190;
+
+function calculateGlobeSizing() {
+  const width = window.innerWidth;
+  const height = window.innerHeight - 72;
+
+  let persp = 1150;
+  if (width <= 480) persp = 650;
+  else if (width <= 768) persp = 850;
+  else if (width <= 1200) persp = 1050;
+
+  document.documentElement.style.setProperty("--persp", persp + "px");
+
+  const hr = width <= 480 ? 0.36 : (width <= 768 ? 0.42 : 0.46);
+  const wr = width <= 480 ? 0.44 : (width <= 768 ? 0.48 : 0.52);
+  sphereRadius = Math.max(220, Math.min(540, height * hr, width * wr));
+
+  cardWidth = Math.round(Math.max(105, Math.min(160, sphereRadius * 0.30)));
+  cardHeight = Math.round(cardWidth * 1.36);
+
+  document.documentElement.style.setProperty("--cw", cardWidth + "px");
+  document.documentElement.style.setProperty("--ch", cardHeight + "px");
+}
+
+function buildGlobeCards() {
+  const orb = document.getElementById("globeOrb");
+  if (!orb) return;
+  orb.innerHTML = "";
+  cardElements.length = 0;
+
+  calculateGlobeSizing();
+
+  const N = ITEMS.length; // 21 items
+  const goldenRatio = Math.PI * (3 - Math.sqrt(5));
+
+  ITEMS.forEach((item, i) => {
+    const yNorm = 1 - (i / (N - 1)) * 2;
+    const rad = Math.sqrt(Math.max(0, 1 - yNorm * yNorm));
+    const theta = i * goldenRatio;
+
+    const xNorm = Math.cos(theta) * rad;
+    const zNorm = Math.sin(theta) * rad;
+
+    const card = document.createElement("div");
+    card.className = "globe-card";
+    card.setAttribute("data-id", item.id);
+    card.setAttribute("data-category", item.category);
+
+    const badgeText = item.category === "master" ? "4K MASTER" :
+                      item.category === "reels" ? "9:16 REEL" :
+                      item.category === "twins" ? "NEURAL TWIN" : "HARDWARE NODE";
+
+    card.innerHTML = `
+      <div class="card-thumb-wrap">
+        <img class="card-thumb" src="${item.thumbSrc}" alt="${item.title}" loading="lazy">
+        <span class="card-badge">${badgeText}</span>
+        <span class="card-dur">${item.duration}</span>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-title">${item.title}</div>
+          <div class="card-place">${item.place}</div>
+        </div>
+        <div class="card-wave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    `;
+
+    // Click opens video modal
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openModal(item.id);
+    });
+
+    // Hover updates Inspector HUD
+    card.addEventListener("mouseenter", () => {
+      updateGlobeInspector(item);
+    });
+
+    orb.appendChild(card);
+    cardElements.push({
+      el: card,
+      item: item,
+      xNorm: xNorm,
+      yNorm: yNorm,
+      zNorm: zNorm,
+      theta: theta
+    });
+  });
+
+  updateGlobeCardPositions();
+}
+
+function updateGlobeCardPositions() {
+  const R = sphereRadius * globeZoom;
+  const radX = globePitch * (Math.PI / 180);
+  const radY = globeYaw * (Math.PI / 180);
+
+  const cosX = Math.cos(radX);
+  const sinX = Math.sin(radX);
+  const cosY = Math.cos(radY);
+  const sinY = Math.sin(radY);
+
+  cardElements.forEach(node => {
+    // 3D Cartesian spherical position on sphere
+    const x0 = node.xNorm * R;
+    const y0 = node.yNorm * R;
+    const z0 = node.zNorm * R;
+
+    // Apply rotation matrix to determine camera-relative Z depth
+    // 1. Rotate Y (yaw)
+    const x1 = x0 * cosY + z0 * sinY;
+    const z1 = -x0 * sinY + z0 * cosY;
+    // 2. Rotate X (pitch)
+    const y2 = y0 * cosX - z1 * sinX;
+    const z2 = y0 * sinX + z1 * cosX;
+
+    // Normal outward angles for card orientation
+    const rotY = -(Math.atan2(node.xNorm, node.zNorm) * 180 / Math.PI);
+    const rotX = Math.asin(node.yNorm) * 180 / Math.PI;
+
+    node.el.style.transform = `translate3d(${x0}px, ${y0}px, ${z0}px) rotateY(${rotY}deg) rotateX(${-rotX}deg)`;
+
+    // Occlusion & Depth-fading:
+    // Cards on front hemisphere (z2 > -R * 0.25) are sharp and interactive.
+    // Cards around back (z2 <= -R * 0.25) are gracefully dimmed so front cards remain clear.
+    if (currentGlobeFilter === "all" || node.item.category === currentGlobeFilter) {
+      if (z2 > -R * 0.25) {
+        node.el.style.opacity = "1";
+        node.el.style.pointerEvents = "auto";
+      } else {
+        node.el.style.opacity = "0.22";
+        node.el.style.pointerEvents = "none";
+      }
+    }
+  });
+}
+
+function updateGlobeInspector(item) {
+  const badge = document.getElementById("inspBadge");
+  const title = document.getElementById("inspTitle");
+  const note = document.getElementById("inspNote");
+  const playBtn = document.getElementById("inspPlayBtn");
+
+  if (!badge || !title || !note || !playBtn) return;
+
+  const categoryLabel = item.category === "master" ? "4K MASTER STUDIO SESSION" :
+                        item.category === "reels" ? "BOCA RATON STUDIO REEL (9:16)" :
+                        item.category === "twins" ? "SYNTHETIC NEURAL TWIN" : "HARDWARE NODE TELEMETRY";
+
+  badge.textContent = `${categoryLabel} · ${item.duration}`;
+  title.textContent = item.title;
+  note.textContent = item.note;
+  playBtn.onclick = () => openModal(item.id);
+}
+
+// --- Globe Interaction (Drag, Momentum, Zoom) ---
+function initGlobeInteractions() {
+  const stage = document.getElementById("globeStage");
+  if (!stage) return;
+
+  const onPointerDown = (e) => {
+    isGlobeDragging = true;
+    globeVelX = 0;
+    globeVelY = 0;
+    globeLastPointerX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    globeLastPointerY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+  };
+
+  const onPointerMove = (e) => {
+    if (!isGlobeDragging) return;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+
+    const deltaX = clientX - globeLastPointerX;
+    const deltaY = clientY - globeLastPointerY;
+
+    globeVelX = deltaX * 0.28;
+    globeVelY = deltaY * 0.28;
+
+    globeYaw += globeVelX;
+    globePitch -= globeVelY;
+    globePitch = Math.max(-75, Math.min(75, globePitch));
+
+    globeLastPointerX = clientX;
+    globeLastPointerY = clientY;
+  };
+
+  const onPointerUp = () => {
+    isGlobeDragging = false;
+  };
+
+  stage.addEventListener("mousedown", onPointerDown);
+  window.addEventListener("mousemove", onPointerMove);
+  window.addEventListener("mouseup", onPointerUp);
+
+  stage.addEventListener("touchstart", onPointerDown, { passive: true });
+  window.addEventListener("touchmove", onPointerMove, { passive: true });
+  window.addEventListener("touchend", onPointerUp);
+
+  // Wheel Zoom
+  stage.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const zoomDelta = e.deltaY < 0 ? 0.05 : -0.05;
+    adjustGlobeZoom(zoomDelta);
+  }, { passive: false });
+}
+
+function adjustGlobeZoom(delta) {
+  const step = typeof delta === "number" ? delta * 0.1 : 0.1;
+  globeZoom = Math.max(0.65, Math.min(1.45, globeZoom + step));
+  updateGlobeCardPositions();
+}
+
+function resetGlobeCamera() {
+  globePitch = -6;
+  globeYaw = 0;
+  globeZoom = 1.0;
+  globeVelX = 0;
+  globeVelY = 0;
+  updateGlobeCardPositions();
+}
+
+function toggleGlobeOrbit() {
+  globeAutoOrbit = !globeAutoOrbit;
+  const btn = document.getElementById("globeOrbitBtn");
+  if (btn) {
+    if (globeAutoOrbit) {
+      btn.classList.add("active");
+      btn.innerHTML = "<span>⏸</span> Pause Orbit";
+    } else {
+      btn.classList.remove("active");
+      btn.innerHTML = "<span>▶</span> Play Orbit";
+    }
+  }
+}
+
+function filterGlobeNodes(category, btnElement) {
+  currentGlobeFilter = category;
+
+  document.querySelectorAll(".globe-filter-btn").forEach(b => b.classList.remove("active"));
+  if (btnElement) btnElement.classList.add("active");
+
+  cardElements.forEach(node => {
+    const isMatch = category === "all" || node.item.category === category;
+    if (isMatch) {
+      node.el.classList.remove("dimmed");
+      if (category !== "all") node.el.classList.add("highlighted");
+      else node.el.classList.remove("highlighted");
+    } else {
+      node.el.classList.add("dimmed");
+      node.el.classList.remove("highlighted");
+    }
+  });
+
+  updateGlobeCardPositions();
+}
+
+// Globe Animation Loop
+function globeLoop() {
+  if (!isGlobeRunning) return;
+
+  if (globeAutoOrbit && !isGlobeDragging) {
+    globeYaw += globeOrbitSpeed;
+  }
+
+  // Momentum damping & Smooth Camera Glide (God's Eye View interpolation)
+  if (!isGlobeDragging) {
+    globeYaw += globeVelX;
+    globePitch -= globeVelY;
+    globeVelX *= 0.92;
+    globeVelY *= 0.92;
+
+    // Smooth glide to target pitch & zoom (e.g. God's Eye zenith angle)
+    globePitch += (targetGlobePitch - globePitch) * 0.08;
+    globeZoom += (targetGlobeZoom - globeZoom) * 0.08;
+    const maxPitch = isGodsEyeMode ? 88 : 75;
+    globePitch = Math.max(-maxPitch, Math.min(maxPitch, globePitch));
+  }
+
+  // Apply CSS 3D transform to world
+  const world = document.getElementById("globeWorld");
+  if (world) {
+    world.style.transform = `rotateX(${globePitch}deg) rotateY(${globeYaw}deg) scale3d(${globeZoom}, ${globeZoom}, ${globeZoom})`;
+  }
+
+  // Render WebGL Globe
+  renderThreeGlobeFrame();
+
+  // Update front/back card opacity
+  updateGlobeCardPositions();
+
+  globeAnimFrame = requestAnimationFrame(globeLoop);
+}
+
+function startGlobeLoop() {
+  if (!isGlobeRunning) {
+    isGlobeRunning = true;
+    globeLoop();
+  }
+}
+
+function stopGlobeLoop() {
+  isGlobeRunning = false;
+  if (globeAnimFrame) cancelAnimationFrame(globeAnimFrame);
+}
+
+function onGlobeResize() {
+  calculateGlobeSizing();
+  if (threeRenderer && threeCamera) {
+    const canvas = document.getElementById("globeCanvas");
+    const width = canvas ? (canvas.parentElement.clientWidth || window.innerWidth) : window.innerWidth;
+    const height = canvas ? (canvas.parentElement.clientHeight || (window.innerHeight - 72)) : (window.innerHeight - 72);
+    threeCamera.aspect = width / height;
+    threeCamera.updateProjectionMatrix();
+    threeRenderer.setSize(width, height);
+  }
+  updateGlobeCardPositions();
+}
+
+window.addEventListener("resize", onGlobeResize);
+
+// --- Dual View Switcher (Globe vs Streaming Hub) ---
+function toggleGodsEyeView() {
+  if (isGodsEyeMode) {
+    switchMainView("globe");
+  } else {
+    switchMainView("godseye");
+  }
+}
+
+function switchMainView(view) {
+  const globeView = document.getElementById("globeView");
+  const streamHub = document.getElementById("streamingHub");
+  const btnGlobe = document.getElementById("viewBtnGlobe");
+  const btnGodsEye = document.getElementById("viewBtnGodsEye");
+  const btnStream = document.getElementById("viewBtnStream");
+  const toggleBtn = document.getElementById("godsEyeToggleBtn");
+  const ribbon = document.getElementById("globeTelemetryRibbon");
+  const inspBadge = document.getElementById("inspBadge");
+
+  if (view === "godseye") {
+    if (globeView) globeView.style.display = "flex";
+    if (streamHub) streamHub.style.display = "none";
+    document.body.classList.add("godseye-active");
+    isGodsEyeMode = true;
+    targetGlobePitch = -82;
+    targetGlobeZoom = 1.25;
+
+    if (btnGlobe) btnGlobe.classList.remove("active");
+    if (btnGodsEye) btnGodsEye.classList.add("active");
+    if (btnStream) btnStream.classList.remove("active");
+    if (toggleBtn) {
+      toggleBtn.classList.add("active");
+      toggleBtn.innerHTML = "<span>🌐</span> Standard View";
+    }
+    if (ribbon) {
+      ribbon.innerHTML = `
+        <span class="hud-pill-live" style="color:var(--cyan);">🛰️ GOD'S EYE VIEW: ORBITAL SATELLITE ZENITH</span>
+        <span>ALTITUDE: 1,420 KM</span>
+        <span>POLAR INCLINATION: 90.0°</span>
+        <span>21 SATELLITES TRACKED</span>
+      `;
+    }
+    if (inspBadge) {
+      inspBadge.textContent = "🛰️ SATELLITE CONSTELLATION TELEMETRY";
+    }
+    history.replaceState(null, "", "#godseye");
+    onGlobeResize();
+    startGlobeLoop();
+  } else if (view === "globe") {
+    if (globeView) globeView.style.display = "flex";
+    if (streamHub) streamHub.style.display = "none";
+    document.body.classList.remove("godseye-active");
+    isGodsEyeMode = false;
+    targetGlobePitch = -6;
+    targetGlobeZoom = 1.0;
+
+    if (btnGlobe) btnGlobe.classList.add("active");
+    if (btnGodsEye) btnGodsEye.classList.remove("active");
+    if (btnStream) btnStream.classList.remove("active");
+    if (toggleBtn) {
+      toggleBtn.classList.remove("active");
+      toggleBtn.innerHTML = "<span>👁️</span> God's Eye";
+    }
+    if (ribbon) {
+      ribbon.innerHTML = `
+        <span class="hud-pill-live">BOCA RATON TRANSMITTER (26.3683° N, 80.1289° W)</span>
+        <span>NHIL PROTOCOL: 100% ACTIVE</span>
+        <span>LATENCY: 0.0ms</span>
+        <span>ORBIT: FIBONACCI (21 NODES)</span>
+      `;
+    }
+    history.replaceState(null, "", "#globe");
+    onGlobeResize();
+    startGlobeLoop();
+  } else {
+    if (globeView) globeView.style.display = "none";
+    if (streamHub) streamHub.style.display = "block";
+    document.body.classList.remove("godseye-active");
+    if (btnGlobe) btnGlobe.classList.remove("active");
+    if (btnGodsEye) btnGodsEye.classList.remove("active");
+    if (btnStream) btnStream.classList.add("active");
+    history.replaceState(null, "", "#stream");
+    stopGlobeLoop();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+// Initial Boot// Initial Boot of Globe & Views
+window.addEventListener("DOMContentLoaded", () => {
+  initThreeGlobe();
+  buildGlobeCards();
+  initGlobeInteractions();
+
+  // Check URL Hash: default to #globe per user directive
+  const hash = window.location.hash;
+  if (hash === "#godseye") {
+    switchMainView("godseye");
+  } else if (hash === "#stream") {
+    switchMainView("stream");
+  } else {
+    switchMainView("globe");
+  }
+});
+</script>
+</body>
+</html>

@@ -3,26 +3,39 @@ __pycache__/
 *.py[cod]
 *$py.class
 venv/
-.env
+.env*
+*.key
+*.pem
+*.crt
+*.cert
 
-# Docker
+# Logs & Audit Dumps
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Docker & Infrastructure Secrets
 docker-compose.override.yml
-
-# Headscale / Tailscale Secrets
 agi-backend/headscale/config/*.key
 agi-backend/headscale/config/*.sqlite
 agi-backend/headscale/config/db.sqlite
 
 # Next.js
 tech-unfiltered/.next/
+tech-unfiltered/.next.nosync/
 tech-unfiltered/node_modules/
-tech-unfiltered/.env.local
-tech-unfiltered/.env.development.local
-tech-unfiltered/.env.test.local
-tech-unfiltered/.env.production.local
+tech-unfiltered/.env*
 
-# Mac
+# Mac & OS metadata
 .DS_Store
+
+# Sensitive Data & Leads PII Protection
+data/leads.json
+tech-unfiltered/data/leads.json
+services/voice_agent/hindsight_memory.json
+*.sqlite
+*.sqlite3
+*.db
 
 # Data Volumes (Ensure we don't commit databases!)
 chroma_data/
@@ -34,6 +47,16 @@ grafana_data/
 
 # External Repositories
 agi-backend/KGU_Ecosystem/
+services/open_source_modules/
 
 # Agent Brain Link
 agent_brain/
+
+
+# Sensitive Internal Ledger & Secrets
+services/client_secrets.json
+services/bookings_ledger.json
+services/paperclip_state.json
+sovereign-mail/
+*.bak*
+services/rag_index.json

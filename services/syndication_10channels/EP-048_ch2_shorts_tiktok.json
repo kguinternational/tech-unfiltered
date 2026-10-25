@@ -1,0 +1,55 @@
+{
+  "channelNumber": 2,
+  "channelName": "YouTube Shorts & TikTok (Vertical 9:16)",
+  "status": "DISPATCHED",
+  "reelsCount": 3,
+  "reels": [
+    {
+      "reel_id": "EP-048-REEL-01",
+      "title": "Why Static Wrapper SaaS Is Dead: Engineering Living Worlds in Code",
+      "aspect_ratio": "9:16 (1080x1920 @ 60fps)",
+      "duration_seconds": 58,
+      "hook_0_3s": "[0:00-0:03] JOANN COFFEY: \"Stop calling API wrappers Synthetic Intelligence. We are way beyond static models\u2014we are engineering living worlds in code now.\"",
+      "core_insight_3_45s": "[0:03-0:45] JOANN COFFEY & GEORGE DUBEC breakdown: Media is no longer post-produced\u2014it is generated at runtime. We are way beyond static models; we are engineering living worlds in code now, turning every 24/7 Sovereign Broadcast into instant Fortune 500 deal flow and verifiable enterprise revenue. Joann demonstrates how every kinematic assembly and enterprise decision matrix is generated at runtime on a Dedicated Sovereign Hardware Node with No Human In The Loop (NHIL). George highlights why Fortune 500 boards refuse to rent intelligence that leaks proprietary telemetry.",
+      "cta_45_60s": "[0:45-0:58] GEORGE DUBEC: \"Lock in your $25K SI Liability & Architecture Audit or deploy a $150K Sovereign Synthetic Executive today at techunfiltered.io.\"",
+      "runtime_procedural_visual_cues": [
+        "00:00 - Procedural Three.js slider-crank kinematic assembly explodes from 0.0 to 1.0 inspection vector at 60fps.",
+        "00:12 - Live Sovereign Transport Protocol waveform synchronized to Joann Coffey's vocal cadence.",
+        "00:35 - Real-time NHIL telemetry HUD overlay showing 0ms cloud leakage and 100% sovereign hardware containment."
+      ],
+      "caption_hashtags": "#TechUnfilteredSI #PhysicalSI #SovereignInfrastructure #NHIL #KGUInternational #GeneratedAtRuntime"
+    },
+    {
+      "reel_id": "EP-048-REEL-02",
+      "title": "The $250M Boardroom Blindspot: Enterprise SI Liability",
+      "aspect_ratio": "9:16 (1080x1920 @ 60fps)",
+      "duration_seconds": 55,
+      "hook_0_3s": "[0:00-0:03] GEORGE DUBEC: \"Every CEO I advise asks the same question in private: 'Who owns our Synthetic Intelligence when the vendor changes the terms?'\"",
+      "core_insight_3_45s": "[0:03-0:45] George Dubec shares institutional deal-flow reality: \"Institutional capital is moving out of fragile SaaS wrappers and directly into Sovereign Physical SI.\" Joann Coffey counters with the KGU Sovereign blueprint\u2014Private KGU Empathy Engine Matrices and deterministic execution generated at runtime inside the client's own security perimeter.",
+      "cta_45_60s": "[0:45-0:55] JOANN COFFEY: \"Subscribe to The Signal Brief (250,000+ executives) and book your Sovereign Liability Audit via Tech Unfiltered SI.\"",
+      "runtime_procedural_visual_cues": [
+        "00:00 - Split-screen 4K Sovereign Broadcast studio view with procedural gold/cyan data ribbons.",
+        "00:18 - Runtime geometric vault lock animation engaging over enterprise knowledge graph nodes.",
+        "00:42 - Interactive QR & Stripe corporate treasury checkout card rendered at runtime."
+      ],
+      "caption_hashtags": "#EnterpriseSI #VentureDealFlow #GeorgeDubec #JoannCoffey #SovereignCompute #TechUnfiltered"
+    },
+    {
+      "reel_id": "EP-048-REEL-03",
+      "title": "24/7 Sovereign Broadcast: Zero Post-Production, 100% Runtime Execution",
+      "aspect_ratio": "9:16 (1080x1920 @ 60fps)",
+      "duration_seconds": 60,
+      "hook_0_3s": "[0:00-0:03] JOANN COFFEY: \"This broadcast wasn't edited by a production crew. It was generated at runtime with No Human In The Loop.\"",
+      "core_insight_3_45s": "[0:03-0:45] Joann Coffey reveals the KGU 24/7 Sovereign Broadcast pipeline: \"*   [[The Empathy Engine]](./assets/Empathy_Engine.md) - Zero-copy memory architecture for constrained hardware. *   [[Sovereign AI Mesh]](./assets/Sovereign_AI_Mesh.md) - The Digital Twin compliance and operational engine. *   [[Sovereign Brain OS (Central Nervous System)]](http://localhost:9100) - Master Glassmorphic Command Center & Unified 8-Enterprise Digital Mesh on Port 9100 (`openbot/SovereignBrain`). *   [[8-Node Tailscale Sovereign Mesh]](http://localhost:9100) - 8 Distributed Computer Nodes across encrypted `100.64.0.x` Tailscale/Headscale network running dedicated swarms with $0 operating cost. *   [[150-Domain Autonomous Monetization Fleet]](http://localhost:9100) - 150 provisioned domains with glassmorphic lead capture and Activepieces webhook revenue routing. *   [[Sovereign Swarm Discovery Engine (1,000 Agents)]](http://localhost:9100) - Anthropic ARTs-style massive parallel discovery swarms (Bio-Patents, PACER Discovery, VPP Leads, Domain SEO) across 8 nodes & 32 free GPUs. *   [[Digital Human & Avatar Studio (3-Tier & Masses)]](https://kgu-digital-human-characters.netlify.app) - Interactive LiveKit & Runway realtime avatar platform deployed on Netlify with 3 client tiers (Open Source, Enterprise, Hybrid), Free WebGL Audio-reactive OpenSourceAvatar, and Universal 60-second Sovereign Twin Generator. [Local Codebase](file:///Users/jccoffey/Documents/KGU%20International/1.%20Internal%20Operations%20&%20Tech/Runway-Characters-Demo). *   [[Free Cloud GPU Supercompute Engine]](https://kgu-digital-human-characters.netlify.app) - 100% Free compute bridge connecting the masses to Google Colab (T4 15GB), Kaggle Dual T4 (32GB), Kaggle TPU v5e (128GB HBM), and Hugging Face ZeroGPU (RTX 6000 Blackwell 48GB) for $0/mo hardware costs. *   [[KGU Sentinel (Phase-0 Security Agent)]](./project_states/kgu_sentinel.md) - Daily 7AM autonomous security audit + safe auto-fix (`kgu-sentinel fix`). Security-first rule on every project. *   [[Hermes-Omni (Universal Conductor)]](file:///Users/jccoffey/.local/bin/hermes-omni) - Master Meta-System orchestrating all 9 subsystems, 3 Hermes engine tiers, and DTN enterprise swarms in 100% NHITL continuous daemon mode. *   [[Hermes 3-in-1 Autonomous Triad]](file:///Users/jccoffey/.hermes/profiles) - 100% No Human In The Loop (NHITL) tri-tier autonomous system (1 Open Source, 1 Enterprise, 1 Hybrid). *   [[AI Skills Directory]](./skills/Skills_Index.md) - 1,348+ specialized local agents and capabilities. *   [[Digital Twin Network (DTN)]](../Pictures/Digital%20Twin%20Network) - Sovereign umbrella network hosting all autonomous enterprises, digital twins, and services.\" From trigonometric 3D digital twins to omnichannel syndication across Apple Podcasts, Spotify, and YouTube Studio, the entire CMO flywheel fires autonomously.",
+      "cta_45_60s": "[0:45-0:60] GEORGE DUBEC: \"Sponsor the next Tech Unfiltered SI broadcast ($10K Media Partner) and put your thesis in front of 250,000+ decision-makers.\"",
+      "runtime_procedural_visual_cues": [
+        "00:00 - Procedural lathe-geometry turbine spinning up with trigonometric piston linkages.",
+        "00:22 - Live DAG visualization of the 6-stage Autonomous CMO Flywheel firing in <200ms.",
+        "00:48 - KGU International Sovereign Crest rendered in WebGL metallic shader."
+      ],
+      "caption_hashtags": "#NHITL #LivingWorldsInCode #SovereignBroadcast #AutonomousCMO #KGU #TechUnfilteredSI"
+    }
+  ],
+  "cvVisionAudited": true,
+  "outputArtifact": "/Users/jccoffey/Documents/KGU International/1. Internal Operations & Tech/Tech Unfiltered/services/syndication_10channels/EP-048_ch2_shorts_tiktok.json"
+}

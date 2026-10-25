@@ -1,0 +1,154 @@
+{
+  "project": "Tech Unfiltered SI — Powered by KGU International",
+  "version": "4.0.0-SOVEREIGN",
+  "generatedAt": "2026-10-20T03:55:00Z",
+  "founders": [
+    "Joann Coffey (CEO & Executive Conductor)",
+    "George Dubec (CRO & Deal-Flow Architect)"
+  ],
+  "launchStatus": "100% PRODUCTION READY • NHIL ACTIVE",
+  "orchestrationMode": "Standalone Sovereign n8n + SQLite Workflow Core (Zero Zapier)",
+  "marginalComputeCost": "$0.00 / token",
+  "architecture": {
+    "paradigm": "100% NHIL (No Human In The Loop) Synthetic Intelligence (SI)",
+    "runtimePort": 8899,
+    "database": "services/sovereign_backend.db (SQLite + 768D Vector Memory)",
+    "workflowDefinition": "services/n8n_sovereign_10core_workflow.json",
+    "broadcastStage": "Widescreen 16:9 Live Video Call Stage + 24kHz Local Voice Cloning Studio",
+    "cyberSecurity": "Phase-0 Cyber-Shield & 256-Bit Voice Biometric Attestation (AES-256-GCM)"
+  },
+  "tenCoreModules": [
+    {
+      "code": "KGU-MOD-01",
+      "name": "Sovereign C-Suite Org Chart & Multiplayer ACL Engine",
+      "directory": "services/open_source_modules/paperclip",
+      "capability": "7-Executive Autonomous Org Chart (PC-100..PC-106) with real-time state machine & budget governance",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-02",
+      "name": "Sovereign Hindsight Cross-Session Memory Matrix",
+      "directory": "services/open_source_modules/hindsight",
+      "capability": "Persistent SQLite + 768D vector episodic memory across all visitor, call, and deal-desk sessions",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-03",
+      "name": "Sovereign 24kHz Local Voice Cloning & Broadcast Studio",
+      "directory": "services/open_source_modules/voicestudio",
+      "capability": "Zero-latency 24kHz local voice synthesis and 16:9 synchronized studio avatar telemetry",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-04",
+      "name": "First-Principles SI RAG & Vector Knowledge Core",
+      "directory": "services/open_source_modules/ai-engineering-from-scratch",
+      "capability": "872-chunk sovereign corpus indexed at 768D with $0.00/token local inference",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-05",
+      "name": "Institutional Financial Arbitrage & ROI Modeling Engine",
+      "directory": "services/open_source_modules/financial-services",
+      "capability": "Real-time enterprise capex/opex payback modeling and automated deal-desk underwriting",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-06",
+      "name": "Phase-0 Cyber-Shield & 256-Bit Biometric Security Gate",
+      "directory": "services/open_source_modules/claude-code-templates",
+      "capability": "Zero-trust plugin attestation, prompt-injection firewall, and 256-bit voice biometric verification",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-07",
+      "name": "Impeccable Widescreen 16:9 Stage & Clean Studio Media Sync",
+      "directory": "services/open_source_modules/impeccable",
+      "capability": "Broadcast-grade 16:9 video stage orchestration with 10 full episodes and 11 watermark-free Boca Raton reels",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-08",
+      "name": "Universal CLI-Anything & DOM Client-Tool Harness",
+      "directory": "services/open_source_modules/cli-anything",
+      "capability": "Bidirectional DOM client-tool execution allowing SI hosts to highlight, scroll, tour, and open deal modals live",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-09",
+      "name": "65+ Executive SI Playbooks & Autonomous Skill Library",
+      "directory": "services/open_source_modules/claude-skills",
+      "capability": "Pre-compiled executive playbooks for legal, revops, media syndication, and sovereign deployment",
+      "status": "VERIFIED_ON_DISK"
+    },
+    {
+      "code": "KGU-MOD-10",
+      "name": "Standalone Sovereign n8n 10-Core Orchestrator & 5-Step Deal Dispatch",
+      "directory": "services/n8n_sovereign_10core_workflow.json",
+      "capability": "Zero-Zapier 10-node autonomous pipeline linking C-Suite, memory, voice, cyber-verify, and VIP deal booking",
+      "status": "VERIFIED_ON_DISK"
+    }
+  ],
+  "monetizationTiers": [
+    {
+      "id": "broadcast-sponsor-10k",
+      "name": "Broadcast Sponsor Package",
+      "priceUSD": 10000,
+      "formattedPrice": "$10,000",
+      "badge": "IMMEDIATE MEDIA REACH",
+      "paybackWindowDays": 12,
+      "deliverables": [
+        "Dedicated segment integration on Tech Unfiltered SI with Joann Coffey & George Dubec",
+        "Syndication across 10-Episode Broadcast Vault + 11 Boca Raton Studio Reels",
+        "Automated lead capture & sovereign attribution routing"
+      ]
+    },
+    {
+      "id": "ai-call-center-25k",
+      "name": "24/7 AI Call Center (Most Popular)",
+      "priceUSD": 25000,
+      "formattedPrice": "$25,000",
+      "badge": "MOST POPULAR • HIGH VELOCITY",
+      "isMostPopular": true,
+      "paybackWindowDays": 19,
+      "deliverables": [
+        "24/7 NHIL Inbound & Outbound Sovereign Voice & Video Concierge",
+        "24kHz Local Voice Cloning + Sub-300ms Empathy Engine Matrix",
+        "Standalone Sovereign n8n + SQLite CRM Pipeline ($0.00/token marginal compute)"
+      ]
+    },
+    {
+      "id": "custom-digital-twin-150k",
+      "name": "Custom Digital Twin & Full-Stack Deployment",
+      "priceUSD": 150000,
+      "formattedPrice": "$150,000",
+      "badge": "FLAGSHIP ENTERPRISE SOVEREIGNTY",
+      "paybackWindowDays": 28,
+      "deliverables": [
+        "Bespoke Executive Digital Twin (16:9 Live Video + 24kHz Voice Biometric Clone)",
+        "Dedicated Sovereign Hardware Node & Full 10-Core Module Installation",
+        "7-Executive Autonomous C-Suite (PC-100..PC-106) with Phase-0 Cyber-Shield"
+      ]
+    }
+  ],
+  "endpoints": [
+    "/landing_page.html",
+    "/api/workflow/state",
+    "/api/workflow/avatar-call",
+    "/api/workflow/client-tool",
+    "/api/workflow/csuite-cycle",
+    "/api/workflow/episode-select",
+    "/api/workflow/book-call",
+    "/api/workflow/n8n-10core",
+    "/api/sovereign-modules",
+    "/api/cyber-verify",
+    "/api/launch-preflight"
+  ],
+  "broadcastVault": {
+    "fullEpisodesCount": 10,
+    "cleanStudioReelsCount": 11,
+    "studioLocation": "Boca Raton Sovereign Broadcast Studio",
+    "thirdPartyWatermarks": 0,
+    "aspectRatio": "16:9 Widescreen Studio + 9:16 Syndication Reels"
+  }
+}

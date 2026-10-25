@@ -1,0 +1,72 @@
+{
+  "voices": {
+    "joannCoffey": {
+      "id": "joannCoffey",
+      "name": "Joann Coffey",
+      "role": "CEO & Executive Conductor, KGU International",
+      "voiceId": "8612954d7a854aa2b168a1b4e47ab4a6",
+      "avatarId": "cad2810d84a24fc190e4f9a4c9c60427",
+      "audio_ref": "services/voice_agent/references/joann_coffey_ref.wav",
+      "public_audio_url": "/audio/joann_coffey_ref.wav",
+      "prompt_text": "I have an actual whole platform that's designed around that. It's actually called After Swiping. And yes, we take all this data and we build out the digital twin and then your digital twin dates. And we go and record the interactions with the twins and the avatars.",
+      "sample_rate": 24000,
+      "format": "wav",
+      "gender": "female",
+      "acoustic_profile": {
+        "timbre": "Authoritative, warm, visionary executive, studio broadcast quality",
+        "pitch_scale": 1.05,
+        "rate_scale": 1.02,
+        "browser_speech_name_match": ["Samantha", "Victoria", "Karen", "Google US English Female", "en-US-Neural2-F"]
+      },
+      "model_bindings": {
+        "cosyvoice2": {
+          "mode": "zero_shot",
+          "prompt_wav": "services/voice_agent/references/joann_coffey_ref.wav",
+          "prompt_text": "I have an actual whole platform that's designed around that. It's actually called After Swiping. And yes, we take all this data and we build out the digital twin and then your digital twin dates. And we go and record the interactions with the twins and the avatars."
+        },
+        "f5_tts": {
+          "mode": "cross_lingual_zero_shot",
+          "ref_audio": "services/voice_agent/references/joann_coffey_ref.wav",
+          "ref_text": "I have an actual whole platform that's designed around that. It's actually called After Swiping. And yes, we take all this data and we build out the digital twin and then your digital twin dates. And we go and record the interactions with the twins and the avatars."
+        },
+        "kokoro": {
+          "voice_id": "af_heart",
+          "speed": 1.02
+        }
+      }
+    },
+    "georgeDubec": {
+      "id": "georgeDubec",
+      "name": "George Dubec",
+      "role": "CRO & Ultimate Networker, Tech Unfiltered SI",
+      "audio_ref": "services/voice_agent/references/george_dubec_ref.wav",
+      "public_audio_url": "/audio/george_dubec_ref.wav",
+      "prompt_text": "Everyone has not all the knowledge, but the system has now dunged people down to the tension span of a goldfish So now you have all the knowledge in the world available on your fingertips But you can't pay attention to even follow a step-by-step",
+      "sample_rate": 24000,
+      "format": "wav",
+      "gender": "male",
+      "acoustic_profile": {
+        "timbre": "Resonant, charismatic, high-energy dealmaker, podcast master quality",
+        "pitch_scale": 0.88,
+        "rate_scale": 1.06,
+        "browser_speech_name_match": ["Alex", "Daniel", "Fred", "Google US English Male", "en-US-Neural2-D"]
+      },
+      "model_bindings": {
+        "cosyvoice2": {
+          "mode": "zero_shot",
+          "prompt_wav": "services/voice_agent/references/george_dubec_ref.wav",
+          "prompt_text": "Everyone has not all the knowledge, but the system has now dunged people down to the tension span of a goldfish So now you have all the knowledge in the world available on your fingertips But you can't pay attention to even follow a step-by-step"
+        },
+        "f5_tts": {
+          "mode": "cross_lingual_zero_shot",
+          "ref_audio": "services/voice_agent/references/george_dubec_ref.wav",
+          "ref_text": "Everyone has not all the knowledge, but the system has now dunged people down to the tension span of a goldfish So now you have all the knowledge in the world available on your fingertips But you can't pay attention to even follow a step-by-step"
+        },
+        "kokoro": {
+          "voice_id": "am_adam",
+          "speed": 1.06
+        }
+      }
+    }
+  }
+}

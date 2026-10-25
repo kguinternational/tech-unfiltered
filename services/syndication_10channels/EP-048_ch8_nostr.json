@@ -1,0 +1,136 @@
+{
+  "channelNumber": 8,
+  "channelName": "Nostr Decentralized Relay (Buzz Network NIP-01/23)",
+  "status": "DISPATCHED",
+  "nostrDetails": {
+    "ok": true,
+    "channel": "Nostr Decentralized Relay Network (Channel 7)",
+    "protocol": "NIP-01 & NIP-23",
+    "shortNoteEvent": {
+      "id": "724e443114c0607973ffd246ba2dd331b6d6192a147f5f3f08e01bb51f301d4b",
+      "pubkey": "8f3e2b9c7d4a1056ef8291047264817293847291029384756102938475610293",
+      "created_at": 1792928270,
+      "kind": 1,
+      "tags": [
+        [
+          "d",
+          "tech-unfiltered-ep-048"
+        ],
+        [
+          "title",
+          "EP-048: The Autonomous CMO Flywheel: 24/7 Sovereign Broadcast & Institutional Deal Flow"
+        ],
+        [
+          "published_at",
+          "1792928270"
+        ],
+        [
+          "t",
+          "TechUnfilteredSI"
+        ],
+        [
+          "t",
+          "SyntheticIntelligence"
+        ],
+        [
+          "t",
+          "PhysicalSI"
+        ],
+        [
+          "t",
+          "NHIL"
+        ],
+        [
+          "t",
+          "KGUInternational"
+        ],
+        [
+          "r",
+          "https://techunfiltered.io"
+        ],
+        [
+          "client",
+          "KGU Sovereign Buzz Engine"
+        ]
+      ],
+      "content": "\ud83c\udf99\ufe0f EP-048: The Autonomous CMO Flywheel: 24/7 Sovereign Broadcast & Institutional Deal Flow\n\n\"Media is no longer post-produced\u2014it is generated at runtime. We are way beyond static models; we are engineering living worlds in code now, turning every 24/7 Sovereign Broadcast into instant Fortune 500 deal flow and verifiable enterprise revenue.\"\n\nHosts: Joann Coffey & George Dubec\nStream live 4K: https://techunfiltered.io/episodes/autonomous-cmo-flywheel-sovereign-capital-deal-flow\n\n#TechUnfilteredSI #PhysicalSI #NHIL #SovereignCompute",
+      "sig": "7cbf2a4ce74f792795d34c63c31eee686adb72c1d134c103a526f8c8bd19b62973811380362303accc5ec404f962ff86e8350d470b9bebd72a9f9adc005289db",
+      "relays": [
+        "ws://127.0.0.1:8080",
+        "wss://relay.damus.io",
+        "wss://nos.lol",
+        "wss://relay.nostr.band"
+      ],
+      "status": "CRYPTOGRAPHICALLY_SEALED"
+    },
+    "longFormArticleEvent": {
+      "id": "b68a7bb543c0838fecb1a43ff42f9b4c1933000a6ceea63d20b4357bd2cebd74",
+      "pubkey": "8f3e2b9c7d4a1056ef8291047264817293847291029384756102938475610293",
+      "created_at": 1792928270,
+      "kind": 30023,
+      "tags": [
+        [
+          "d",
+          "tech-unfiltered-ep-048"
+        ],
+        [
+          "title",
+          "EP-048: The Autonomous CMO Flywheel: 24/7 Sovereign Broadcast & Institutional Deal Flow"
+        ],
+        [
+          "published_at",
+          "1792928270"
+        ],
+        [
+          "t",
+          "TechUnfilteredSI"
+        ],
+        [
+          "t",
+          "SyntheticIntelligence"
+        ],
+        [
+          "t",
+          "PhysicalSI"
+        ],
+        [
+          "t",
+          "NHIL"
+        ],
+        [
+          "t",
+          "KGUInternational"
+        ],
+        [
+          "r",
+          "https://techunfiltered.io"
+        ],
+        [
+          "client",
+          "KGU Sovereign Buzz Engine"
+        ]
+      ],
+      "content": "# EP-048: The Autonomous CMO Flywheel: 24/7 Sovereign Broadcast & Institutional Deal Flow\n\n**Hosts:** Joann Coffey (Executive Conductor) & George Dubec (Venture Deal-Flow Architect)\n**Platform:** Tech Unfiltered SI (Powered by KGU International)\n\n## Executive Thesis\nMedia is no longer post-produced\u2014it is generated at runtime. We are way beyond static models; we are engineering living worlds in code now, turning every 24/7 Sovereign Broadcast into instant Fortune 500 deal flow and verifiable enterprise revenue.\n\n## Architectural Pillars\n1. **Zero Vendor Rent:** 100% on-premise execution on Dedicated Sovereign Hardware Nodes.\n2. **Code-as-Geometry:** Real-time runtime kinematic generation over static video files.\n3. **Boardroom Defense:** The 6-Point Forensic SI Liability Audit.\n\nListen on Apple Podcasts, Spotify, and YouTube Studio or watch the 4K interactive broadcast at https://techunfiltered.io.\n",
+      "sig": "222f0bac8b03c25eccd0e558fa648b7894007b53b45e86a19459dc36a6fd07fa596070837dff5f3d6e6955bdd0b0d21abe37304c8293bcb9d94248b13c711cfb",
+      "relays": [
+        "ws://127.0.0.1:8080",
+        "wss://relay.damus.io",
+        "wss://nos.lol",
+        "wss://relay.nostr.band"
+      ],
+      "status": "CRYPTOGRAPHICALLY_SEALED"
+    },
+    "broadcastRelays": [
+      "ws://127.0.0.1:8080",
+      "wss://relay.damus.io",
+      "wss://nos.lol",
+      "wss://relay.nostr.band"
+    ],
+    "eventIds": [
+      "724e443114c0607973ffd246ba2dd331b6d6192a147f5f3f08e01bb51f301d4b",
+      "b68a7bb543c0838fecb1a43ff42f9b4c1933000a6ceea63d20b4357bd2cebd74"
+    ],
+    "sealedAt": "2026-10-25T11:37:50.981959+00:00"
+  },
+  "outputArtifact": "/Users/jccoffey/Documents/KGU International/1. Internal Operations & Tech/Tech Unfiltered/services/syndication_10channels/EP-048_ch8_nostr.json"
+}

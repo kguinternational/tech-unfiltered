@@ -1,0 +1,31 @@
+{
+  "channelNumber": 1,
+  "channelName": "YouTube Studio (4K Widescreen Master)",
+  "status": "DISPATCHED",
+  "videoTitle": "EP-048: The Autonomous CMO Flywheel: 24/7 Sovereign Broadcast & Institutional Deal Flow | Tech Unfiltered SI",
+  "category": "28 (Science & Technology)",
+  "chapters": [
+    {
+      "timestamp": "00:00",
+      "title": "Cold Open: We Are Way Beyond Static Models"
+    },
+    {
+      "timestamp": "06:30",
+      "title": "Joann Coffey: Engineering Living Worlds in Code (Generated at Runtime)"
+    },
+    {
+      "timestamp": "18:45",
+      "title": "George Dubec: Institutional Capital Rotation & Boardroom SI Liability"
+    },
+    {
+      "timestamp": "31:20",
+      "title": "Inside the Dedicated Sovereign Hardware Node & Sovereign Transport Protocol"
+    },
+    {
+      "timestamp": "42:10",
+      "title": "Sovereign Capital Deal Flow: $10K Media / $25K Audit / $150K Executive Twin"
+    }
+  ],
+  "uploadProtocol": "Resumable Google OAuth 2.0 (services/youtube_engine.py)",
+  "outputArtifact": "/Users/jccoffey/Documents/KGU International/1. Internal Operations & Tech/Tech Unfiltered/services/syndication_10channels/EP-048_ch1_youtube.json"
+}

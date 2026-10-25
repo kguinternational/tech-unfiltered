@@ -1,0 +1,176 @@
+{
+  "name": "KGU Sovereign Autonomous Workflow (Zero Zapier • 100% Standalone n8n)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kgu-sovereign-pipeline",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "node-00-webhook",
+      "name": "00. Sovereign Pipeline Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [120, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/vision/analyze",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"videoFile\": \"videos/avatar_joann.mp4\"\n}",
+        "options": {}
+      },
+      "id": "node-01-vision-audit",
+      "name": "01. OpenCV 4.14 Vision & Zero-Watermark Audit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [360, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8899/api/workflow/state",
+        "options": {}
+      },
+      "id": "node-02-hindsight-memory",
+      "name": "02. Hindsight Persistent Cross-Session Memory (SQLite + 768D Vector)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/video-pipeline",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"episodeCode\": \"TEC 26-08-05\"\n}",
+        "options": {}
+      },
+      "id": "node-03-auto-video",
+      "name": "03. 6-Stage Autonomous Video Production & Brand Sanitization",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [840, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const state = $input.first().json;\nreturn [{\n  json: {\n    ...state,\n    financialArbitrage: {\n      code: 'KGU-FIN-DESK',\n      tiers: [\n        { id: 'sponsor-10k', price: 10000, paybackDays: 12 },\n        { id: 'callcenter-25k', price: 25000, paybackDays: 19 },\n        { id: 'sovereign-node-150k', price: 150000, paybackDays: 28 }\n      ]\n    }\n  }\n}];"
+      },
+      "id": "node-04-05-si-finance",
+      "name": "04 & 05. Financial Arbitrage & Institutional Retainers",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1080, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8899/api/cyber-verify",
+        "options": {}
+      },
+      "id": "node-06-cyber-shield",
+      "name": "06. Phase-0 Cyber-Shield & Plugin Safety Gate (AES-256)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1320, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/episode-select",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"episodeId\": \"ep-01\",\n  \"title\": \"Episode 01: The Architecture of SI & Sovereign Hardware Nodes\",\n  \"videoSrc\": \"videos/tec_26_08_05.mp4\",\n  \"reelSrc\": \"videos/0805_clip1.mp4\",\n  \"audioSrc\": \"audio/tec_26_08_05.mp3\"\n}",
+        "options": {}
+      },
+      "id": "node-07-impeccable-media",
+      "name": "07. Widescreen 16:9 Studio Stage & Synchronized Audio Reel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/book-call",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"Enterprise Sovereign Partner\",\n  \"phone\": \"1-888-KGU-SOVEREIGN\",\n  \"email\": \"vip@kgu.ai\",\n  \"tier\": \"24/7 AI Call Center\",\n  \"amount\": 25000\n}",
+        "options": {}
+      },
+      "id": "node-08-booking",
+      "name": "08. 5-Step Autonomous Booking & Escrow Dispatch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1800, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/syndicate-10channels",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"episode\": \"ep48\"\n}",
+        "options": {}
+      },
+      "id": "node-09-syndication",
+      "name": "09. Autonomous 10-Channel Syndication & Broadcast Distribution",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2040, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8899/api/launch-preflight",
+        "options": {}
+      },
+      "id": "node-10-preflight",
+      "name": "10. Launch Preflight Verification & Green Attestation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2280, 300]
+    }
+  ],
+  "connections": {
+    "00. Sovereign Pipeline Webhook Trigger": {
+      "main": [[{ "node": "01. OpenCV 4.14 Vision & Zero-Watermark Audit", "type": "main", "index": 0 }]]
+    },
+    "01. OpenCV 4.14 Vision & Zero-Watermark Audit": {
+      "main": [[{ "node": "02. Hindsight Persistent Cross-Session Memory (SQLite + 768D Vector)", "type": "main", "index": 0 }]]
+    },
+    "02. Hindsight Persistent Cross-Session Memory (SQLite + 768D Vector)": {
+      "main": [[{ "node": "03. 6-Stage Autonomous Video Production & Brand Sanitization", "type": "main", "index": 0 }]]
+    },
+    "03. 6-Stage Autonomous Video Production & Brand Sanitization": {
+      "main": [[{ "node": "04 & 05. Financial Arbitrage & Institutional Retainers", "type": "main", "index": 0 }]]
+    },
+    "04 & 05. Financial Arbitrage & Institutional Retainers": {
+      "main": [[{ "node": "06. Phase-0 Cyber-Shield & Plugin Safety Gate (AES-256)", "type": "main", "index": 0 }]]
+    },
+    "06. Phase-0 Cyber-Shield & Plugin Safety Gate (AES-256)": {
+      "main": [[{ "node": "07. Widescreen 16:9 Studio Stage & Synchronized Audio Reel", "type": "main", "index": 0 }]]
+    },
+    "07. Widescreen 16:9 Studio Stage & Synchronized Audio Reel": {
+      "main": [[{ "node": "08. 5-Step Autonomous Booking & Escrow Dispatch", "type": "main", "index": 0 }]]
+    },
+    "08. 5-Step Autonomous Booking & Escrow Dispatch": {
+      "main": [[{ "node": "09. Autonomous 10-Channel Syndication & Broadcast Distribution", "type": "main", "index": 0 }]]
+    },
+    "09. Autonomous 10-Channel Syndication & Broadcast Distribution": {
+      "main": [[{ "node": "10. Launch Preflight Verification & Green Attestation", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "architect": "Tech Unfiltered SI — Powered by KGU International",
+    "mode": "Standalone Sovereign n8n (Zero Zapier)",
+    "marginalCost": "$0.00 / execution"
+  }
+}

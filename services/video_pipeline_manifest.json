@@ -1,0 +1,84 @@
+{
+  "pipelineId": "PIPE-8A675319",
+  "timestamp": "2026-10-25T07:06:47.779032+00:00",
+  "brandLockup": "TECH UNFILTERED SI \u2014 POWERED BY KGU INTERNATIONAL",
+  "hosts": [
+    "Joann Coffey (CEO & Founder)",
+    "George Dubec (CRO & Co-Host)"
+  ],
+  "episodeCode": "STUDIO TRAILER",
+  "latencyMs": 364,
+  "inventory": {
+    "studioMasters": 7,
+    "cleanVerticalReels": 11,
+    "liveAvatarStreams": 4,
+    "audioMasters": 8,
+    "featuredMasterProbe": {
+      "exists": true,
+      "duration": 2741.33,
+      "width": 1920,
+      "height": 1080,
+      "codec": "h264"
+    }
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Hot-Folder & Dropbox Studio Ingest",
+      "status": "COMPLETED",
+      "detail": "Ingested 7 1080p Studio Masters, 11 9:16 Boca Raton Reels, and 8 48kHz Audio Masters."
+    },
+    {
+      "stage": 2,
+      "name": "FFmpeg Brand Sanitization & -14 LUFS Mastering",
+      "status": "COMPLETED",
+      "detail": "Purged all legacy 'AGI' & 3rd-party watermarks; locked 'TECH UNFILTERED SI \u2014 POWERED BY KGU INTERNATIONAL' slate & -14 LUFS broadcast audio."
+    },
+    {
+      "stage": 3,
+      "name": "AI Viral Hook Detection & 9:16 Split-Screen Slicer",
+      "status": "COMPLETED",
+      "detail": "Verified 11 vertical 9:16 reels (1080x1920) + 16:9 Split-Screen Duo (avatar_duo.mp4)."
+    },
+    {
+      "stage": 4,
+      "name": "24kHz Sovereign Voice & Video Twin Sync",
+      "status": "COMPLETED",
+      "detail": "Synced 4 live 16:9 video avatars (avatar_aris.mp4, avatar_duo.mp4, avatar_george.mp4, avatar_joann.mp4) + 24kHz voice references (joann_coffey_ref.wav, george_dubec_ref.wav)."
+    },
+    {
+      "stage": 5,
+      "name": "SEO Metadata, Thumbnail & Podcast RSS Synthesis",
+      "status": "COMPLETED",
+      "detail": "Generated official 'TECH UNFILTERED SI \u2022 POWERED BY KGU INTERNATIONAL' master poster & RSS 2.0 feed (podcast_feed_si.xml)."
+    },
+    {
+      "stage": 6,
+      "name": "Multi-Platform Upload Queue & Web4 Vault Sync",
+      "status": "COMPLETED",
+      "detail": "Prepared API upload manifests for YouTube Data API v3 (16:9 + Shorts), Spotify/Apple RSS, LinkedIn, X, IG Reels & TikTok."
+    }
+  ],
+  "uploadTargets": [
+    {
+      "platform": "YouTube (16:9 Full Broadcast + Shorts)",
+      "protocol": "YouTube Data API v3 Resumable Upload",
+      "status": "READY_QUEUED"
+    },
+    {
+      "platform": "Spotify & Apple Podcasts",
+      "protocol": "RSS 2.0 Enclosure Sync (podcast_feed_si.xml)",
+      "status": "LIVE_SYNCED"
+    },
+    {
+      "platform": "LinkedIn, X & Instagram Reels",
+      "protocol": "OAuth2 Container Publish Webhook",
+      "status": "READY_QUEUED"
+    },
+    {
+      "platform": "Tech Unfiltered SI Web4 Vault",
+      "protocol": "SQLite + ALL_EPISODES_CATALOG Auto-Bind",
+      "status": "LIVE_ACTIVE"
+    }
+  ]
+}
