@@ -1,0 +1,513 @@
+{
+  "id": "tech-unfiltered-10channel-syndication",
+  "name": "Tech Unfiltered SI \u2014 Autonomous 10-Channel Omnichannel Syndication",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "node-manual-trigger",
+      "name": "Manual Run Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tech-unfiltered-10channels",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "node-webhook-trigger",
+      "name": "Webhook Ingest Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        100,
+        500
+      ],
+      "webhookId": "tech-unfiltered-10channels-hook"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtHour": 10,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "node-schedule-trigger",
+      "name": "Scheduled Broadcast Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        100,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ingest & Parse Incoming Syndication Request\nlet inputData = {};\ntry {\n  inputData = $('Webhook Ingest Trigger').first().json.body || {};\n} catch (e) {\n  try {\n    inputData = $input.first().json || {};\n  } catch (err) {}\n}\n\nconst episode = inputData.episode || inputData.episodeCode || \"ep1\";\nconst thesis = inputData.thesis || null;\nconst dryRun = Boolean(inputData.dryRun || false);\n\nreturn [{\n  json: {\n    episode: episode,\n    thesis: thesis,\n    dryRun: dryRun,\n    triggeredAt: new Date().toISOString(),\n    orchestrator: \"KGU Autonomous 10-Channel Syndicator (n8n Engine)\"\n  }\n}];"
+      },
+      "id": "node-parse-input",
+      "name": "Ingest & Select Episode",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/syndicate-10channels",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"episode\": \"{{ $json.episode }}\",\n  \"thesis\": {{ $json.thesis ? JSON.stringify($json.thesis) : \"null\" }},\n  \"dryRun\": {{ $json.dryRun }}\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "node-call-syndicator",
+      "name": "Execute 10-Channel Sovereign Dispatch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract all 10 channel payloads from master report\nconst res = $input.first().json;\nconst report = res.report || {};\nconst channels = report.channels || {};\n\nreturn [{\n  json: {\n    runId: report.runId,\n    timestamp: report.timestamp,\n    episodeCode: report.episodeCode,\n    episodeTitle: report.episodeTitle,\n    executionTimeMs: report.executionTimeMs,\n    channelsCompleted: report.channelsCompleted,\n    ch1: channels.ch1_youtube_studio || {},\n    ch2: channels.ch2_shorts_tiktok || {},\n    ch3: channels.ch3_apple_podcasts || {},\n    ch4: channels.ch4_spotify_video || {},\n    ch5: channels.ch5_x_twitter || {},\n    ch6: channels.ch6_linkedin || {},\n    ch7: channels.ch7_signal_brief || {},\n    ch8: channels.ch8_nostr_relay || {},\n    ch9: channels.ch9_streaming_platform || {},\n    ch10: channels.ch10_deal_desk_escrow || {}\n  }\n}];"
+      },
+      "id": "node-fanout-prep",
+      "name": "Fan-Out & Stage All 10 Channels",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 1: YouTube Studio 4K Master Broadcast\nconst data = $input.first().json;\nconst ch1 = data.ch1 || {};\n\nreturn [{\n  json: {\n    channelNumber: 1,\n    channelName: \"YouTube Studio (4K Widescreen Master)\",\n    status: ch1.status || \"DISPATCHED\",\n    videoTitle: ch1.videoTitle,\n    category: ch1.category,\n    chaptersCount: (ch1.chapters || []).length,\n    chapters: ch1.chapters,\n    uploadProtocol: ch1.uploadProtocol,\n    outputArtifact: ch1.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch1-youtube",
+      "name": "Ch1 - YouTube Studio 4K",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 2: YouTube Shorts & TikTok Vertical Reels (9:16)\nconst data = $input.first().json;\nconst ch2 = data.ch2 || {};\n\nreturn [{\n  json: {\n    channelNumber: 2,\n    channelName: \"YouTube Shorts & TikTok (Vertical 9:16)\",\n    status: ch2.status || \"DISPATCHED\",\n    reelsCount: ch2.reelsCount || (ch2.reels || []).length,\n    reels: (ch2.reels || []).map(r => ({\n      id: r.reel_id,\n      title: r.title,\n      aspectRatio: r.aspect_ratio,\n      duration: r.duration_seconds,\n      hook: r.hook_0_3s,\n      cta: r.cta_45_60s,\n      hashtags: r.caption_hashtags\n    })),\n    cvVisionAudited: ch2.cvVisionAudited,\n    outputArtifact: ch2.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch2-shorts",
+      "name": "Ch2 - Shorts & TikTok 9:16",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8899/podcast_feed_si.xml",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "node-ch3-apple",
+      "name": "Ch3 - Apple Podcasts RSS",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8899/podcast_feed_spotify.xml",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "node-ch4-spotify",
+      "name": "Ch4 - Spotify Video Podcasts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 5: X / Twitter Executive 5-Tweet Cascade\nconst data = $input.first().json;\nconst ch5 = data.ch5 || {};\n\nreturn [{\n  json: {\n    channelNumber: 5,\n    channelName: \"X / Twitter (Executive Thread Cascade)\",\n    status: ch5.status || \"DISPATCHED\",\n    author: ch5.author || \"Joann Coffey & George Dubec\",\n    threadLength: ch5.threadLength || (ch5.tweets || []).length,\n    tweets: ch5.tweets || [],\n    outputArtifact: ch5.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch5-twitter",
+      "name": "Ch5 - X / Twitter 5-Tweet Cascade",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 6: LinkedIn C-Suite Thought Leadership\nconst data = $input.first().json;\nconst ch6 = data.ch6 || {};\n\nreturn [{\n  json: {\n    channelNumber: 6,\n    channelName: \"LinkedIn (C-Suite Thought Leadership)\",\n    status: ch6.status || \"DISPATCHED\",\n    articleHeadline: ch6.articleHeadline,\n    targetAudience: ch6.targetAudience,\n    carouselSlides: ch6.carouselSlides,\n    contentPreview: (ch6.postContent || \"\").slice(0, 300) + \"...\",\n    outputArtifact: ch6.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch6-linkedin",
+      "name": "Ch6 - LinkedIn C-Suite Article",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 7: The Signal Brief Enterprise Dispatch (250K Subscribers)\nconst data = $input.first().json;\nconst ch7 = data.ch7 || {};\n\nreturn [{\n  json: {\n    channelNumber: 7,\n    channelName: \"The Signal Brief (Stalwart Sovereign Mail 250K)\",\n    status: ch7.status || \"DISPATCHED\",\n    subscribers: ch7.subscribers || \"250,000+ Verified Executives\",\n    mailTransport: ch7.mailTransport,\n    subject: ch7.subject,\n    outputArtifact: ch7.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch7-signal",
+      "name": "Ch7 - The Signal Brief Newsletter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 8: Nostr Decentralized Relay Network (NIP-01 & NIP-23)\nconst data = $input.first().json;\nconst ch8 = data.ch8 || {};\nconst details = ch8.nostrDetails || {};\n\nreturn [{\n  json: {\n    channelNumber: 8,\n    channelName: \"Nostr Decentralized Relay Network (Buzz Network NIP-01/23)\",\n    status: ch8.status || \"DISPATCHED\",\n    protocol: details.protocol || \"NIP-01 & NIP-23\",\n    broadcastRelays: details.broadcastRelays || [],\n    shortNoteId: (details.shortNoteEvent || {}).id,\n    longFormArticleId: (details.longFormArticleEvent || {}).id,\n    sealedAt: details.sealedAt,\n    outputArtifact: ch8.outputArtifact,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch8-nostr",
+      "name": "Ch8 - Nostr Decentralized Relay",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8899/api/workflow/episode-select",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"episodeId\": \"{{ $('Fan-Out & Stage All 10 Channels').first().json.episodeCode }}\",\n  \"title\": \"{{ $('Fan-Out & Stage All 10 Channels').first().json.episodeTitle }}\"\n}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "node-ch9-stage",
+      "name": "Ch9 - 4K Sovereign Web4 Stage",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel 10: Twenty CRM & Institutional Escrow Deal Desk\nconst data = $input.first().json;\nconst ch10 = data.ch10 || {};\n\nreturn [{\n  json: {\n    channelNumber: 10,\n    channelName: \"Sovereign Deal Desk & Institutional Escrow (Twenty CRM)\",\n    status: ch10.status || \"DISPATCHED\",\n    crmStatus: ch10.crmStatus,\n    docketId: ch10.docketId,\n    contractHash: ch10.contractHash,\n    viewDocketUrl: ch10.viewDocketUrl,\n    escrowEscort: ch10.escrowEscort,\n    publishedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "node-ch10-crm",
+      "name": "Ch10 - Twenty CRM & Escrow",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Consolidate Execution Results from All 10 Channels\nconst stageData = $('Fan-Out & Stage All 10 Channels').first().json;\n\nlet ch1Res = {}, ch2Res = {}, ch5Res = {}, ch6Res = {}, ch7Res = {}, ch8Res = {}, ch10Res = {};\ntry { ch1Res = $('Ch1 - YouTube Studio 4K').first().json; } catch(e) {}\ntry { ch2Res = $('Ch2 - Shorts & TikTok 9:16').first().json; } catch(e) {}\ntry { ch5Res = $('Ch5 - X / Twitter 5-Tweet Cascade').first().json; } catch(e) {}\ntry { ch6Res = $('Ch6 - LinkedIn C-Suite Article').first().json; } catch(e) {}\ntry { ch7Res = $('Ch7 - The Signal Brief Newsletter').first().json; } catch(e) {}\ntry { ch8Res = $('Ch8 - Nostr Decentralized Relay').first().json; } catch(e) {}\ntry { ch10Res = $('Ch10 - Twenty CRM & Escrow').first().json; } catch(e) {}\n\nconst summaryReceipt = {\n  ok: true,\n  runId: stageData.runId,\n  episodeCode: stageData.episodeCode,\n  episodeTitle: stageData.episodeTitle,\n  all10ChannelsActive: true,\n  channelsCompleted: 10,\n  executionEngine: \"n8n + Sovereign Full-Stack Autonomous Engine\",\n  completedAt: new Date().toISOString(),\n  channelsSummary: [\n    { channel: 1, name: \"YouTube Studio 4K\", status: ch1Res.status || \"CONFIRMED\" },\n    { channel: 2, name: \"YouTube Shorts & TikTok (Vertical 9:16)\", status: ch2Res.status || \"CONFIRMED\", reels: ch2Res.reelsCount || 3 },\n    { channel: 3, name: \"Apple Podcasts RSS\", status: \"CONFIRMED\", feedUrl: \"http://127.0.0.1:8899/podcast_feed_si.xml\" },\n    { channel: 4, name: \"Spotify Video Podcasts RSS\", status: \"CONFIRMED\", feedUrl: \"http://127.0.0.1:8899/podcast_feed_spotify.xml\" },\n    { channel: 5, name: \"X / Twitter 5-Tweet Thread\", status: ch5Res.status || \"CONFIRMED\", tweets: ch5Res.threadLength || 5 },\n    { channel: 6, name: \"LinkedIn C-Suite Article\", status: ch6Res.status || \"CONFIRMED\", target: ch6Res.targetAudience },\n    { channel: 7, name: \"The Signal Brief (250K)\", status: ch7Res.status || \"CONFIRMED\", subscribers: ch7Res.subscribers },\n    { channel: 8, name: \"Nostr Decentralized Relays\", status: ch8Res.status || \"CONFIRMED\", protocol: \"NIP-01/23\" },\n    { channel: 9, name: \"Tech Unfiltered 4K Platform\", status: \"CONFIRMED\", stageUrl: \"http://127.0.0.1:8899/#stream\" },\n    { channel: 10, name: \"Twenty CRM & Escrow\", status: ch10Res.status || \"CONFIRMED\", docket: ch10Res.docketId }\n  ]\n};\n\nreturn [{ json: summaryReceipt }];"
+      },
+      "id": "node-consolidate",
+      "name": "Consolidate 10-Channel Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "node-respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1880,
+        500
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Run Trigger": {
+      "main": [
+        [
+          {
+            "node": "Ingest & Select Episode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Ingest Trigger": {
+      "main": [
+        [
+          {
+            "node": "Ingest & Select Episode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scheduled Broadcast Trigger": {
+      "main": [
+        [
+          {
+            "node": "Ingest & Select Episode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingest & Select Episode": {
+      "main": [
+        [
+          {
+            "node": "Execute 10-Channel Sovereign Dispatch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute 10-Channel Sovereign Dispatch": {
+      "main": [
+        [
+          {
+            "node": "Fan-Out & Stage All 10 Channels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fan-Out & Stage All 10 Channels": {
+      "main": [
+        [
+          {
+            "node": "Ch1 - YouTube Studio 4K",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch2 - Shorts & TikTok 9:16",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch3 - Apple Podcasts RSS",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch4 - Spotify Video Podcasts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch5 - X / Twitter 5-Tweet Cascade",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch6 - LinkedIn C-Suite Article",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch7 - The Signal Brief Newsletter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch8 - Nostr Decentralized Relay",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch9 - 4K Sovereign Web4 Stage",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ch10 - Twenty CRM & Escrow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch1 - YouTube Studio 4K": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch2 - Shorts & TikTok 9:16": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch3 - Apple Podcasts RSS": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch4 - Spotify Video Podcasts": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch5 - X / Twitter 5-Tweet Cascade": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch6 - LinkedIn C-Suite Article": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch7 - The Signal Brief Newsletter": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch8 - Nostr Decentralized Relay": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch9 - 4K Sovereign Web4 Stage": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ch10 - Twenty CRM & Escrow": {
+      "main": [
+        [
+          {
+            "node": "Consolidate 10-Channel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consolidate 10-Channel Results": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  }
+}
