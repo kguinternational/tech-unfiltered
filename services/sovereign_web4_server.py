@@ -4,6 +4,7 @@ import sys
 import json
 import time
 import uuid
+import socket
 import sqlite3
 import hashlib
 import urllib.parse
@@ -391,6 +392,139 @@ class SovereignHTTPRequestHandler(SimpleHTTPRequestHandler):
             result["workflowId"] = wf_id
             result["timestamp"] = ts
             result["telemetry"] = get_backend_telemetry()["stats"]
+            self._send_json(200, result)
+            return
+
+        # 1B. VIDIQ & N8N FLEET UPLOAD & SYNC WORKFLOW
+        if path in ("/api/vidiq/upload", "/api/n8n/upload"):
+            ep_order = int(body.get("episode", 1))
+            is_dry_run = bool(body.get("dryRun", False))
+            
+            vidiq_file = os.path.join(ROOT_DIR, "services", "syndication_10channels", "VIDIQ_ALL_EPISODES_FLEET_MANIFEST.json")
+            target_ep = None
+            if os.path.exists(vidiq_file):
+                with open(vidiq_file, "r", encoding="utf-8") as jf:
+                    m_data = json.load(jf)
+                    for ep in m_data.get("episodesInOrder", []):
+                        if ep.get("order") == ep_order:
+                            target_ep = ep
+                            break
+                            
+            if not target_ep:
+                self._send_json(404, {"ok": False, "error": f"Episode order #{ep_order} not found in manifest"})
+                return
+
+            if is_dry_run:
+                resp = {
+                    "ok": True,
+                    "status": "DRY_RUN_SUCCESS",
+                    "code": target_ep["code"],
+                    "order": target_ep["order"],
+                    "title": target_ep["title"],
+                    "videoSizeMB": target_ep["videoSizeMB"],
+                    "videoId": f"sim_yt_{target_ep['code'].lower()}",
+                    "videoUrl": f"https://youtu.be/sim_{target_ep['code'].lower()}",
+                    "simulated": True,
+                    "publishedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ")
+                }
+                self._send_json(200, resp)
+                return
+
+            # Live upload invocation via pipeline
+            try:
+                import subprocess
+                cmd = [
+                    sys.executable,
+                    os.path.join(ROOT_DIR, "services", "vidiq_fleet_upload_pipeline.py"),
+                    "--episode", str(ep_order)
+                ]
+                proc = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
+                stdout = proc.stdout
+                
+                vid_match = re.search(r"Video ID:\s*([A-Za-z0-9_-]+)", stdout)
+                video_id = vid_match.group(1) if vid_match else None
+                
+                if proc.returncode == 0:
+                    self._send_json(200, {
+                        "ok": True,
+                        "status": "PUBLISHED",
+                        "code": target_ep["code"],
+                        "order": target_ep["order"],
+                        "title": target_ep["title"],
+                        "videoId": video_id,
+                        "videoUrl": f"https://youtu.be/{video_id}" if video_id else None,
+                        "publishedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ")
+                    })
+                else:
+                    self._send_json(500, {
+                        "ok": False,
+                        "error": proc.stderr or stdout,
+                        "returnCode": proc.returncode
+                    })
+            except Exception as e:
+                self._send_json(500, {"ok": False, "error": str(e)})
+            return
+
+        if path in ("/api/vidiq/sync", "/api/n8n/sync"):
+            code = sanitize_text(body.get("code") or "EP-001", 32)
+            video_id = sanitize_text(body.get("videoId") or "", 64)
+            video_url = sanitize_text(body.get("videoUrl") or "", 128)
+            status = sanitize_text(body.get("status") or "LIVE", 32)
+            
+            wf_id, ts = record_workflow(
+                "vidiq_n8n_sync",
+                "KGU VidIQ YouTube Syndication",
+                {"code": code, "videoId": video_id, "status": status},
+                {"videoUrl": video_url},
+                f"Synced {code} -> {video_url} via n8n"
+            )
+            self._send_json(200, {
+                "ok": True,
+                "code": code,
+                "videoId": video_id,
+                "videoUrl": video_url,
+                "workflowId": wf_id,
+                "syncedAt": ts
+            })
+            return
+
+        # 4B. 501(c)(3) FOUNDATION DONATION INTAKE WORKFLOW
+        if path in ("/api/donate", "/api/donations/pledge"):
+            donor_name = sanitize_text(body.get("name") or "Anonymous Supporter", 120)
+            donor_email = sanitize_text(body.get("email") or "supporter@kgu.international", 120)
+            donor_phone = sanitize_text(body.get("phone") or "1-844-SAFE-107", 60)
+            amount = int(body.get("amount") or 100)
+            frequency = sanitize_text(body.get("frequency") or "one-time", 32)
+            donation_id = f"DON-{uuid.uuid4().hex[:8].upper()}"
+            now_iso = datetime.now(timezone.utc).isoformat()
+            
+            result = {
+                "ok": True,
+                "donationId": donation_id,
+                "donorName": donor_name,
+                "donorEmail": donor_email,
+                "donorPhone": donor_phone,
+                "amount": amount,
+                "frequency": frequency,
+                "foundation": "JC Coffey Foundation Inc.",
+                "taxStatus": "501(c)(3) Non-Profit Public Charity",
+                "ein": "33-3450194",
+                "receiptStatus": "ISSUED",
+                "hotlines": {
+                    "support": "1-844-SAFE-107",
+                    "studio": "1-888-323-TECH"
+                },
+                "message": f"Thank you for supporting the JC Coffey Foundation. Your gift of ${amount:,} directly empowers human healing, mental health resilience, and ethical AI stewardship."
+            }
+            wf_id, ts = record_workflow(
+                "foundation_donation_intake",
+                f"{donor_name} -> JC Coffey Foundation",
+                {"name": donor_name, "email": donor_email, "amount": amount, "frequency": frequency},
+                result,
+                f"Accepted ${amount:,} 501(c)(3) donation pledge ({donation_id}) from {donor_name}."
+            )
+            result["workflowId"] = wf_id
+            result["timestamp"] = ts
             self._send_json(200, result)
             return
 
@@ -992,7 +1126,7 @@ class SovereignHTTPRequestHandler(SimpleHTTPRequestHandler):
         if not range_header:
             try:
                 return super().do_GET()
-            except (BrokenPipeError, ConnectionResetError):
+            except (BrokenPipeError, ConnectionResetError, socket.error):
                 return
 
         fs_path = self.translate_path(self.path)
@@ -1005,8 +1139,14 @@ class SovereignHTTPRequestHandler(SimpleHTTPRequestHandler):
             return super().do_GET()
 
         start = int(m.group(1))
-        end = int(m.group(2)) if m.group(2) else file_size - 1
-        end = min(end, file_size - 1)
+        # Cap range chunk to 4MB to prevent buffering massive video files in RAM and avoid net::ERR_ABORTED
+        max_chunk = 4 * 1024 * 1024
+        if m.group(2):
+            req_end = int(m.group(2))
+            end = min(req_end, start + max_chunk - 1, file_size - 1)
+        else:
+            end = min(start + max_chunk - 1, file_size - 1)
+
         if start >= file_size or start > end:
             self.send_response(416)
             self.send_header("Content-Range", f"bytes */{file_size}")
@@ -1016,16 +1156,22 @@ class SovereignHTTPRequestHandler(SimpleHTTPRequestHandler):
         chunk_len = end - start + 1
         ctype = self.guess_type(fs_path)
         try:
-            with open(fs_path, "rb") as f:
-                f.seek(start)
-                data = f.read(chunk_len)
             self.send_response(206)
             self.send_header("Content-Type", ctype)
             self.send_header("Content-Range", f"bytes {start}-{end}/{file_size}")
             self.send_header("Content-Length", str(chunk_len))
             self.end_headers()
-            self.wfile.write(data)
-        except (BrokenPipeError, ConnectionResetError):
+            with open(fs_path, "rb") as f:
+                f.seek(start)
+                bytes_left = chunk_len
+                while bytes_left > 0:
+                    read_amt = min(bytes_left, 65536)
+                    buf = f.read(read_amt)
+                    if not buf:
+                        break
+                    self.wfile.write(buf)
+                    bytes_left -= len(buf)
+        except (BrokenPipeError, ConnectionResetError, socket.error):
             pass
 
 

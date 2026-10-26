@@ -992,6 +992,183 @@ body.deal-desk-open .desk-drawer-body {
 }
 
 /* ============================================================
+   SOVEREIGN 501(c)(3) DONATION DRAWER (MONETIZATION & HEALING)
+   ============================================================ */
+.donate-btn {
+  background: linear-gradient(135deg, rgba(255, 180, 0, 0.18), rgba(255, 120, 0, 0.28));
+  border: 1px solid rgba(255, 180, 0, 0.65);
+  color: #ffca3a;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.donate-btn:hover {
+  background: #ffb400;
+  color: #050508;
+  box-shadow: 0 0 20px rgba(255, 180, 0, 0.55);
+  transform: translateY(-1px);
+}
+
+#donationDrawer {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+body.donation-open #donationDrawer {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.donation-open .donation-drawer-body {
+  transform: translateX(0);
+}
+.donation-drawer-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+}
+.donation-drawer-body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(94vw, 560px);
+  background: #0c0d12;
+  border-left: 1px solid rgba(255, 180, 0, 0.4);
+  box-shadow: -25px 0 70px rgba(0, 0, 0, 0.95);
+  padding: clamp(24px, 4vw, 40px);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.45s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.donation-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+.donation-chip {
+  padding: 12px 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 180, 0, 0.25);
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.donation-chip:hover, .donation-chip.active {
+  background: rgba(255, 180, 0, 0.22);
+  border-color: #ffb400;
+  color: #ffca3a;
+  box-shadow: 0 0 14px rgba(255, 180, 0, 0.35);
+}
+.donation-badge-box {
+  background: rgba(255, 180, 0, 0.06);
+  border: 1px solid rgba(255, 180, 0, 0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(244, 242, 239, 0.9);
+}
+.donation-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.donation-input-group label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 242, 239, 0.7);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.donation-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 180, 0, 0.3);
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.donation-input:focus {
+  border-color: #ffb400;
+  box-shadow: 0 0 10px rgba(255, 180, 0, 0.25);
+}
+.donation-submit-btn {
+  background: linear-gradient(135deg, #ffb400, #ff8c00);
+  border: none;
+  color: #050508;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(255, 180, 0, 0.4);
+}
+.donation-submit-btn:hover {
+  background: #ffc425;
+  box-shadow: 0 6px 26px rgba(255, 180, 0, 0.65);
+  transform: translateY(-2px);
+}
+.donation-frequency-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 12px;
+}
+.donation-freq-btn {
+  flex: 1;
+  padding: 8px 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: rgba(244, 242, 239, 0.7);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.donation-freq-btn.active {
+  background: rgba(255, 180, 0, 0.25);
+  color: #ffca3a;
+  border: 1px solid rgba(255, 180, 0, 0.4);
+}
+
+/* ============================================================
    RESPONSIVE OVERRIDES
    ============================================================ */
 @media (max-width: 900px) {
@@ -1727,6 +1904,9 @@ body.godseye-active #globeHeadline .gh-sub {
     <a href="https://github.com/kguinternational/tech-unfiltered" target="_blank" rel="noopener noreferrer" class="github-pill" title="View Source on GitHub">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GITHUB
     </a>
+    <button id="openDonateTop" class="donate-btn" title="Support JC Coffey Foundation (501c3)">
+      💝 DONATE (501c3)
+    </button>
     <a href="tel:18883238324" class="hotline-pill" title="Call Tech Unfiltered Studio">
       📞 1-888-323-TECH
     </a>
@@ -1842,7 +2022,7 @@ body.godseye-active #globeHeadline .gh-sub {
 
 <!-- 3. MASSIVE FEATURED HERO BANNER -->
 <section class="hero-banner" id="heroBanner">
-  <video class="hero-video-bg" src="videos/tec_26_08_05.mp4" muted autoplay loop playsinline preload="auto"></video>
+  <video class="hero-video-bg" src="videos/george_joann_intro.mp4" muted autoplay loop playsinline preload="metadata"></video>
   <div class="hero-gradient-overlay"></div>
   <div class="hero-content">
     <div class="hero-badges">
@@ -2117,7 +2297,75 @@ body.godseye-active #globeHeadline .gh-sub {
       <p class="tier-desc">"The Love Effect OS": Technology without reverence, love, and honor for people is hollow. Sacred Memory preservation grants and youth sovereign compute access.</p>
       <div class="tier-actions">
         <a href="tel:18447233107" class="tier-btn-primary">📞 Foundation: 1-844-SAFE-107</a>
-        <a href="mailto:foundation@jccoffeyfoundation.org?subject=JC%20Coffey%20Foundation%20Endowment%20Inquiry" class="tier-btn-secondary">Inquire</a>
+        <button type="button" class="tier-btn-secondary" onclick="openDonationDrawer()">💝 Donate Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SOVEREIGN 501(c)(3) DONATION DRAWER (MONETIZATION & HEALING)
+     ============================================================ -->
+<div id="donationDrawer">
+  <div class="donation-drawer-scrim" id="donationDrawerScrim"></div>
+  <div class="donation-drawer-body">
+    <div class="desk-header">
+      <div>
+        <h2 style="color:#ffca3a;margin:0 0 4px 0;">Support JC Coffey Foundation</h2>
+        <p style="color:rgba(244,242,239,0.7);font-size:11px;margin:0;font-family:var(--font-mono);">501(c)(3) NON-PROFIT CHARITY · EIN 33-3450194</p>
+      </div>
+      <button class="modal-close-btn" id="donationDrawerClose">✕</button>
+    </div>
+
+    <div class="donation-badge-box">
+      <strong>✨ "The Love Effect OS" Directive:</strong><br>
+      Your tax-deductible gift empowers human healing, mental health resilience, youth technology literacy, and ethical sovereign intelligence. Every dollar directly advances human sovereignty.
+    </div>
+
+    <!-- FREQUENCY TOGGLE -->
+    <div class="donation-frequency-toggle">
+      <button type="button" class="donation-freq-btn active" data-freq="one-time" id="freqOneTime">One-Time Gift</button>
+      <button type="button" class="donation-freq-btn" data-freq="monthly" id="freqMonthly">Monthly Patron</button>
+    </div>
+
+    <!-- PRESET AMOUNT CHIPS -->
+    <div style="font-family:var(--font-mono);font-size:11px;color:rgba(244,242,239,0.7);text-transform:uppercase;">Select Gift Tier</div>
+    <div class="donation-chips">
+      <div class="donation-chip" data-amount="25">$25<br><small style="font-size:10px;opacity:0.8;">Ally</small></div>
+      <div class="donation-chip" data-amount="50">$50<br><small style="font-size:10px;opacity:0.8;">Partner</small></div>
+      <div class="donation-chip active" data-amount="100">$100<br><small style="font-size:10px;opacity:0.8;">Patron</small></div>
+      <div class="donation-chip" data-amount="250">$250<br><small style="font-size:10px;opacity:0.8;">Fellow</small></div>
+      <div class="donation-chip" data-amount="500">$500<br><small style="font-size:10px;opacity:0.8;">Leader</small></div>
+      <div class="donation-chip" data-amount="1000">$1,000<br><small style="font-size:10px;opacity:0.8;">Founder</small></div>
+    </div>
+
+    <!-- FORM INPUTS -->
+    <div class="donation-input-group">
+      <label for="customDonationInput">Or Custom Amount ($ USD)</label>
+      <input type="number" id="customDonationInput" class="donation-input" placeholder="100" min="5" value="100">
+    </div>
+
+    <div class="donation-input-group">
+      <label for="donorNameInput">Full Name / Organization</label>
+      <input type="text" id="donorNameInput" class="donation-input" placeholder="Joann Coffey Supporter">
+    </div>
+
+    <div class="donation-input-group">
+      <label for="donorEmailInput">Email (For Tax-Deductible Receipt)</label>
+      <input type="email" id="donorEmailInput" class="donation-input" placeholder="donor@domain.com">
+    </div>
+
+    <button type="button" id="submitDonationBtn" class="donation-submit-btn">
+      💝 Confirm $100 Donation Pledge
+    </button>
+
+    <div id="donationSuccessBox" style="display:none;background:rgba(0,255,136,0.1);border:1px solid #00ff88;border-radius:8px;padding:16px;color:#00ff88;font-family:var(--font-mono);font-size:12px;line-height:1.6;"></div>
+
+    <div style="border-top:1px solid rgba(244,242,239,0.12);padding-top:14px;display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;color:rgba(244,242,239,0.6);">Prefer to pledge or wire by phone?</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="tel:18447233107" class="tier-btn-primary" style="background:#ffca3a;color:#000;">📞 Foundation: 1-844-SAFE-107</a>
+        <a href="tel:18883238324" class="tier-btn-secondary">📞 Studio: 1-888-323-TECH</a>
       </div>
     </div>
   </div>
@@ -2575,6 +2823,118 @@ if (openDealBtn) openDealBtn.addEventListener("click", openDealDesk);
 if (closeDealBtn) closeDealBtn.addEventListener("click", closeDealDesk);
 if (deskScrim) deskScrim.addEventListener("click", closeDealDesk);
 
+// Donation Drawer Logic
+const donationDrawer = document.getElementById("donationDrawer");
+const openDonateBtn = document.getElementById("openDonateTop");
+const closeDonateBtn = document.getElementById("donationDrawerClose");
+const donationScrim = document.getElementById("donationDrawerScrim");
+
+let selectedDonationAmount = 100;
+let selectedDonationFreq = "one-time";
+
+function openDonationDrawer() {
+  closeModal();
+  closeDealDesk();
+  document.body.classList.add("donation-open");
+}
+
+function closeDonationDrawer() {
+  document.body.classList.remove("donation-open");
+}
+
+if (openDonateBtn) openDonateBtn.addEventListener("click", openDonationDrawer);
+if (closeDonateBtn) closeDonateBtn.addEventListener("click", closeDonationDrawer);
+if (donationScrim) donationScrim.addEventListener("click", closeDonationDrawer);
+
+// Donation Chips & Inputs
+document.querySelectorAll(".donation-chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".donation-chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    selectedDonationAmount = parseInt(chip.getAttribute("data-amount"), 10);
+    const customInp = document.getElementById("customDonationInput");
+    if (customInp) customInp.value = selectedDonationAmount;
+    updateDonationSubmitBtn();
+  });
+});
+
+const customDonationInput = document.getElementById("customDonationInput");
+if (customDonationInput) {
+  customDonationInput.addEventListener("input", (e) => {
+    const val = parseInt(e.target.value, 10) || 0;
+    selectedDonationAmount = val;
+    document.querySelectorAll(".donation-chip").forEach(c => {
+      if (parseInt(c.getAttribute("data-amount"), 10) === val) {
+        c.classList.add("active");
+      } else {
+        c.classList.remove("active");
+      }
+    });
+    updateDonationSubmitBtn();
+  });
+}
+
+const freqOneTime = document.getElementById("freqOneTime");
+const freqMonthly = document.getElementById("freqMonthly");
+if (freqOneTime && freqMonthly) {
+  freqOneTime.addEventListener("click", () => {
+    freqOneTime.classList.add("active");
+    freqMonthly.classList.remove("active");
+    selectedDonationFreq = "one-time";
+    updateDonationSubmitBtn();
+  });
+  freqMonthly.addEventListener("click", () => {
+    freqMonthly.classList.add("active");
+    freqOneTime.classList.remove("active");
+    selectedDonationFreq = "monthly";
+    updateDonationSubmitBtn();
+  });
+}
+
+function updateDonationSubmitBtn() {
+  const submitBtn = document.getElementById("submitDonationBtn");
+  if (!submitBtn) return;
+  submitBtn.textContent = `💝 Confirm $${selectedDonationAmount.toLocaleString()} ${selectedDonationFreq === 'monthly' ? 'Monthly ' : ''}Donation Pledge`;
+}
+
+const submitDonationBtn = document.getElementById("submitDonationBtn");
+if (submitDonationBtn) {
+  submitDonationBtn.addEventListener("click", async () => {
+    const nameInp = document.getElementById("donorNameInput");
+    const emailInp = document.getElementById("donorEmailInput");
+    const name = nameInp && nameInp.value.trim() ? nameInp.value.trim() : "Generous Supporter";
+    const email = emailInp && emailInp.value.trim() ? emailInp.value.trim() : "supporter@kgu.international";
+    const amt = selectedDonationAmount || 100;
+    submitDonationBtn.disabled = true;
+    submitDonationBtn.textContent = "Processing Sovereign Pledge...";
+    try {
+      const resp = await fetch("/api/donate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          amount: amt,
+          frequency: selectedDonationFreq
+        })
+      });
+      const data = await resp.json();
+      const sBox = document.getElementById("donationSuccessBox");
+      if (sBox) {
+        sBox.style.display = "block";
+        sBox.innerHTML = `<strong>✅ DONATION PLEDGE RATIFIED (${data.donationId})</strong><br>` +
+          `Thank you, ${data.donorName}! Your gift of $${amt.toLocaleString()} to ${data.foundation} (EIN: ${data.ein}) has been logged in our sovereign ledger.<br>` +
+          `A 501(c)(3) tax receipt has been generated. For assistance, call 1-844-SAFE-107.`;
+      }
+      submitDonationBtn.textContent = "✅ Donation Pledge Confirmed";
+    } catch (err) {
+      console.error(err);
+      submitDonationBtn.disabled = false;
+      submitDonationBtn.textContent = "Retry Donation Pledge";
+    }
+  });
+}
+
 // Keyboard controls
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape" || e.keyCode === 27) {
@@ -2582,6 +2942,8 @@ window.addEventListener("keydown", (e) => {
       closeModal();
     } else if (document.body.classList.contains("deal-desk-open")) {
       closeDealDesk();
+    } else if (document.body.classList.contains("donation-open")) {
+      closeDonationDrawer();
     }
   }
 });
