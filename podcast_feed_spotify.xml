@@ -5,94 +5,95 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>TECH UNFILTERED SI — SPOTIFY VIDEO &amp; AUDIO BROADCAST</title>
-    <link>https://techunfilteredsi.com</link>
+    <link>http://127.0.0.1:8899/</link>
     <language>en-us</language>
     <copyright>2026 KGU International LLC</copyright>
-    <itunes:author>Joann Coffey &amp; George Dubec (POWERED BY KGU INTERNATIONAL)</itunes:author>
+    <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
     <description>The Flagship Video &amp; Audio Broadcast for Physical Synthetic Intelligence (SI), Living Worlds in Code, and NHIL Autonomous Enterprise Operations. Powered by KGU International.</description>
-    <itunes:image href="https://techunfilteredsi.com/podcast_cover.png" />
+    <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     <itunes:category text="Technology" />
     <itunes:category text="Business">
       <itunes:category text="Management" />
     </itunes:category>
     <itunes:explicit>no</itunes:explicit>
     <spotify:countryOfOrigin>us</spotify:countryOfOrigin>
-
+    
     <item>
-      <title>Episode 01: Why Rented Cloud Wrappers Collapse Under Margin Pressure</title>
-      <description><![CDATA[Unfiltered 45-minute Boca Raton studio master with Joann Coffey & George Dubec on Dedicated Sovereign Hardware Nodes, 100% No Human In The Loop (NHIL) execution, and living worlds in code. Powered by KGU International.]]></description>
-      <guid isPermaLink="false">ep-001-spotify</guid>
-      <pubDate>Wed, 05 Aug 2026 18:00:00 GMT</pubDate>
+      <title>Episode 01: Why Rented Cloud Wrappers Collapse Under Margin Pressure | TECH UNFILTERED SI</title>
+      <description><![CDATA[Boca Raton Flagship Premiere. Joann Coffey & George Dubec expose the economic reality of rented cloud wrappers, OpenAI token taxes, and the structural inevitability of Dedicated Sovereign Hardware Nodes.]]></description>
+      <guid isPermaLink="false">ep-001-spotify-video</guid>
+      <pubDate>Wed, 05 Aug 2026 14:00:00 GMT</pubDate>
       <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_05.mp4" length="1994348544" type="video/mp4" />
       <itunes:duration>45:41</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Episode 02: We Replaced a $40,000/Mo Call Center With a Local GPU (92ms Test)</title>
-      <description><![CDATA[Sub-100ms full-duplex conversational voice AI live test. Eliminating hosted per-minute SaaS tolls and scaling up to 250 simultaneous calls on local Apple Silicon Metal clusters at $0.00 marginal cost.]]></description>
-      <guid isPermaLink="false">ep-002-spotify</guid>
-      <pubDate>Thu, 13 Aug 2026 18:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_13.mp4" length="1089601536" type="video/mp4" />
+      <title>Episode 02: We Replaced a $40,000/Mo Call Center With a Local GPU (92ms Test) | TECH UNFILTERED SI</title>
+      <description><![CDATA[Live studio benchmark of sub-100ms full-duplex conversational voice AI. Replacing human shifts and ,000/mo call centers with on-premise compute and zero human bottlenecks.]]></description>
+      <guid isPermaLink="false">ep-002-spotify-video</guid>
+      <pubDate>Thu, 13 Aug 2026 14:00:00 GMT</pubDate>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_13.mp4" length="1089548288" type="video/mp4" />
       <itunes:duration>24:59</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Episode 03: Living Worlds in Code Runtime: Why Static 3D Models Are Dead</title>
-      <description><![CDATA[We are way beyond static models. Joann Coffey & George Dubec unveil the Code-as-Geometry paradigm—generating living interactive worlds at runtime from trigonometric kinematics, procedural physics, and sovereign microgrids.]]></description>
-      <guid isPermaLink="false">ep-003-spotify</guid>
-      <pubDate>Thu, 20 Aug 2026 18:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_20.mp4" length="1125023744" type="video/mp4" />
+      <title>Episode 03: Living Worlds in Code Runtime: Why Static 3D Models Are Dead | TECH UNFILTERED SI</title>
+      <description><![CDATA[Why static 3D models and pre-rendered MP4s are obsolete. Instantiating living worlds dynamically via code, dimensions, profiles, and geometry functions at runtime.]]></description>
+      <guid isPermaLink="false">ep-003-spotify-video</guid>
+      <pubDate>Thu, 20 Aug 2026 14:00:00 GMT</pubDate>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_20.mp4" length="1124978688" type="video/mp4" />
       <itunes:duration>25:49</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Episode 04: Autonomous AI Agents Broke Our Contract: The Boardroom Shield</title>
-      <description><![CDATA[Corporate directors face personal liability when autonomous agent swarms make unauthorized financial commitments. Revealing KGU's 6-point forensic audit, BDI attestation, and The Love Effect OS.]]></description>
-      <guid isPermaLink="false">ep-004-spotify</guid>
-      <pubDate>Thu, 27 Aug 2026 18:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_27.mp4" length="1502085120" type="video/mp4" />
+      <title>Episode 04: Autonomous AI Agents Broke Our Contract: The Boardroom Shield | TECH UNFILTERED SI</title>
+      <description><![CDATA[When autonomous AI swarms execute corporate contracts with No Human In The Loop (NHIL). Corporate governance, liability mitigation, and legal dockets in the age of SI.]]></description>
+      <guid isPermaLink="false">ep-004-spotify-video</guid>
+      <pubDate>Thu, 27 Aug 2026 14:00:00 GMT</pubDate>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_27.mp4" length="1502078976" type="video/mp4" />
       <itunes:duration>34:28</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Episode 05: Autonomous C-Suite Swarms: 7 Exec Agents Running a Company NHIL</title>
-      <description><![CDATA[How 7 autonomous executive agents govern corporate capital, media syndication, and deal onboarding using the Paperclip protocol, deterministic BDI state transitions, and zero marginal token cost.]]></description>
-      <guid isPermaLink="false">ep-005-spotify</guid>
-      <pubDate>Thu, 03 Sep 2026 18:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_03.mp4" length="992608256" type="video/mp4" />
+      <title>Episode 05: Autonomous C-Suite Swarms: 7 Exec Agents Running a Company NHIL | TECH UNFILTERED SI</title>
+      <description><![CDATA[Multi-agent orchestration in enterprise boardrooms. Seven autonomous synthetic executive agents collaborating across capital allocation, marketing, and legal compliance.]]></description>
+      <guid isPermaLink="false">ep-005-spotify-video</guid>
+      <pubDate>Thu, 03 Sep 2026 14:00:00 GMT</pubDate>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_03.mp4" length="992589824" type="video/mp4" />
       <itunes:duration>22:47</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Episode 06: $100K/Day Sovereign Deal Flow: The Trillion-Dollar Blueprint</title>
-      <description><![CDATA[High-ticket capital velocity in Physical Superintelligence. Converting enterprise deal inquiries into verified JPMorgan Chase escrow deposits without relying on third-party ad platforms or intermediaries.]]></description>
-      <guid isPermaLink="false">ep-006-spotify</guid>
-      <pubDate>Thu, 10 Sep 2026 18:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_10.mp4" length="1301712896" type="video/mp4" />
+      <title>Episode 06: $100K/Day Sovereign Deal Flow: The Trillion-Dollar Blueprint | TECH UNFILTERED SI</title>
+      <description><![CDATA[Enterprise deal flow acceleration, institutional escrow, and commercial contracts. The economic architecture behind physical superintelligence deployments.]]></description>
+      <guid isPermaLink="false">ep-006-spotify-video</guid>
+      <pubDate>Thu, 10 Sep 2026 14:00:00 GMT</pubDate>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_10.mp4" length="1301684224" type="video/mp4" />
       <itunes:duration>29:51</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
-
     <item>
-      <title>Tech Unfiltered SI: The Sovereign Media Network (Official Trailer)</title>
-      <description><![CDATA[No teleprompters. No corporate PR spin. 100% No Human In The Loop. Joann Coffey & George Dubec introduce the Boca Raton studio broadcast network driving Physical Superintelligence.]]></description>
-      <guid isPermaLink="false">trailer-spotify</guid>
+      <title>Tech Unfiltered SI: The Sovereign Media Network (Official Trailer) | TECH UNFILTERED SI</title>
+      <description><![CDATA[The official trailer for Tech Unfiltered SI. No spin, no hype, unfiltered reality on physical superintelligence, digital twins, and autonomous enterprise operations.]]></description>
+      <guid isPermaLink="false">trailer-spotify-video</guid>
       <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_trailer.mp4" length="52805632" type="video/mp4" />
-      <itunes:duration>1:14</itunes:duration>
-      <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
+      <enclosure url="http://127.0.0.1:8899/videos/tec_trailer.mp4" length="52848640" type="video/mp4" />
+      <itunes:duration>01:14</itunes:duration>
+      <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
     </item>
   </channel>
 </rss>
