@@ -5,12 +5,12 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>TECH UNFILTERED SI — SPOTIFY VIDEO &amp; AUDIO BROADCAST</title>
-    <link>http://127.0.0.1:8899/</link>
+    <link>https://regime-when-safe-metallica.trycloudflare.com/</link>
     <language>en-us</language>
     <copyright>2026 KGU International LLC</copyright>
     <itunes:author>Joann Coffey &amp; George Dubec</itunes:author>
     <description>The Flagship Video &amp; Audio Broadcast for Physical Synthetic Intelligence (SI), Living Worlds in Code, and NHIL Autonomous Enterprise Operations. Powered by KGU International.</description>
-    <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+    <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     <itunes:category text="Technology" />
     <itunes:category text="Business">
       <itunes:category text="Management" />
@@ -23,77 +23,77 @@
       <description><![CDATA[Boca Raton Flagship Premiere. Joann Coffey & George Dubec expose the economic reality of rented cloud wrappers, OpenAI token taxes, and the structural inevitability of Dedicated Sovereign Hardware Nodes.]]></description>
       <guid isPermaLink="false">ep-001-spotify-video</guid>
       <pubDate>Wed, 05 Aug 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_05.mp4" length="1994348544" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_08_05.mp4" length="1994348544" type="video/mp4" />
       <itunes:duration>45:41</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
-      <title>Episode 02: We Replaced a $40,000/Mo Call Center With a Local GPU (92ms Test) | TECH UNFILTERED SI</title>
+      <title>Episode 02: We Replaced a ,000/Mo Call Center With a Local GPU (92ms Test) | TECH UNFILTERED SI</title>
       <description><![CDATA[Live studio benchmark of sub-100ms full-duplex conversational voice AI. Replacing human shifts and ,000/mo call centers with on-premise compute and zero human bottlenecks.]]></description>
       <guid isPermaLink="false">ep-002-spotify-video</guid>
       <pubDate>Thu, 13 Aug 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_13.mp4" length="1089548288" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_08_13.mp4" length="1089548288" type="video/mp4" />
       <itunes:duration>24:59</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
       <title>Episode 03: Living Worlds in Code Runtime: Why Static 3D Models Are Dead | TECH UNFILTERED SI</title>
       <description><![CDATA[Why static 3D models and pre-rendered MP4s are obsolete. Instantiating living worlds dynamically via code, dimensions, profiles, and geometry functions at runtime.]]></description>
       <guid isPermaLink="false">ep-003-spotify-video</guid>
       <pubDate>Thu, 20 Aug 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_20.mp4" length="1124978688" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_08_20.mp4" length="1124978688" type="video/mp4" />
       <itunes:duration>25:49</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
       <title>Episode 04: Autonomous AI Agents Broke Our Contract: The Boardroom Shield | TECH UNFILTERED SI</title>
       <description><![CDATA[When autonomous AI swarms execute corporate contracts with No Human In The Loop (NHIL). Corporate governance, liability mitigation, and legal dockets in the age of SI.]]></description>
       <guid isPermaLink="false">ep-004-spotify-video</guid>
       <pubDate>Thu, 27 Aug 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_08_27.mp4" length="1502078976" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_08_27.mp4" length="1502078976" type="video/mp4" />
       <itunes:duration>34:28</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
       <title>Episode 05: Autonomous C-Suite Swarms: 7 Exec Agents Running a Company NHIL | TECH UNFILTERED SI</title>
       <description><![CDATA[Multi-agent orchestration in enterprise boardrooms. Seven autonomous synthetic executive agents collaborating across capital allocation, marketing, and legal compliance.]]></description>
       <guid isPermaLink="false">ep-005-spotify-video</guid>
       <pubDate>Thu, 03 Sep 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_03.mp4" length="992589824" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_09_03.mp4" length="992589824" type="video/mp4" />
       <itunes:duration>22:47</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
-      <title>Episode 06: $100K/Day Sovereign Deal Flow: The Trillion-Dollar Blueprint | TECH UNFILTERED SI</title>
+      <title>Episode 06: K/Day Sovereign Deal Flow: The Trillion-Dollar Blueprint | TECH UNFILTERED SI</title>
       <description><![CDATA[Enterprise deal flow acceleration, institutional escrow, and commercial contracts. The economic architecture behind physical superintelligence deployments.]]></description>
       <guid isPermaLink="false">ep-006-spotify-video</guid>
       <pubDate>Thu, 10 Sep 2026 14:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_26_09_10.mp4" length="1301684224" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_26_09_10.mp4" length="1301684224" type="video/mp4" />
       <itunes:duration>29:51</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
     <item>
       <title>Tech Unfiltered SI: The Sovereign Media Network (Official Trailer) | TECH UNFILTERED SI</title>
       <description><![CDATA[The official trailer for Tech Unfiltered SI. No spin, no hype, unfiltered reality on physical superintelligence, digital twins, and autonomous enterprise operations.]]></description>
       <guid isPermaLink="false">trailer-spotify-video</guid>
       <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
-      <enclosure url="http://127.0.0.1:8899/videos/tec_trailer.mp4" length="52848640" type="video/mp4" />
+      <enclosure url="https://regime-when-safe-metallica.trycloudflare.com/videos/tec_trailer.mp4" length="52848640" type="video/mp4" />
       <itunes:duration>01:14</itunes:duration>
       <itunes:author>Joann Coffey &amp; George Dubec (KGU International)</itunes:author>
       <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="http://127.0.0.1:8899/tech_unfiltered_official.png" />
+      <itunes:image href="https://regime-when-safe-metallica.trycloudflare.com/tech_unfiltered_official.png" />
     </item>
   </channel>
 </rss>
