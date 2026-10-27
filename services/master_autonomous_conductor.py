@@ -101,7 +101,8 @@ class MasterAutonomousConductor:
             return s.connect_ex((host, port)) == 0
 
     def ensure_web4_server_alive(self):
-        """Ensures the Web4 3D Platform (Port 8899) is healthy and running."""
+        """Ensures the Web4 3D Platform (Port 8899) and Next.js Hub (Port 3002) are healthy."""
+        # 1. Check Port 8899 (Web4 3D Living Globe)
         if not self.is_port_open("127.0.0.1", 8899):
             logger.warning("Web4 Server on port 8899 is DOWN. Reviving autonomous server...")
             server_script = SERVICES_DIR / "sovereign_web4_server.py"
@@ -119,6 +120,24 @@ class MasterAutonomousConductor:
                     logger.error("❌ Failed to revive Web4 Server on port 8899.")
         else:
             logger.debug("Web4 Server on port 8899 is HEALTHY.")
+
+        # 2. Check Port 3002 (Next.js Broadcast Hub)
+        if not self.is_port_open("127.0.0.1", 3002):
+            logger.warning("Next.js Hub on port 3002 is DOWN. Reviving...")
+            next_dir = BASE_DIR / "tech-unfiltered"
+            if not next_dir.exists():
+                next_dir = Path("/Users/jccoffey/Downloads/TECH UNFILTERTED/website")
+            if next_dir.exists():
+                subprocess.Popen(
+                    ["npm", "run", "dev", "--", "-p", "3002"],
+                    cwd=str(next_dir),
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    preexec_fn=os.setpgrp
+                )
+                time.sleep(2)
+        else:
+            logger.debug("Next.js Broadcast Hub on port 3002 is HEALTHY.")
 
     def run_10channel_syndication(self, episode_code: str = "ep1") -> Dict[str, Any]:
         """Triggers 100% NHIL distribution across all 10 channels."""
