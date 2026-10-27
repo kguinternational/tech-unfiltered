@@ -278,6 +278,38 @@ return [{
             "jsCode": """// Channel 7: The Signal Brief Enterprise Dispatch (250K Subscribers)
 const data = $input.first().json;
 const ch7 = data.ch7 || {};
+const epCode = data.episodeCode || "EP-001";
+const epTitle = data.episodeTitle || "Tech Unfiltered SI";
+
+const subject = `[Tech Unfiltered SI] ${epCode}: ${epTitle}`;
+const html = `
+<div style="background:#0a0a0f;color:#f4f2ef;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;padding:32px 20px;max-width:680px;margin:0 auto;border:1px solid rgba(0,240,255,0.3);border-radius:12px;">
+  <div style="border-bottom:1px solid rgba(244,242,239,0.15);padding-bottom:16px;margin-bottom:24px;">
+    <span style="background:rgba(0,240,255,0.15);color:#00f0ff;border:1px solid rgba(0,240,255,0.4);padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.08em;">24/7 SOVEREIGN BROADCAST · 100% NHIL</span>
+    <h1 style="color:#ffffff;font-size:22px;margin:14px 0 6px 0;line-height:1.3;">${epCode}: ${epTitle}</h1>
+    <p style="color:rgba(244,242,239,0.65);font-size:13px;margin:0;">Hosts: Joann Coffey & George Dubec · Boca Raton Production Studio</p>
+  </div>
+  
+  <div style="background:rgba(255,255,255,0.03);border-left:3px solid #00f0ff;padding:16px 20px;margin-bottom:24px;border-radius:4px;">
+    <h3 style="color:#00f0ff;font-size:13px;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:0.06em;">Executive Master Thesis</h3>
+    <p style="font-size:14px;line-height:1.6;margin:0;color:rgba(244,242,239,0.9);">
+      "We are way beyond static models. We are engineering living worlds in code now—where Physical SI, No Human In The Loop (NHIL) autonomous execution, and Private KGU Empathy Engine Matrices replace fragile third-party API wrappers with zero-data-exfiltration sovereign infrastructure."
+    </p>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+    <a href="http://127.0.0.1:8899/#stream" style="background:#00f0ff;color:#000000;text-decoration:none;padding:10px 18px;border-radius:6px;font-size:12px;font-weight:800;display:inline-block;">▶️ 4K STREAMING HUB</a>
+    <a href="http://127.0.0.1:8899/#godseye" style="background:rgba(255,255,255,0.08);color:#ffffff;text-decoration:none;padding:10px 18px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;border:1px solid rgba(255,255,255,0.2);">🌍 3D LIVING GLOBE</a>
+    <a href="tel:18883238324" style="background:rgba(255,180,0,0.15);color:#ffca3a;text-decoration:none;padding:10px 18px;border-radius:6px;font-size:12px;font-weight:700;display:inline-block;border:1px solid rgba(255,180,0,0.4);">📞 STUDIO: 1-888-323-TECH</a>
+  </div>
+
+  <div style="border-top:1px solid rgba(244,242,239,0.12);padding-top:16px;font-size:11px;color:rgba(244,242,239,0.5);line-height:1.6;">
+    <strong>Omnichannel Verification:</strong> Dispatched via n8n 10-Channel Sovereign Engine.<br>
+    Nostr Relay Cryptographic Signature: Sealed NIP-01 & NIP-23.<br>
+    JC Coffey Foundation Inc. · 501(c)(3) Public Charity · EIN 33-3450194 · <a href="tel:18447233107" style="color:#ffca3a;">1-844-SAFE-107</a>
+  </div>
+</div>
+`;
 
 return [{
   json: {
@@ -285,8 +317,10 @@ return [{
     channelName: "The Signal Brief (Stalwart Sovereign Mail 250K)",
     status: ch7.status || "DISPATCHED",
     subscribers: ch7.subscribers || "250,000+ Verified Executives",
-    mailTransport: ch7.mailTransport,
-    subject: ch7.subject,
+    mailTransport: "Gmail OAuth2 (realjoanncoffey@gmail.com) + Stalwart SMTP",
+    subject: subject,
+    htmlMessage: html,
+    recipient: "realjoanncoffey@gmail.com",
     outputArtifact: ch7.outputArtifact,
     publishedAt: new Date().toISOString()
   }
@@ -297,6 +331,27 @@ return [{
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [1280, 680]
+    },
+    {
+        "parameters": {
+            "resource": "message",
+            "operation": "send",
+            "sendTo": "realjoanncoffey@gmail.com",
+            "subject": "={{ $json.subject }}",
+            "message": "={{ $json.htmlMessage }}"
+        },
+        "id": "node-ch7-gmail-send",
+        "name": "Ch7 - Dispatch Live via Gmail",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [1520, 680],
+        "continueOnFail": True,
+        "credentials": {
+            "gmailOAuth2": {
+                "id": "zePGAN6yryUn0Xov",
+                "name": "Gmail account"
+            }
+        }
     },
     {
         "parameters": {
@@ -481,6 +536,9 @@ connections = {
         "main": [[{"node": "Consolidate 10-Channel Results", "type": "main", "index": 0}]]
     },
     "Ch7 - The Signal Brief Newsletter": {
+        "main": [[{"node": "Ch7 - Dispatch Live via Gmail", "type": "main", "index": 0}]]
+    },
+    "Ch7 - Dispatch Live via Gmail": {
         "main": [[{"node": "Consolidate 10-Channel Results", "type": "main", "index": 0}]]
     },
     "Ch8 - Nostr Decentralized Relay": {
